@@ -2,20 +2,31 @@ import React from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Store } from '../Store';
+import { setProductDetail, addToCart } from '../actions/Action'
 
 export default function Product({ id, title, img, price, inCart }) {
   const { state, dispatch } = React.useContext(Store);
 
+  const isInCart = function () {
+    return state.cart.some(p => p.id === id);
+  }
+
   return (
     <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3">
       <div className="card">
-        <div className="img-container p-5" onClick={() => console.log('you clicked me on image container')}>
+        <div
+          className="img-container p-5"
+          onClick={() => setProductDetail(dispatch, state.products, id)}
+        >
           <Link to="/details">
             <img src={img} alt="product" className="card-img-top" />
           </Link>
-          <button className="cart-btn" disabled={inCart ? true : false} onClick={() => { console.log('added to the cart') }}>
+          <button 
+            className="cart-btn" 
+            disabled={isInCart() ? true : false} 
+            onClick={() => addToCart(dispatch, state.products, id)}>
 
-            {inCart ? (
+            {isInCart() ? (
               <p className="text-capitalize mb-0" disabled>
                 in Cart
               </p>
