@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../logo.svg'
 import styled from 'styled-components'
 import {ButtonContainer} from './Button' 
+import SearchInput from './SearchInput'
 
 export default function Navbar() {
   return (
@@ -22,6 +23,11 @@ export default function Navbar() {
           </Link>
         </li>
       </ul>
+
+      <SearchInput />
+      
+
+
       <Link to="/cart" className="ml-auto">
         <ButtonContainer >
           <i className="fas fa-cart-plus mx-1 mr-2" />

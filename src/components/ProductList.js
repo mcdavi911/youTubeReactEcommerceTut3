@@ -9,11 +9,18 @@ export default function ProductList() {
   const { state, dispatch } = React.useContext(Store);
 
   
+
   return (
     <React.Fragment>
       <div className="py-5">
         <div className="container">
           <Title name="our" title="products" />
+
+          <div>bike</div>
+          <div>car</div>
+          <div>plane</div>
+
+
           <div className="row">
             {state.products.map(p => (
               <Product key={p.id} {...p} />
