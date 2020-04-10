@@ -128,6 +128,8 @@ export default function Navbar() {
                 <SearchIcon />
               </div>
               <InputBase
+                value={state.searchTerm}
+                onChange={handleChange}
                 placeholder="Search…"
                 classes={{
                   root: classes.inputRoot,
