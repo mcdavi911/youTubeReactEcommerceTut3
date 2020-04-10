@@ -1,25 +1,28 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Navbar from './components/Navbar';
+import Navbar from './components/Topbar';
 import ProductList from './components/ProductList';
 import Details from './components/Details';
 import Cart from './components/cart/Cart';
 import Default from './components/Default';
 
 
-// Todo
-// data.js aufräumen
-// data.js class hinzufügen
-// searchbar funktion implementieren
+const useStyles = makeStyles((theme) => ({
+  toolbar: theme.mixins.toolbar,
+}));
 
 
 function App() {
+  const classes = useStyles();
+
   return (
     <React.Fragment>
       <Navbar />
+      <div className={classes.toolbar}></div>
       <Switch>
         <Route exact path="/" component={ProductList} />
         <Route path="/details" component={Details} />

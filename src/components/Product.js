@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Store } from '../Store';
 import { setProductDetail, addToCart } from '../actions/Action'
+import { findByLabelText } from '@testing-library/react';
+import { Typography } from '@material-ui/core';
 
 export default function Product({ id, title, img, price, inCart }) {
   const { state, dispatch } = React.useContext(Store);
@@ -12,43 +14,72 @@ export default function Product({ id, title, img, price, inCart }) {
   }
 
   return (
-    <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3">
-      <div className="card">
-        <div
-          className="img-container p-5"
-          onClick={() => setProductDetail(dispatch, state.products, id)}
-        >
+    <>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div onClick={() => setProductDetail(dispatch, state.products, id)} style={{ width: '100%', paddingTop: '75%', position: 'relative', background: 'red', overflow: 'hidden' }}>
           <Link to="/details">
-            <img src={img} alt="product" className="card-img-top" />
+            <img src={img} alt="product" className="card-img-top" style={{ position: 'absolute', top: 0 }} />
           </Link>
-          <button 
-            className="cart-btn" 
-            disabled={isInCart() ? true : false} 
-            onClick={() => addToCart(dispatch, state.products, id)}>
+        </div>
 
-            {isInCart() ? (
-              <p className="text-capitalize mb-0" disabled>
-                in Cart
-              </p>
-            ) : (
-                <i className="fas fa-cart-plus" />
-              )}
-          </button>
-        </div>
-        <div className="card-footer d-flex justify-content-between">
-          <p className="align-self-center mb-0">
-            {title}
-          </p>
-          <h5 className="text-blue font-italic mb-0">
-            <span className="mr-1">$</span>
-            {price}
-          </h5>
-        </div>
+        <Typography>
+          {title}
+        </Typography>
+        <Typography>
+          {price}
+        </Typography>
       </div>
-    </ProductWrapper>
+
+      {
+        /*
+      <ProductWrapper className="col-3  ">
+      
+      
+      
+              <div className="card">
+                <div
+                  className="img-container p-5"
+                  onClick={() => setProductDetail(dispatch, state.products, id)}
+                >
+                  <Link to="/details">
+                    <img src={img} alt="product" className="card-img-top" />
+                  </Link>
+      
+                </div>
+                <div className="card-footer">
+                  <p className="align-self-center mb-0">
+                    {title}
+                  </p>
+                  <h5 className="text-blue font-italic mb-0">
+                    <span className="mr-1">$</span>
+                    {price}
+                  </h5>
+                </div>
+              </div>
+            </ProductWrapper>
+        */
+      }
+    </>
   )
 }
 
+
+/*
+<button 
+className="cart-btn" 
+disabled={isInCart() ? true : false} 
+onClick={() => addToCart(dispatch, state.products, id)}>
+
+
+{isInCart() ? (
+  <p className="text-capitalize mb-0" disabled>
+    in Cart
+  </p>
+) : (
+    <i className="fas fa-cart-plus" />
+  )}
+</button>
+*/
 
 
 
