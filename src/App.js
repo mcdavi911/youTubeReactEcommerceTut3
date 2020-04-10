@@ -7,8 +7,13 @@ import Navbar from './components/Navbar';
 import ProductList from './components/ProductList';
 import Details from './components/Details';
 import Cart from './components/cart/Cart';
-import Store from './components/Store';
 import Default from './components/Default';
+
+
+// Todo
+// data.js aufräumen
+// data.js class hinzufügen
+// searchbar funktion implementieren
 
 
 function App() {

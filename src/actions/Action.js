@@ -25,6 +25,24 @@ export const setProductDetail = (dispatch, products, id) => {
 }
 
 
+export const setSearchTerm = (dispatch, searchTerm) => {
+  return dispatch({
+    type: 'SET_SEARCH_TERM',
+    payload: searchTerm
+  })
+}
+
+export const setSearchResults = (dispatch, searchResults) => {
+  return dispatch({
+    type: 'SET_SEARCH_RESULTS',
+    payload: searchResults
+  })
+}
+
+
+
+
+
 export const cartIncrement = (dispatch, id) => {
   
   return dispatch({
@@ -57,4 +75,6 @@ export const cartClear = (dispatch) => {
     payload: null
   })
 }
+
+
 

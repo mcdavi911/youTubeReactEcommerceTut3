@@ -1,14 +1,11 @@
 import React from 'react'
 import Product from './Product'
 import Title from './Title'
-//import { storeProducts } from '../data'
 import { Store } from '../Store'
 
 
 export default function ProductList() {
-  const { state, dispatch } = React.useContext(Store);
-
-  
+  const { state, /*dispatch*/ } = React.useContext(Store);
 
   return (
     <React.Fragment>
@@ -16,13 +13,8 @@ export default function ProductList() {
         <div className="container">
           <Title name="our" title="products" />
 
-          <div>bike</div>
-          <div>car</div>
-          <div>plane</div>
-
-
           <div className="row">
-            {state.products.map(p => (
+            {state.searchResults.map(p => (
               <Product key={p.id} {...p} />
             ))}
           </div>

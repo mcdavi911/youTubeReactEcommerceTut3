@@ -8,7 +8,7 @@ import { Store } from '../../Store'
 
 
 export default function Cart(props) {
-  const { state, dispatch } = React.useContext(Store);
+  const { state, /*dispatch*/ } = React.useContext(Store);
 
   
 

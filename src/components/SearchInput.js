@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
-import produce from 'immer'
-
 
 
 export default function SearchInput() {
+
+
+
+  /*
   const [filterText, setFilterText] = useState('');
   const itemClasses = [ 'Kits', 'Lenses', 'Cases', 'Tripods', 'Motor' ];
   const [itemClassesFiltered, setItemClassesFiltered] = useState(itemClasses);
@@ -17,15 +19,14 @@ export default function SearchInput() {
 
   //console.log('itemClasses',itemClasses);
   console.log('filtered',itemClassesFiltered);
-
+*/
   
 
 
 
   return (
     <div>
-      <input onChange={(e) => handleFilterText(e)} />
-      <p style={{color: 'white'}}>{filterText}</p>
+      <input onChange={() => ''} />
     </div>
   )
 }

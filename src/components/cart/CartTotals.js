@@ -1,16 +1,16 @@
 import React from 'react'
 import { Store } from '../../Store'
 import { cartClear } from '../../actions/Action'
-import PaypalButton from './PaypalButton'
+//import PaypalButton from './PaypalButton'
 
 export default function CartTotals(props) {
   const { state, dispatch } = React.useContext(Store);
 
   const cartSubtotal = () => {
     let subTotal = 0;
-    state.cart.map((p) => {
+    state.cart.map((p) => 
       subTotal += p.price * p.count
-    })
+    )
 
     return subTotal;
   }

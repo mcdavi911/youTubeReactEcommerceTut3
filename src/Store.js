@@ -7,6 +7,8 @@ const initialState = {
   products,
   productDetail,
   cart: [],
+  searchTerm: '',
+  searchResults: [],
   cartTax: 1.6
 }
 
@@ -26,7 +28,13 @@ const reducer = produce((draft, action) => {
       break;
     case 'SET_PRODUCT_DETAIL':
       draft.productDetail = action.payload;
-      
+
+      break;
+    case 'SET_SEARCH_TERM':
+      draft.searchTerm = action.payload;
+      break;
+    case 'SET_SEARCH_RESULTS':
+      draft.searchResults = action.payload;
       break;
     case 'CART_INCREMENT':
       const pIdx2 = draft.cart.findIndex(p => p.id === action.payload)
@@ -44,7 +52,7 @@ const reducer = produce((draft, action) => {
       draft.cart = []
       break;
     default:
-      console.log('hello from default');
+      console.log('hello from default switch case');
   }
 })
 
