@@ -16,10 +16,27 @@ import Container from '@material-ui/core/Container';
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import InputBase from '@material-ui/core/InputBase'
+import Box from '@material-ui/core/Box'
 
 import SearchIcon from '@material-ui/icons/Search'
 import ShoppingBasket from '@material-ui/icons/ShoppingBasket'
-import ShoppingCart from '@material-ui/icons/ShoppingCart'
+//import ShoppingCart from '@material-ui/icons/ShoppingCart'
+import Smartphone from '@material-ui/icons/Smartphone'
+import Camera from '@material-ui/icons/Camera'
+import WorkOutline from '@material-ui/icons/WorkOutline'
+import PhotoCamera from '@material-ui/icons/PhotoCamera'
+import CreditCard from '@material-ui/icons/CreditCard'
+
+
+// Icon options for motor
+//import Settings from '@material-ui/icons/Settings'
+//import Cached from '@material-ui/icons/Cached'
+//import FlashOn from '@material-ui/icons/FlashOn'
+//import FlipCameraAndroid from '@material-ui/icons/FlipCameraAndroid'
+//import Loop from '@material-ui/icons/Loop'
+//import Sync from '@material-ui/icons/Sync'
+import ThreeSixty from '@material-ui/icons/ThreeSixty'
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -43,14 +60,16 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
     //backgroundColor: fade(theme.palette.common.white, 0.15),
-    backgroundColor: fade(theme.palette.common.black, 0.15),
+    //backgroundColor: fade(theme.palette.common.black, 0.15),
     '&:hover': {
       //backgroundColor: fade(theme.palette.common.white, 0.25),
-      backgroundColor: fade(theme.palette.common.black, 0.25),
+      //backgroundColor: fade(theme.palette.common.black, 0.25),
+
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
     width: '100%',
+    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.08)',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(3),
       width: 'auto',
@@ -91,7 +110,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
-  
+
 }));
 
 
@@ -114,20 +133,20 @@ export default function Navbar() {
 
   return (
     <>
-      <AppBar className={classes.appBar} color="inherit">
+      <AppBar className={classes.appBar} color="inherit" position="static">
         <Container>
           <Toolbar disableGutters>
             <Link to='/'>
-
               <img style={{ height: 32, width: 'auto' }} src="img/nodalview-shop-logo.png" alt="nodalview logo" />
-
             </Link>
 
-            <div className={classes.search}>
+            <div className={classes.search} style={{ width: '40%', fontSize: 20, margin: '12px auto' }}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
+
               <InputBase
+                style={{ fontSize: 'inherit', padding: 12 }}
                 value={state.searchTerm}
                 onChange={handleChange}
                 placeholder="Search…"
@@ -140,12 +159,50 @@ export default function Navbar() {
             </div>
 
             <Link to="/cart" className="ml-auto">
-              <ButtonContainer >
+              <ButtonContainer style={{ color: '#000' }}>
                 <ShoppingBasket />
-                Cart
               </ButtonContainer>
             </Link>
           </Toolbar>
+          <Box display="flex" style={{ textAlign: 'center' }}>
+            <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+              <span>
+                <WorkOutline />
+              </span>
+              <span>Kits</span>
+            </Box>
+            <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+              <span>
+                <Camera />
+              </span>
+              <p>Lenses</p>
+            </Box>
+            <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+              <span>
+                <Smartphone />
+              </span>
+              <p>Cases</p>
+            </Box>
+            <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+              <span>
+                <ThreeSixty />
+              </span>
+              <p>Motor</p>
+            </Box>
+            <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+              <span>
+                <PhotoCamera />
+              </span>
+              <p>Tripods</p>
+            </Box>
+            <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+              <span>
+                <CreditCard />
+              </span>
+              <p>Prepaid Credits</p>
+            </Box>
+
+          </Box>
         </Container>
       </AppBar>
 
@@ -161,5 +218,6 @@ const NavWrapper = styled.nav`
     text-transform: capitalize;
   }
 `
+
 
 

@@ -13,7 +13,7 @@ const theme = createMuiTheme({
   palette: {
     background: {
       default: '#fff',
-
+      
     }
   },
 
@@ -32,7 +32,7 @@ const theme = createMuiTheme({
   },
 
 
-  /*
+  
   breakpoints: {
     values: {
       xs: 0,
@@ -42,7 +42,7 @@ const theme = createMuiTheme({
       xl: 1920
     }
   }
-  */
+  
 
 
 
