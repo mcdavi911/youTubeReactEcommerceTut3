@@ -76,44 +76,9 @@ export default function ProductList() {
 
 
         </Grid>
-
-
-        {
-          /*
-            <Grid container>
-                  <Grid item sm={2}>
-                    <List style={{ textTransform: 'uppercase' }}>
-                      {itemClasses.map(c =>
-                        <ListItem>{c}</ListItem>
-                      )}
-                    </List>
-                  </Grid>
-                  <Grid item sm={10}>
-                    <Grid container spacing={3}>
-                      {state.searchResults.map(p => (
-                        <Grid item sm={4}>
-                          <Product key={p.id} {...p} />
-                        </Grid>
-                      ))}
-                    </Grid>
-        
-                    {
-                      /*
-                      <Box display="flex" flexWrap="wrap" style={{flexBasis: '33%', width: '100%'}}>
-                      {state.searchResults.map(p => (
-                        <Product key={p.id} {...p} />
-                      ))}
-                    </Box>
-                      
-                    }
-        
-                    </Grid>
-                  </Grid>
-          */
-        }
-
-
       </Container>
+
+      
 
     </React.Fragment>
   )

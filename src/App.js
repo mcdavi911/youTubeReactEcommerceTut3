@@ -28,6 +28,9 @@ function App() {
         <Route path="/cart" component={Cart} />
         <Route component={Default} />
       </Switch>
+      <footer>
+        asdsadasdsad
+      </footer>
     </React.Fragment>
   );
 }
