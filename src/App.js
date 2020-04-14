@@ -22,7 +22,6 @@ function App() {
   return (
     <React.Fragment>
       <Navbar />
-      <div className={classes.toolbar}></div>
       <Switch>
         <Route exact path="/" component={ProductList} />
         <Route path="/details" component={Details} />

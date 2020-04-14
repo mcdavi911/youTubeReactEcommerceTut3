@@ -109,6 +109,18 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
+  links: {
+    color: 'red',
+    fontWeight: 700,
+    marginTop: theme.spacing(5),
+    marginBottom: theme.spacing(2),
+
+    '& > a': {
+      color: '#e56565',
+      padding: theme.spacing(2),
+      marginRight: theme.spacing(1),
+    }
+  }
 
 
 }));
@@ -140,6 +152,112 @@ export default function Navbar() {
               <img style={{ height: 32, width: 'auto' }} src="img/nodalview-shop-logo.png" alt="nodalview logo" />
             </Link>
 
+            {
+              /*
+              <Typography color="textPrimary" className={classes.links}>
+              <Link href="#"  >
+                Kits
+              </Link>
+              <Link href="#" color="inherit" >
+                Lenses
+              </Link>
+              <Link href="#" color="inherit" >
+                Cases
+              </Link>
+              <Link href="#" color="inherit" >
+                Tripods
+              </Link>
+              <Link href="#" color="inherit" >
+                Motor
+              </Link>
+              <Link href="#" color="inherit" >
+                Tripods
+              </Link>
+              <Link href="#" color="inherit" >
+                Prepaid Credit
+              </Link>
+            </Typography>
+              */
+            }
+
+
+            {
+              /*
+              <Box display="flex" style={{ textAlign: 'center', margin: '0 auto' }} justifyContent="center">
+              <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+                <span>
+                  <WorkOutline />
+                </span>
+                <span>Kits</span>
+              </Box>
+              <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+                <span>
+                  <Camera />
+                </span>
+                <span>Lenses</span>
+              </Box>
+              <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+                <span>
+                  <Smartphone />
+                </span>
+                <span>Cases</span>
+              </Box>
+              <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+                <span>
+                  <ThreeSixty />
+                </span>
+                <span>Motor</span>
+              </Box>
+              <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+                <span>
+                  <PhotoCamera />
+                </span>
+                <span>Tripods</span>
+              </Box>
+              <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+                <span>
+                  <CreditCard />
+                </span>
+                <span>Prepaid Credits</span>
+              </Box>
+
+            </Box>
+              */
+            }
+
+
+
+
+            {
+              /*
+              <Box display="flex" style={{ textAlign: 'center', margin: '0 auto' }} justifyContent="center">
+              <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+                
+                <span>Kits</span>
+              </Box>
+              <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+                
+                <span>Lenses</span>
+              </Box>
+              <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+                
+                <span>Cases</span>
+              </Box>
+              <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>  
+                <span>Motor</span>
+              </Box>
+              <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+                <span>Tripods</span>
+              </Box>
+              <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+                
+                <span>Prepaid Credits</span>
+              </Box>
+
+            </Box>
+              */
+            }
+
             <div className={classes.search} style={{ width: '40%', fontSize: 20, margin: '12px auto' }}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -158,51 +276,93 @@ export default function Navbar() {
               />
             </div>
 
+
+
+
             <Link to="/cart" className="ml-auto">
               <ButtonContainer style={{ color: '#000' }}>
                 <ShoppingBasket />
               </ButtonContainer>
             </Link>
           </Toolbar>
-          <Box display="flex" style={{ textAlign: 'center' }}>
-            <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+
+
+
+          <Box display="flex" style={{ textAlign: 'center', margin: '0 auto' }} justifyContent="center">
+            <Link href="#" style={{ display: "flex", flexDirection: 'column', alignContent: 'center', padding: '12px 18px' }}>
               <span>
                 <WorkOutline />
               </span>
-              <span>Kits</span>
-            </Box>
-            <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+              Kits
+            </Link>
+            <Link color="textPrimary" href="#" style={{ display: "flex", flexDirection: 'column', alignContent: 'center', padding: '12px 18px' }}>
               <span>
                 <Camera />
               </span>
-              <p>Lenses</p>
-            </Box>
-            <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+              Lenses
+            </Link>
+            <Link color="textPrimary" href="#" style={{ display: "flex", flexDirection: 'column', alignContent: 'center', padding: '12px 18px' }}>
               <span>
                 <Smartphone />
               </span>
-              <p>Cases</p>
-            </Box>
-            <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+              Cases
+            </Link>
+            <Link color="textPrimary" href="#" style={{ display: "flex", flexDirection: 'column', alignContent: 'center', padding: '12px 18px' }}>
               <span>
                 <ThreeSixty />
               </span>
-              <p>Motor</p>
-            </Box>
-            <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+              Motor
+            </Link>
+            <Link color="textPrimary" href="#" style={{ display: "flex", flexDirection: 'column', alignContent: 'center', padding: '12px 18px' }}>
               <span>
                 <PhotoCamera />
               </span>
-              <p>Tripods</p>
-            </Box>
-            <Box display="flex" flexDirection="column" alignContent="center" style={{ padding: '12px 18px' }}>
+              Tripods
+            </Link>
+            <Link color="textPrimary" href="#" style={{ display: "flex", flexDirection: 'column', alignContent: 'center', padding: '12px 18px' }}>
               <span>
                 <CreditCard />
               </span>
-              <p>Prepaid Credits</p>
-            </Box>
-
+              Prepaid Credits
+            </Link>
           </Box>
+
+
+          {
+            /*
+              <Box display="flex">
+            <Typography color="textPrimary" className={classes.links}>
+              <Link href="#"  >
+                Kits
+              </Link>
+              <Link href="#" color="inherit" >
+                Lenses
+              </Link>
+              <Link href="#" color="inherit" >
+                Cases
+              </Link>
+              <Link href="#" color="inherit" >
+                Tripods
+              </Link>
+              <Link href="#" color="inherit" >
+                Motor
+              </Link>
+              <Link href="#" color="inherit" >
+                Tripods
+              </Link>
+              <Link href="#" color="inherit" >
+                Prepaid Credit
+              </Link>
+            </Typography>
+          </Box>
+          */
+          }
+
+
+
+
+
+
         </Container>
       </AppBar>
 
