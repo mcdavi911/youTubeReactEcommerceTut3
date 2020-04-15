@@ -17,6 +17,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import InputBase from '@material-ui/core/InputBase'
 import Box from '@material-ui/core/Box'
+import Badge from '@material-ui/core/Badge';
 
 import Search from '@material-ui/icons/Search'
 import ShoppingBasket from '@material-ui/icons/ShoppingBasket'
@@ -61,21 +62,20 @@ const useStyles = makeStyles((theme) => ({
   },
   search: {
     position: 'relative',
+    //border: '1px solid #fff',
+    boxShadow: '0px 5px 12px rgba(0, 0, 0, 0.15)',
+    //fontSize: theme.typography.pxToRem(20),
     borderRadius: theme.shape.borderRadius,
     //backgroundColor: fade(theme.palette.common.white, 0.15),
-    //backgroundColor: fade(theme.palette.common.black, 0.15),
     '&:hover': {
       //backgroundColor: fade(theme.palette.common.white, 0.25),
-      //backgroundColor: fade(theme.palette.common.black, 0.25),
-
     },
-    //marginRight: theme.spacing(2),
-    marginLeft: 0,
+    //marginRight: theme.spacing.unit * 2,
+    //marginLeft: 0,
     width: '100%',
-    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.08)',
     [theme.breakpoints.up('sm')]: {
-      //marginLeft: theme.spacing(3),
-      width: 'auto',
+      //marginLeft: theme.spacing.unit * 3,
+      //width: 'auto',
     },
   },
   searchIcon: {
@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'inherit',
   },
   inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
+    padding: theme.spacing(2, 2, 2, 1),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
@@ -124,43 +124,94 @@ const useStyles = makeStyles((theme) => ({
       marginRight: theme.spacing(1),
     }
   },
-  categories: {
-    width: '100%',
+  menuWrapper: {
+    //width: '100%',
+    width: theme.spacing(65),
     textAlign: 'center',
-    margin: '0 auto',
+    //margin: '0 auto',
     //position: 'absolute',
-    bottom: -75,
-    left: 0,
+    //bottom: -75,
+    //left: 0,
     display: "flex",
     justifyContent: "center",
-    borderRadius: theme.shape.borderRadius,
-    '& > a': {
-      color: '#333',
-      textDecoration: 'none',
+    alignSelf: 'flex-end',
 
+    //borderRadius: theme.shape.borderRadius,
+    '& > a': {
+      color: theme.palette.text.primary,
+      //marginLeft: theme.spacing(.5),
+      //marginRight: theme.spacing(.5),
+      textDecoration: 'none',
       display: "flex",
+      flexGrow: 1,
       //flexDirection: 'row-reverse',
       flexDirection: 'column',
       alignContent: 'center',
-      padding: '12px 18px',
+      padding: `${theme.spacing.unit * 1.5}px ${theme.spacing.unit * 2}px`,
+      fontWeight: 700,
+      
+      position: 'relative',
+      overflow: 'hidden',
 
-
-      '&:hover': {
-        backgroundColor: fade(theme.palette.common.black, 0.15),
+      '&:before': {
+        content: '""',
+        position: 'absolute',
+        background: theme.palette.primary.dark,
+        bottom: 0,
+        left: '0',
+        right: '0',
+        height: '3px',
+        transform: 'translateX(-100%)',
+        opacity: 0,
+        transition: 'transform .2s linear,opacity .2s linear'
+      },
+      '&:hover:before': {
+        transform: 'translateX(0)',
+        opacity: 1
       }
-    },
-    '& > a > span': {
-      //marginLeft: 4,
-      //position: 'relative',
-      //bottom: 2
+
     }
   },
-
+  
+  toolbar: {
+    minHeight: theme.spacing(10)
+  }
 }));
 
 
 /*
- 
+topbarLinks: {
+    position: 'relative',
+    overflow: 'hidden',
+    marginLeft: theme.spacing(2),
+    display: 'inline-flex',
+    padding: '20px 8px',
+    maxHeight: 64,
+
+    '&:hover': {
+      textDecoration: 'none',
+      //borderBottom: '4px solid red'
+    },
+    '&:before': {
+      content: '""',
+      position: 'absolute',
+      background: theme.palette.secondary.main,
+      bottom: 0,
+      left: '0',
+      right: '0',
+      height: '3px',
+      transform: 'translateX(-100%)',
+      opacity: 0,
+      transition: 'transform .2s linear,opacity .2s linear,-webkit-transform .2s linear'
+    },
+    '&:hover:before': {
+      transform: 'translateX(0)',
+      opacity: 1
+    }
+  }
+
+
+
 borderRadius: theme.shape.borderRadius,
     //backgroundColor: fade(theme.palette.common.white, 0.15),
     //backgroundColor: fade(theme.palette.common.black, 0.15),
@@ -175,9 +226,11 @@ borderRadius: theme.shape.borderRadius,
 export default function Navbar() {
   const classes = useStyles();
   const { state, dispatch } = React.useContext(Store);
-  const { isSearch, setIsSearch } = React.useState(false);
+  const [isSearchToggle, setIsSearchToggle] = React.useState(false);
 
-
+  const toggleSearch = e => {
+    setIsSearchToggle((prevState) => !prevState);
+  }
 
 
   const handleChange = e => {
@@ -196,24 +249,22 @@ export default function Navbar() {
     <>
       <AppBar className={classes.appBar} color="inherit" position="static">
         <Container>
-          <Toolbar disableGutters>
+          <Toolbar disableGutters className={classes.toolbar}>
 
-
-            <Link to='/'>
+            <Link to='/' onClick={() => setIsSearchToggle(false)}>
               <img style={{ height: 32, width: 'auto' }} src="img/nodalview-shop-logo.png" alt="nodalview logo" />
             </Link>
 
+            <div className={classes.grow} />
 
-            <div style={{ width: '40%', minWidth: 200, margin: '12px auto 0 auto', position: 'relative' }}>
-
-              {isSearch ? (
-                <div className={classes.search} style={{ width: '100%', fontSize: 20 }}>
+            {isSearchToggle ? (
+              <div className={classes.menuWrapper} style={{alignSelf: isSearchToggle ? 'center':''}}>
+                <div className={classes.search}>
                   <div className={classes.searchIcon}>
                     <Search />
                   </div>
 
                   <InputBase
-                    style={{ fontSize: 'inherit', padding: 12 }}
                     fullWidth
                     value={state.searchTerm}
                     onChange={handleChange}
@@ -225,57 +276,60 @@ export default function Navbar() {
                     inputProps={{ 'aria-label': 'search' }}
                   />
                 </div>
-              ) : (
-                  <Box class={classes.categories}>
-                    <Link href="#" style={{}}>
-                      <span>
-                        <WorkOutline />
-                      </span>
-                    Kits
-                  </Link>
-                    <Link href="#">
-                      <span>
-                        <Camera />
-                      </span>
-                    Lenses
-                  </Link>
-                    <Link href="#">
-                      <span>
-                        <Smartphone />
-                      </span>
-                    Cases
-                  </Link>
-                    <Link href="#">
-                      <span>
-                        <ThreeSixty />
-                      </span>
-                    Motor
-                  </Link>
-                    <Link href="#">
-                      <span>
-                        <PhotoCamera />
-                      </span>
-                    Tripods
-                  </Link>
-                    <Link href="#">
-                      <span>
-                        <CreditCard />
-                      </span>
-                      {/*Prepaid */} Credits
-                  </Link>
-                  </Box>
-                )}
-            </div>
+              </div>
+            ) : (
+                <div class={classes.menuWrapper}>
+                  <Link href="#" style={{}}>
+                    <span>
+                      <WorkOutline />
+                    </span>
+                  Kits
+                </Link>
+                  <Link href="#">
+                    <span>
+                      <Camera />
+                    </span>
+                  Lenses
+                </Link>
+                  <Link href="#">
+                    <span>
+                      <Smartphone />
+                    </span>
+                  Cases
+                </Link>
+                  <Link href="#">
+                    <span>
+                      <ThreeSixty />
+                    </span>
+                  Motor
+                </Link>
+                  <Link href="#">
+                    <span>
+                      <PhotoCamera />
+                    </span>
+                  Tripods
+                </Link>
+                  <Link href="#">
+                    <span>
+                      <CreditCard />
+                    </span>
+                    {/*Prepaid */} Credits
+                </Link>
+                </div>
+              )}
+
+            <div className={classes.grow} />
 
 
-
-            <IconButton>
+            <IconButton onClick={(e) => toggleSearch(e)}>
               <Search />
             </IconButton>
 
-            <Link to="/cart">
+            <Link to="/cart" style={{marginRight: 12}}>
               <IconButton>
-                <ShoppingBasket />
+                <Badge badgeContent={4} color="primary">
+                  <ShoppingBasket />
+                </Badge>
               </IconButton>
             </Link>
 
