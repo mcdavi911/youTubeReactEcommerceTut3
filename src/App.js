@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
+//import 'bootstrap/dist/css/bootstrap.min.css'
 import Navbar from './components/Topbar';
 import ProductList from './components/ProductList';
 import Details from './components/Details';

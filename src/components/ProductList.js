@@ -55,6 +55,12 @@ export default function ProductList() {
             </div>
             <div>Cases</div>
           </Grid>
+
+
+
+        </Grid>
+        <Grid container style={{ textAlign: 'center', height: 400 }} spacing="4">
+
           <Grid item md={4}>
             <div style={{ background: 'Grey', paddingBottom: '75%', position: 'relative' }}>
 
@@ -73,12 +79,46 @@ export default function ProductList() {
             </div>
             <div>Prepaid Credits</div>
           </Grid>
-
-
         </Grid>
+
+        <Grid container>
+          <Grid item sm={2}>
+            <List style={{ textTransform: 'uppercase' }}>
+              {itemClasses.map(c =>
+                <ListItem>{c}</ListItem>
+              )}
+            </List>
+          </Grid>
+          <Grid item sm={10}>
+            <Grid container spacing={3}>
+              {state.searchResults.map(p => (
+                <Grid item sm={4}>
+                  <Product key={p.id} {...p} />
+                </Grid>
+              ))}
+            </Grid>
+
+            {
+              /*
+              <Box display="flex" flexWrap="wrap" style={{flexBasis: '33%', width: '100%'}}>
+              {state.searchResults.map(p => (
+                <Product key={p.id} {...p} />
+              ))}
+            </Box>
+              */
+            }
+
+          </Grid>
+        </Grid>
+
+
+
       </Container>
 
-      
+
+
+
+
 
     </React.Fragment>
   )

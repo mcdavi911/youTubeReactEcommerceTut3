@@ -6,7 +6,7 @@ import produce from 'immer'
 const initialState = {
   products,
   productDetail,
-  cart: [],
+  cart: products,
   searchTerm: '',
   searchResults: [],
   cartTax: 1.6
