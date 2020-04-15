@@ -18,7 +18,7 @@ import Typography from '@material-ui/core/Typography'
 import InputBase from '@material-ui/core/InputBase'
 import Box from '@material-ui/core/Box'
 
-import SearchIcon from '@material-ui/icons/Search'
+import Search from '@material-ui/icons/Search'
 import ShoppingBasket from '@material-ui/icons/ShoppingBasket'
 //import ShoppingCart from '@material-ui/icons/ShoppingCart'
 import Smartphone from '@material-ui/icons/Smartphone'
@@ -137,9 +137,22 @@ const useStyles = makeStyles((theme) => ({
     '& > a': {
       color: '#333',
       textDecoration: 'none',
-      '&:hover' : {
+
+      display: "flex",
+      //flexDirection: 'row-reverse',
+      flexDirection: 'column',
+      alignContent: 'center',
+      padding: '12px 18px',
+
+
+      '&:hover': {
         backgroundColor: fade(theme.palette.common.black, 0.15),
       }
+    },
+    '& > a > span': {
+      //marginLeft: 4,
+      //position: 'relative',
+      //bottom: 2
     }
   },
 
@@ -162,6 +175,10 @@ borderRadius: theme.shape.borderRadius,
 export default function Navbar() {
   const classes = useStyles();
   const { state, dispatch } = React.useContext(Store);
+  const { isSearch, setIsSearch } = React.useState(false);
+
+
+
 
   const handleChange = e => {
     setSearchTerm(dispatch, e.target.value.toLowerCase());
@@ -181,79 +198,87 @@ export default function Navbar() {
         <Container>
           <Toolbar disableGutters>
 
-            <Box style={{ height: 64, marginTop: 12, alignSelf: 'start', display: 'flex' }}>
-              <Link to='/' style={{ alignSelf: 'center' }}>
-                <img style={{ height: 32, width: 'auto' }} src="img/nodalview-shop-logo.png" alt="nodalview logo" />
-              </Link>
-            </Box>
+
+            <Link to='/'>
+              <img style={{ height: 32, width: 'auto' }} src="img/nodalview-shop-logo.png" alt="nodalview logo" />
+            </Link>
+
 
             <div style={{ width: '40%', minWidth: 200, margin: '12px auto 0 auto', position: 'relative' }}>
-              <div className={classes.search} style={{ width: '100%', fontSize: 20 }}>
-                <div className={classes.searchIcon}>
-                  <SearchIcon />
+
+              {isSearch ? (
+                <div className={classes.search} style={{ width: '100%', fontSize: 20 }}>
+                  <div className={classes.searchIcon}>
+                    <Search />
+                  </div>
+
+                  <InputBase
+                    style={{ fontSize: 'inherit', padding: 12 }}
+                    fullWidth
+                    value={state.searchTerm}
+                    onChange={handleChange}
+                    placeholder="Search…"
+                    classes={{
+                      root: classes.inputRoot,
+                      input: classes.inputInput,
+                    }}
+                    inputProps={{ 'aria-label': 'search' }}
+                  />
                 </div>
-
-                <InputBase
-                  style={{ fontSize: 'inherit', padding: 12 }}
-                  fullWidth
-                  value={state.searchTerm}
-                  onChange={handleChange}
-                  placeholder="Search…"
-                  classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                  }}
-                  inputProps={{ 'aria-label': 'search' }}
-                />
-              </div>
-
-              <Box class={classes.categories}>
-                <Link href="#" style={{ display: "flex", flexDirection: 'column', alignContent: 'center', padding: '12px 18px' }}>
-                  <span>
-                    <WorkOutline />
-                  </span>
+              ) : (
+                  <Box class={classes.categories}>
+                    <Link href="#" style={{}}>
+                      <span>
+                        <WorkOutline />
+                      </span>
                     Kits
                   </Link>
-                <Link color="textPrimary" href="#" style={{ display: "flex", flexDirection: 'column', alignContent: 'center', padding: '12px 18px' }}>
-                  <span>
-                    <Camera />
-                  </span>
+                    <Link href="#">
+                      <span>
+                        <Camera />
+                      </span>
                     Lenses
                   </Link>
-                <Link color="textPrimary" href="#" style={{ display: "flex", flexDirection: 'column', alignContent: 'center', padding: '12px 18px' }}>
-                  <span>
-                    <Smartphone />
-                  </span>
+                    <Link href="#">
+                      <span>
+                        <Smartphone />
+                      </span>
                     Cases
                   </Link>
-                <Link color="textPrimary" href="#" style={{ display: "flex", flexDirection: 'column', alignContent: 'center', padding: '12px 18px' }}>
-                  <span>
-                    <ThreeSixty />
-                  </span>
+                    <Link href="#">
+                      <span>
+                        <ThreeSixty />
+                      </span>
                     Motor
                   </Link>
-                <Link color="textPrimary" href="#" style={{ display: "flex", flexDirection: 'column', alignContent: 'center', padding: '12px 18px' }}>
-                  <span>
-                    <PhotoCamera />
-                  </span>
+                    <Link href="#">
+                      <span>
+                        <PhotoCamera />
+                      </span>
                     Tripods
                   </Link>
-                <Link color="textPrimary" href="#" style={{ display: "flex", flexDirection: 'column', alignContent: 'center', padding: '12px 18px' }}>
-                  <span>
-                    <CreditCard />
-                  </span>
-                  Prepaid Credits
+                    <Link href="#">
+                      <span>
+                        <CreditCard />
+                      </span>
+                      {/*Prepaid */} Credits
                   </Link>
-              </Box>
+                  </Box>
+                )}
             </div>
 
-            <Box style={{ height: 64, marginTop: 12, alignSelf: 'start', display: 'flex' }}>
-              <Link to="/cart" style={{alignSelf: 'center'}}>
-                <IconButton>
-                  <ShoppingBasket />
-                </IconButton>
-              </Link>
-            </Box>
+
+
+            <IconButton>
+              <Search />
+            </IconButton>
+
+            <Link to="/cart">
+              <IconButton>
+                <ShoppingBasket />
+              </IconButton>
+            </Link>
+
 
           </Toolbar>
         </Container>
@@ -265,6 +290,7 @@ export default function Navbar() {
   )
 }
 
+/*
 const NavWrapper = styled.nav`
   background: var(--mainBlue);
   .nav-link {
@@ -273,6 +299,7 @@ const NavWrapper = styled.nav`
     text-transform: capitalize;
   }
 `
+*/
 
 
 
