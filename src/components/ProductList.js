@@ -17,6 +17,9 @@ export default function ProductList() {
   return (
     <React.Fragment>
       <Container>
+        <h1>Test</h1>
+
+
         <div style={{ background: 'lightGrey', paddingBottom: '42.8571%', position: 'relative' }}>
           <Box display="flex" alignItems="center" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
             <Box display="flex" justifyContent="space-between" style={{ width: '100%', top: 0, left: 0 }}>
@@ -110,6 +113,8 @@ export default function ProductList() {
 
           </Grid>
         </Grid>
+
+        <h1>Test</h1>
 
 
 
