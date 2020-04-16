@@ -48,12 +48,6 @@ export default function Item({ id, title, img, price, inCart }) {
       <p style={{color: 'rgb(17, 17, 17)' }}>{title}</p>
       <p>{price}</p>
     </div>
-
-
-
-
-
-
   )
 }
 
