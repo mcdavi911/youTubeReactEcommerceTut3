@@ -71,7 +71,8 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 9999,
     boxShadow: '0px 5px 12px rgba(0, 0, 0, 0.15)',
     borderRadius: 100,
-    width: '100%',
+    width: '30%',
+    minWidth: theme.spacing(50),
     background: 'white',
     '&:hover': {
       //backgroundColor: fade(theme.palette.common.black, 1),
@@ -241,6 +242,28 @@ export default function Navbar() {
 
             <div className={classes.grow} />
 
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <Search />
+              </div>
+
+              <InputBase
+                fullWidth
+                value={state.searchTerm}
+                onChange={handleChange}
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ 'aria-label': 'search' }}
+              />
+            </div>
+
+
+            {
+              /*
+                  
             {isSearchToggle ? (
               <div className={classes.menuWrapper} style={{ alignSelf: isSearchToggle ? 'center' : '' }}>
 
@@ -263,27 +286,7 @@ export default function Navbar() {
 
                 </div>
 
-                {
-                  /*
-                  <div className={classes.search}>
-                  <div className={classes.searchIcon}>
-                    <Search />
-                  </div>
 
-                  <InputBase
-                    fullWidth
-                    value={state.searchTerm}
-                    onChange={handleChange}
-                    placeholder="Search…"
-                    classes={{
-                      root: classes.inputRoot,
-                      input: classes.inputInput,
-                    }}
-                    inputProps={{ 'aria-label': 'search' }}
-                  />
-                </div>
-                  */
-                }
 
               </div>
             ) : (
@@ -322,20 +325,20 @@ export default function Navbar() {
                     <span>
                       <CreditCard />
                     </span>
-                    {/*Prepaid */} Credits
+                    {/*Prepaid } Credits
                 </Link>
                 </div>
               )}
 
 
+            
+              */
+            }
+
             <div className={classes.grow} />
 
-
             <div className={isSearchToggle ? classes.hidden : ""}>
-              <IconButton onClick={(e) => toggleSearch(e)}>
-                <Search />
-              </IconButton>
-
+            
               <Link to="/cart" style={{ marginRight: 12 }}>
                 <IconButton>
                   <Badge badgeContent={4} color="primary">
@@ -349,7 +352,7 @@ export default function Navbar() {
 
           </Toolbar>
         </Container>
-      </AppBar>
+      </AppBar >
 
       {
         /*
@@ -357,7 +360,7 @@ export default function Navbar() {
         <div className={classes.searchIcon}>
           <Search />
         </div>
-
+    
         <InputBase
           fullWidth
           value={state.searchTerm}

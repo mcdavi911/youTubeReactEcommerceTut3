@@ -1,8 +1,10 @@
 import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import Product from './Product'
 import Title from './Title'
 import { Store } from '../Store'
 import { itemClasses } from '../data'
+import Item from './Item'
 
 // MUI
 import Container from '@material-ui/core/Container'
@@ -10,15 +12,101 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+
+// MUI Icons
+import Search from '@material-ui/icons/Search'
+import ShoppingBasket from '@material-ui/icons/ShoppingBasket'
+//import ShoppingCart from '@material-ui/icons/ShoppingCart'
+import Smartphone from '@material-ui/icons/Smartphone'
+import Camera from '@material-ui/icons/Camera'
+import WorkOutline from '@material-ui/icons/WorkOutline'
+import PhotoCamera from '@material-ui/icons/PhotoCamera'
+import ThreeSixty from '@material-ui/icons/ThreeSixty'
+import CreditCard from '@material-ui/icons/CreditCard'
+
+
+const useStyles = makeStyles((theme) => ({
+  test: {
+    //alignContent: 'space-around',
+    //margin: theme.spacing(0, -2),
+
+    '& > div': {
+      flexBasis: (100 / 3) + '%',
+      padding: theme.spacing(2, 2, 2, 2),
+    }
+  }
+}));
+
+
+
 
 export default function ProductList() {
   const { state, /*dispatch*/ } = React.useContext(Store);
+  const classes = useStyles();
 
   return (
     <React.Fragment>
       <Container>
-        <h1>Test</h1>
+        <Grid container>
+          <Grid item sm={2}>
+            <List component="nav" aria-label="product categories">
+              <ListItem button>
+                <ListItemIcon>
+                  <WorkOutline />
+                </ListItemIcon>
+                <ListItemText primary="Kits" />
+              </ListItem>
+              <ListItem button>
+                <ListItemIcon>
+                  <Camera />
+                </ListItemIcon>
+                <ListItemText primary="Lenses" />
+              </ListItem>
+              <ListItem button>
+                <ListItemIcon>
+                  <Smartphone />
+                </ListItemIcon>
+                <ListItemText primary="Cases" />
+              </ListItem>
+              <ListItem button>
+                <ListItemIcon>
+                  <ThreeSixty />
+                </ListItemIcon>
+                <ListItemText primary="Motor" />
+              </ListItem>
+              <ListItem button>
+                <ListItemIcon>
+                  <PhotoCamera />
+                </ListItemIcon>
+                <ListItemText primary="Tripods" />
+              </ListItem>
+              <ListItem button>
+                <ListItemIcon>
+                  <CreditCard />
+                </ListItemIcon>
+                <ListItemText primary="Prepaid Credits" />
+              </ListItem>
+            </List>
+          </Grid>
+          <Grid item sm={10}>
 
+
+
+            <Box display="flex" justifyContent="space-around" flexWrap="wrap" className={classes.test}>
+              {state.searchResults.map(p => (
+                <Item key={p.id} {...p} />
+              ))}
+            </Box>
+          </Grid>
+        </Grid>
+
+
+
+
+
+        <div style={{ marginBottom: 1200 }}></div>
 
         <div style={{ background: 'lightGrey', paddingBottom: '42.8571%', position: 'relative' }}>
           <Box display="flex" alignItems="center" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
@@ -113,8 +201,6 @@ export default function ProductList() {
 
           </Grid>
         </Grid>
-
-        <h1>Test</h1>
 
 
 

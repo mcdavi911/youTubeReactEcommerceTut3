@@ -14,10 +14,6 @@ import Default from './components/Default';
 const useStyles = makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
 
-  
-    
-  
-
 }));
 
 
