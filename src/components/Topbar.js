@@ -31,6 +31,7 @@ import CreditCard from '@material-ui/icons/CreditCard'
 //import CardGiftcard from '@material-ui/icons/CardGiftcard'
 
 import IconButton from '@material-ui/core/IconButton';
+import Backdrop from '@material-ui/core/Backdrop';
 
 // Icon options for motor
 //import Settings from '@material-ui/icons/Settings'
@@ -41,6 +42,10 @@ import IconButton from '@material-ui/core/IconButton';
 //import Sync from '@material-ui/icons/Sync'
 import ThreeSixty from '@material-ui/icons/ThreeSixty'
 
+
+// search overlay
+// search dropdown
+// search transition
 
 
 const useStyles = makeStyles((theme) => ({
@@ -62,22 +67,18 @@ const useStyles = makeStyles((theme) => ({
   },
   search: {
     position: 'relative',
-    //border: '1px solid #fff',
+    //position: 'absolute',
+    zIndex: 9999,
     boxShadow: '0px 5px 12px rgba(0, 0, 0, 0.15)',
-    //fontSize: theme.typography.pxToRem(20),
-    borderRadius: theme.shape.borderRadius,
-    //backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      //backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    //marginRight: theme.spacing.unit * 2,
-    //marginLeft: 0,
+    borderRadius: 100,
     width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      //marginLeft: theme.spacing.unit * 3,
-      //width: 'auto',
-    },
+    background: 'white',
+    '&:hover': {
+      //backgroundColor: fade(theme.palette.common.black, 1),
+    }
   },
+
+
   searchIcon: {
     padding: theme.spacing(0, 2),
     height: '100%',
@@ -135,7 +136,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignSelf: 'flex-end',
-
     //borderRadius: theme.shape.borderRadius,
     '& > a': {
       color: theme.palette.text.primary,
@@ -149,7 +149,7 @@ const useStyles = makeStyles((theme) => ({
       alignContent: 'center',
       padding: `${theme.spacing.unit * 1.5}px ${theme.spacing.unit * 2}px`,
       fontWeight: 700,
-      
+
       position: 'relative',
       overflow: 'hidden',
 
@@ -169,57 +169,22 @@ const useStyles = makeStyles((theme) => ({
         transform: 'translateX(0)',
         opacity: 1
       }
-
     }
   },
-  
+  backdrop: {
+    zIndex: theme.zIndex.appBar + 1,
+    //zIndex: 1,
+    //color: '#fff',
+  },
+  hidden: {
+    visibility: 'hidden'
+  },
+
   toolbar: {
     minHeight: theme.spacing(10)
   }
 }));
 
-
-/*
-topbarLinks: {
-    position: 'relative',
-    overflow: 'hidden',
-    marginLeft: theme.spacing(2),
-    display: 'inline-flex',
-    padding: '20px 8px',
-    maxHeight: 64,
-
-    '&:hover': {
-      textDecoration: 'none',
-      //borderBottom: '4px solid red'
-    },
-    '&:before': {
-      content: '""',
-      position: 'absolute',
-      background: theme.palette.secondary.main,
-      bottom: 0,
-      left: '0',
-      right: '0',
-      height: '3px',
-      transform: 'translateX(-100%)',
-      opacity: 0,
-      transition: 'transform .2s linear,opacity .2s linear,-webkit-transform .2s linear'
-    },
-    '&:hover:before': {
-      transform: 'translateX(0)',
-      opacity: 1
-    }
-  }
-
-
-
-borderRadius: theme.shape.borderRadius,
-    //backgroundColor: fade(theme.palette.common.white, 0.15),
-    //backgroundColor: fade(theme.palette.common.black, 0.15),
-    '&:hover': {
-      //backgroundColor: fade(theme.palette.common.white, 0.25),
-      //backgroundColor: fade(theme.palette.common.black, 0.25),
-    },
-*/
 
 
 
@@ -227,10 +192,26 @@ export default function Navbar() {
   const classes = useStyles();
   const { state, dispatch } = React.useContext(Store);
   const [isSearchToggle, setIsSearchToggle] = React.useState(false);
+  //const [isOpenBackdrop, setIsOpenBackdrop] = React.useState(false);
 
-  const toggleSearch = e => {
+  console.log(isSearchToggle)
+
+  const toggleSearch = () => {
     setIsSearchToggle((prevState) => !prevState);
+    //setIsOpenBackdrop((prevState) => !prevState);
   }
+
+  /*
+  const openBackdrop = () => {
+    setIsOpenBackdrop((prevState) => !prevState);
+  }
+  */
+
+
+  /*
+    const closeBackdrop = () => {
+  }
+  */
 
 
   const handleChange = e => {
@@ -247,18 +228,22 @@ export default function Navbar() {
 
   return (
     <>
+      <Backdrop className={classes.backdrop} open={isSearchToggle} onClick={() => setIsSearchToggle(false)} />
+
       <AppBar className={classes.appBar} color="inherit" position="static">
+
         <Container>
           <Toolbar disableGutters className={classes.toolbar}>
 
-            <Link to='/' onClick={() => setIsSearchToggle(false)}>
+            <Link to='/' className={isSearchToggle ? classes.hidden : ""} onClick={() => setIsSearchToggle(false)}>
               <img style={{ height: 32, width: 'auto' }} src="img/nodalview-shop-logo.png" alt="nodalview logo" />
             </Link>
 
             <div className={classes.grow} />
 
             {isSearchToggle ? (
-              <div className={classes.menuWrapper} style={{alignSelf: isSearchToggle ? 'center':''}}>
+              <div className={classes.menuWrapper} style={{ alignSelf: isSearchToggle ? 'center' : '' }}>
+
                 <div className={classes.search}>
                   <div className={classes.searchIcon}>
                     <Search />
@@ -275,7 +260,31 @@ export default function Navbar() {
                     }}
                     inputProps={{ 'aria-label': 'search' }}
                   />
+
                 </div>
+
+                {
+                  /*
+                  <div className={classes.search}>
+                  <div className={classes.searchIcon}>
+                    <Search />
+                  </div>
+
+                  <InputBase
+                    fullWidth
+                    value={state.searchTerm}
+                    onChange={handleChange}
+                    placeholder="Search…"
+                    classes={{
+                      root: classes.inputRoot,
+                      input: classes.inputInput,
+                    }}
+                    inputProps={{ 'aria-label': 'search' }}
+                  />
+                </div>
+                  */
+                }
+
               </div>
             ) : (
                 <div class={classes.menuWrapper}>
@@ -318,27 +327,52 @@ export default function Navbar() {
                 </div>
               )}
 
+
             <div className={classes.grow} />
 
 
-            <IconButton onClick={(e) => toggleSearch(e)}>
-              <Search />
-            </IconButton>
-
-            <Link to="/cart" style={{marginRight: 12}}>
-              <IconButton>
-                <Badge badgeContent={4} color="primary">
-                  <ShoppingBasket />
-                </Badge>
+            <div className={isSearchToggle ? classes.hidden : ""}>
+              <IconButton onClick={(e) => toggleSearch(e)}>
+                <Search />
               </IconButton>
-            </Link>
+
+              <Link to="/cart" style={{ marginRight: 12 }}>
+                <IconButton>
+                  <Badge badgeContent={4} color="primary">
+                    <ShoppingBasket />
+                  </Badge>
+                </IconButton>
+              </Link>
+            </div>
+
 
 
           </Toolbar>
         </Container>
-
-
       </AppBar>
+
+      {
+        /*
+        <div className={classes.search}>
+        <div className={classes.searchIcon}>
+          <Search />
+        </div>
+
+        <InputBase
+          fullWidth
+          value={state.searchTerm}
+          onChange={handleChange}
+          placeholder="Search…"
+          classes={{
+            root: classes.inputRoot,
+            input: classes.inputInput,
+          }}
+          inputProps={{ 'aria-label': 'search' }}
+        />
+      </div>
+        */
+      }
+
 
     </>
   )

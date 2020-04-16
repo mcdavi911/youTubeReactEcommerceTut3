@@ -1,4 +1,22 @@
 
+
+.MuiAppBar-root {
+  /*z-index: auto !important; */
+}
+
+.MuiAppBar-positionStatic {
+  transform: none !important;
+}
+
+.makeStyles-search-6
+{
+  /*position: absolute !important;*/
+}
+
+.makeStyles-backdrop-14 {
+  /* z-index: 1 !important; */ 
+}
+
 /*
 :root {
   --mainBlue:#2a2a72;
