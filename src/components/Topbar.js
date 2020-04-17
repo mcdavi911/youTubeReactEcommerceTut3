@@ -205,10 +205,16 @@ export default function Navbar() {
     setSearchTerm(dispatch, e.target.value);
   };
 
+
   React.useEffect(() => {
     setSearchResults(dispatch, state.products, state.searchTerm);
-    
   }, [state.searchTerm, state.products, dispatch]);
+
+
+  React.useEffect(() => {
+    setCategory(dispatch, (state.searchTerm.length === 0 ? undefined : 'search'))
+    
+  }, [state.searchTerm, dispatch]);
 
 
 
@@ -221,7 +227,7 @@ export default function Navbar() {
         <Container>
           <Toolbar disableGutters className={classes.toolbar}>
 
-            <Link to='/' className={isSearchToggle ? classes.hidden : ""} onClick={() => {setCategory(dispatch); setSearchResults(dispatch, state.products)}}>
+            <Link to='/' className={isSearchToggle ? classes.hidden : ""} onClick={() => { setCategory(dispatch); setSearchResults(dispatch, state.products) }}>
               <img style={{ height: 32, width: 'auto' }} src="img/nodalview-shop-logo.png" alt="nodalview logo" />
             </Link>
 

@@ -2,6 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 
 import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,8 +17,9 @@ export default function Banner() {
   return (
     <div className={classes.root}>
       <Container>
-      hello from banner
-
+        <Box display="flex" alignItems="center" justifyContent="center" p={3}>
+          hello from banner
+        </Box>
       </Container>
     </div>
   )
