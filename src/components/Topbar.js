@@ -192,31 +192,17 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar() {
   const classes = useStyles();
   const { state, dispatch } = React.useContext(Store);
-  const [isSearchToggle, setIsSearchToggle] = React.useState(false);
-  //const [isOpenBackdrop, setIsOpenBackdrop] = React.useState(false);
+  const [ isSearchToggle, setIsSearchToggle ] = React.useState(false);
 
   console.log(isSearchToggle)
 
   const toggleSearch = () => {
     setIsSearchToggle((prevState) => !prevState);
-    //setIsOpenBackdrop((prevState) => !prevState);
   }
-
-  /*
-  const openBackdrop = () => {
-    setIsOpenBackdrop((prevState) => !prevState);
-  }
-  */
-
-
-  /*
-    const closeBackdrop = () => {
-  }
-  */
 
 
   const handleChange = e => {
-    setSearchTerm(dispatch, e.target.value.toLowerCase());
+    setSearchTerm(dispatch, e.target.value);
   };
 
   React.useEffect(() => {
@@ -238,7 +224,7 @@ export default function Navbar() {
         <Container>
           <Toolbar disableGutters className={classes.toolbar}>
 
-            <Link to='/' className={isSearchToggle ? classes.hidden : ""} onClick={() => setIsSearchToggle(false)}>
+            <Link to='/' className={isSearchToggle ? classes.hidden : ""} onClick={() => setSearchTerm(dispatch, '')}>
               <img style={{ height: 32, width: 'auto' }} src="img/nodalview-shop-logo.png" alt="nodalview logo" />
             </Link>
 
@@ -251,7 +237,7 @@ export default function Navbar() {
 
               <InputBase
                 fullWidth
-                value={state.searchTerm}
+                /*value={state.searchTerm}*/
                 onChange={handleChange}
                 placeholder="Search…"
                 classes={{

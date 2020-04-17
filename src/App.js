@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
+//import { makeStyles } from '@material-ui/core/styles';
 
 import './App.css';
 //import 'bootstrap/dist/css/bootstrap.min.css'
@@ -11,14 +11,16 @@ import Cart from './components/cart/Cart';
 import Default from './components/Default';
 
 
+/*
 const useStyles = makeStyles((theme) => ({
-  toolbar: theme.mixins.toolbar,
+  //toolbar: theme.mixins.toolbar,
 
 }));
+*/
 
 
 function App() {
-  const classes = useStyles();
+  //const classes = useStyles();
 
   return (
     <React.Fragment>

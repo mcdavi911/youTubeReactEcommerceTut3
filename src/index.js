@@ -16,8 +16,11 @@ const theme = createMuiTheme({
       
     },
     primary: {
-      main: '#e56565',
-      dark: '#e56565'
+      main: '#e56565', // nodalview brand color
+      dark: '#ea4f4f' // brand color more saturated
+    },
+    text: {
+      primary: 'rgba(0,0,0,.93)'
     }
   },
   typography: {

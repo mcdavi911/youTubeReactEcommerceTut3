@@ -3,8 +3,9 @@ import { makeStyles } from '@material-ui/core/styles'
 import Product from './Product'
 import Title from './Title'
 import { Store } from '../Store'
-import { itemClasses } from '../data'
+import { itemCategories } from '../data'
 import Item from './Item'
+import { setSearchTerm } from '../actions/Action'
 
 // MUI
 import Container from '@material-ui/core/Container'
@@ -14,6 +15,7 @@ import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
+import Icon from '@material-ui/core/Icon'
 
 // MUI Icons
 import Search from '@material-ui/icons/Search'
@@ -47,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function ProductList() {
-  const { state, /*dispatch*/ } = React.useContext(Store);
+  const { state, dispatch } = React.useContext(Store);
   const classes = useStyles();
 
   return (
@@ -55,43 +57,16 @@ export default function ProductList() {
       <Container>
         <Grid container>
           <Grid item sm={2}>
+
             <List component="nav" aria-label="product categories" disablePadding>
-              <ListItem button>
-                <ListItemIcon>
-                  <WorkOutline />
-                </ListItemIcon>
-                <ListItemText primary="Kits" />
-              </ListItem>
-              <ListItem button>
-                <ListItemIcon>
-                  <Camera />
-                </ListItemIcon>
-                <ListItemText primary="Lenses" />
-              </ListItem>
-              <ListItem button>
-                <ListItemIcon>
-                  <Smartphone />
-                </ListItemIcon>
-                <ListItemText primary="Cases" />
-              </ListItem>
-              <ListItem button>
-                <ListItemIcon>
-                  <ThreeSixty />
-                </ListItemIcon>
-                <ListItemText primary="Motor" />
-              </ListItem>
-              <ListItem button>
-                <ListItemIcon>
-                  <PhotoCamera />
-                </ListItemIcon>
-                <ListItemText primary="Tripods" />
-              </ListItem>
-              <ListItem button>
-                <ListItemIcon>
-                  <CreditCard />
-                </ListItemIcon>
-                <ListItemText primary="Prepaid Credits" />
-              </ListItem>
+              {itemCategories.map(({ label, icon: Icon }, idx) =>
+                <ListItem button key={idx} onClick={() => {setSearchTerm(dispatch, label)}}>
+                  <ListItemIcon>
+                    <Icon />
+                  </ListItemIcon>
+                  <ListItemText primary={label} />
+                </ListItem>
+              )}
             </List>
           </Grid>
           <Grid item sm={10}>
@@ -109,13 +84,6 @@ export default function ProductList() {
                 </Grid>
               ))}
             </Grid>
-
-
-
-            
-
-
-
           </Grid>
         </Grid>
 
@@ -125,76 +93,17 @@ export default function ProductList() {
 
         <div style={{ marginBottom: 1200 }}></div>
 
-        <div style={{ background: 'lightGrey', paddingBottom: '42.8571%', position: 'relative' }}>
-          <Box display="flex" alignItems="center" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
-            <Box display="flex" justifyContent="space-between" style={{ width: '100%', top: 0, left: 0 }}>
-              <div style={{ marginLeft: '10%' }}>
-                <p style={{ fontSize: 34 }}>Best equipment for</p>
-                <h2 style={{ fontSize: 64 }}>HDR Photos,<br /> 360° Panoramas</h2>
-              </div>
-              <div>
-                img
-              </div>
-            </Box>
-          </Box>
-        </div>
-
-
-        <Grid container style={{ textAlign: 'center', height: 400 }} spacing="4">
-          <Grid item md={4}>
-            <Box display="flex" flexDirection="column" justifyContent="center" style={{}}>
-              <div style={{ background: 'Grey', paddingBottom: '75%', position: 'relative' }}>
-
-              </div>
-              <div>Kits</div>
-            </Box>
-          </Grid>
-          <Grid item md={4}>
-            <Box display="flex" flexDirection="column" justifyContent="center" >
-              <div style={{ background: 'Grey', paddingBottom: '75%', position: 'relative' }}>
-
-              </div>
-              <div>Lenses</div>
-            </Box>
-          </Grid>
-          <Grid item md={4}>
-            <div style={{ background: 'Grey', paddingBottom: '75%', position: 'relative' }}>
-
-            </div>
-            <div>Cases</div>
-          </Grid>
-
-
-
-        </Grid>
-        <Grid container style={{ textAlign: 'center', height: 400 }} spacing="4">
-
-          <Grid item md={4}>
-            <div style={{ background: 'Grey', paddingBottom: '75%', position: 'relative' }}>
-
-            </div>
-            <div>Motor</div>
-          </Grid>
-          <Grid item md={4}>
-            <div style={{ background: 'Grey', paddingBottom: '75%', position: 'relative' }}>
-
-            </div>
-            <div>Tripods</div>
-          </Grid>
-          <Grid item md={4}>
-            <div style={{ background: 'Grey', paddingBottom: '75%', position: 'relative' }}>
-
-            </div>
-            <div>Prepaid Credits</div>
-          </Grid>
-        </Grid>
-
         <Grid container>
           <Grid item sm={2}>
             <List style={{ textTransform: 'uppercase' }}>
-              {itemClasses.map(c =>
+              {
+                /*
+                {itemCategories.map(c =>
                 <ListItem>{c}</ListItem>
               )}
+                */
+              }
+
             </List>
           </Grid>
           <Grid item sm={10}>

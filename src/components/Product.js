@@ -29,36 +29,6 @@ export default function Product({ id, title, img, price, inCart }) {
           {price}
         </Typography>
       </div>
-
-      {
-        /*
-      <ProductWrapper className="col-3  ">
-      
-      
-      
-              <div className="card">
-                <div
-                  className="img-container p-5"
-                  onClick={() => setProductDetail(dispatch, state.products, id)}
-                >
-                  <Link to="/details">
-                    <img src={img} alt="product" className="card-img-top" />
-                  </Link>
-      
-                </div>
-                <div className="card-footer">
-                  <p className="align-self-center mb-0">
-                    {title}
-                  </p>
-                  <h5 className="text-blue font-italic mb-0">
-                    <span className="mr-1">$</span>
-                    {price}
-                  </h5>
-                </div>
-              </div>
-            </ProductWrapper>
-        */
-      }
     </>
   )
 }
