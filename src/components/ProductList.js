@@ -29,13 +29,17 @@ import CreditCard from '@material-ui/icons/CreditCard'
 
 const useStyles = makeStyles((theme) => ({
   test: {
+    //marginTop: theme.spacing(.1),
     //alignContent: 'space-around',
     //margin: theme.spacing(0, -2),
 
     '& > div': {
-      flexBasis: (100 / 3) + '%',
-      padding: theme.spacing(2, 2, 2, 2),
+      //flexBasis: (100 / 3) + '%',
+      //padding: theme.spacing(2, 2, 2, 2),
     }
+  },
+  gridItemProduct: {
+    flexBasis: (100 / 3) + '%',
   }
 }));
 
@@ -51,7 +55,7 @@ export default function ProductList() {
       <Container>
         <Grid container>
           <Grid item sm={2}>
-            <List component="nav" aria-label="product categories">
+            <List component="nav" aria-label="product categories" disablePadding>
               <ListItem button>
                 <ListItemIcon>
                   <WorkOutline />
@@ -91,14 +95,27 @@ export default function ProductList() {
             </List>
           </Grid>
           <Grid item sm={10}>
-
-
-
-            <Box display="flex" justifyContent="space-around" flexWrap="wrap" className={classes.test}>
+            <Grid
+              container
+              direction="row"
+              justify="center"
+              alignItems="center"
+              spacing="2"
+              className={classes.test}
+            >
               {state.searchResults.map(p => (
-                <Item key={p.id} {...p} />
+                <Grid item className={classes.gridItemProduct}>
+                  <Item key={p.id} {...p} />
+                </Grid>
               ))}
-            </Box>
+            </Grid>
+
+
+
+            
+
+
+
           </Grid>
         </Grid>
 

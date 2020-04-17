@@ -14,6 +14,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 
 
+
 const useStyles = makeStyles((theme) => ({
   /*
   test: {
@@ -26,27 +27,45 @@ const useStyles = makeStyles((theme) => ({
     }
   }
 
-<div style={{ background: 'red', paddingBottom: '75%', position: 'relative' }}>
-        <div style={{ position: 'absolute' }}>
-          asd
-        </div>
-      </div>
-
-
+  <div style={{ background: 'red', paddingBottom: '75%', position: 'relative' }}>
+    <div style={{ position: 'absolute' }}>
+      asd
+    </div>
+  </div>
   */
+
+  linkActionArea: {
+    //position: 'absolute',
+    //top: 0,
+    //left: 0,
+    //width: '100%',
+    //top: '100%',
+    textDecoration: 'none',
+
+    '&:hover': {
+      background: 'red'
+    }
+  }
 }));
 
 
-export default function Item({ id, title, img, price, inCart }) {
+export default function Item({ id, title, img, price, inCart, category }) {
+  const classes = useStyles();
+
   return (
     <div>
-      <div style={{ overflow: 'hidden', background: '#f6f6f6', paddingBottom: '75%', position: 'relative' }}>
-        <div style={{ position: 'absolute' }}>
-          <img src={img} alt={title} />
+      <Link to="/details" className={classes.linkActionArea}>
+
+        <div style={{ overflow: 'hidden', background: '#f6f6f6', paddingBottom: '75%', position: 'relative' }}>
+          <div style={{ position: 'absolute', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img src={img} alt={title} style={{ mixBlendMode: 'multiply' }} />
+          </div>
         </div>
-      </div>
-      <p style={{color: 'rgb(17, 17, 17)' }}>{title}</p>
-      <p>{price}</p>
+      
+        <p style={{ fontSize: '1rem', color: 'rgb(17, 17, 17)', marginBottom: 0 }}>{title}</p>
+        <p style={{ fontSize: '1rem', color: 'color: rgb(141, 141, 141)', marginTop: 0 }}>{category}</p>
+        <p style={{ fontSize: '1rem' }}>{price}</p>
+      </Link>
     </div>
   )
 }

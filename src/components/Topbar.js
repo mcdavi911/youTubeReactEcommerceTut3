@@ -220,8 +220,10 @@ export default function Navbar() {
   };
 
   React.useEffect(() => {
-    const searchResults = state.products.filter(p =>
-      p.class.toLowerCase().includes(state.searchTerm));
+    let searchResults = state.products.filter(p =>
+      p.category.toLowerCase().includes(state.searchTerm));
+
+      if (searchResults.length === 0) searchResults = state.products;
 
     setSearchResults(dispatch, searchResults)
   }, [state.searchTerm, state.products, dispatch]);
