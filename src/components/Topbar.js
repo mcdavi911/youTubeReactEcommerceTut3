@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { ButtonContainer } from './Button'
 import { Store } from '../Store'
 //import SearchInput from './SearchInput'
-import { setSearchTerm, setSearchResults } from '../actions/Action'
+import { setSearchTerm, setSearchResults, setCategory } from '../actions/Action'
 
 //import logo from '../assets/img/nodalview-nav-logo.png'
 
@@ -192,7 +192,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar() {
   const classes = useStyles();
   const { state, dispatch } = React.useContext(Store);
-  const [ isSearchToggle, setIsSearchToggle ] = React.useState(false);
+  const [isSearchToggle, setIsSearchToggle] = React.useState(false);
 
   console.log(isSearchToggle)
 
@@ -201,18 +201,15 @@ export default function Navbar() {
   }
 
 
-  const handleChange = e => {
+  const searchChange = e => {
     setSearchTerm(dispatch, e.target.value);
   };
 
   React.useEffect(() => {
-    let searchResults = state.products.filter(p =>
-      p.category.toLowerCase().includes(state.searchTerm));
-
-      if (searchResults.length === 0) searchResults = state.products;
-
-    setSearchResults(dispatch, searchResults)
+    setSearchResults(dispatch, state.products, state.searchTerm);
+    
   }, [state.searchTerm, state.products, dispatch]);
+
 
 
   return (
@@ -224,7 +221,7 @@ export default function Navbar() {
         <Container>
           <Toolbar disableGutters className={classes.toolbar}>
 
-            <Link to='/' className={isSearchToggle ? classes.hidden : ""} onClick={() => setSearchTerm(dispatch, '')}>
+            <Link to='/' className={isSearchToggle ? classes.hidden : ""} onClick={() => {setCategory(dispatch); setSearchResults(dispatch, state.products)}}>
               <img style={{ height: 32, width: 'auto' }} src="img/nodalview-shop-logo.png" alt="nodalview logo" />
             </Link>
 
@@ -237,8 +234,8 @@ export default function Navbar() {
 
               <InputBase
                 fullWidth
-                /*value={state.searchTerm}*/
-                onChange={handleChange}
+                value={state.searchTerm}
+                onChange={searchChange}
                 placeholder="Search…"
                 classes={{
                   root: classes.inputRoot,
@@ -326,7 +323,7 @@ export default function Navbar() {
             <div className={classes.grow} />
 
             <div className={isSearchToggle ? classes.hidden : ""}>
-            
+
               <Link to="/cart" style={{ marginRight: 12 }}>
                 <IconButton>
                   <Badge badgeContent={4} color="primary">

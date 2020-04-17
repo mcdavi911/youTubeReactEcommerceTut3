@@ -7,6 +7,7 @@ const initialState = {
   products,
   productDetail,
   cart: products,
+  category: 'all products',
   searchTerm: '',
   searchResults: [],
   cartTax: 1.6
@@ -35,6 +36,9 @@ const reducer = produce((draft, action) => {
       break;
     case 'SET_SEARCH_RESULTS':
       draft.searchResults = action.payload;
+      break;
+    case 'SET_CATEGORY':
+      draft.category = action.payload;
       break;
     case 'CART_INCREMENT':
       const pIdx2 = draft.cart.findIndex(p => p.id === action.payload)

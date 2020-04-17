@@ -5,7 +5,7 @@ import Title from './Title'
 import { Store } from '../Store'
 import { itemCategories } from '../data'
 import Item from './Item'
-import { setSearchTerm } from '../actions/Action'
+import { setSearchResults, setCategory } from '../actions/Action'
 
 // MUI
 import Container from '@material-ui/core/Container'
@@ -42,9 +42,19 @@ const useStyles = makeStyles((theme) => ({
   },
   gridItemProduct: {
     flexBasis: (100 / 3) + '%',
+  },
+  listNav: {
+    textTransform: 'capitalize',
+    '& span': {
+
+    }
+  },
+  categoryHeading: {
+    textTransform: 'capitalize',
+    marginTop: 0,
+    fontWeight: 500
   }
 }));
-
 
 
 
@@ -58,9 +68,9 @@ export default function ProductList() {
         <Grid container>
           <Grid item sm={2}>
 
-            <List component="nav" aria-label="product categories" disablePadding>
+            <List className={classes.listNav} component="nav" aria-label="product categories" disablePadding>
               {itemCategories.map(({ label, icon: Icon }, idx) =>
-                <ListItem button key={idx} onClick={() => {setSearchTerm(dispatch, label)}}>
+                <ListItem button key={idx} onClick={() => { setCategory(dispatch, label); setSearchResults(dispatch, state.products, label) }}>
                   <ListItemIcon>
                     <Icon />
                   </ListItemIcon>
@@ -70,22 +80,37 @@ export default function ProductList() {
             </List>
           </Grid>
           <Grid item sm={10}>
+            <header>
+              <h1 className={classes.categoryHeading}>{state.category}</h1>
+            </header>
+
             <Grid
               container
               direction="row"
-              justify="center"
               alignItems="center"
               spacing="2"
               className={classes.test}
             >
-              {state.searchResults.map(p => (
-                <Grid item className={classes.gridItemProduct}>
-                  <Item key={p.id} {...p} />
-                </Grid>
-              ))}
+              {state.searchResults.length !== 0 ?
+                (
+                  state.searchResults.map(p => (
+                    <Grid item className={classes.gridItemProduct}>
+                      <Item key={p.id} {...p} />
+                    </Grid>
+                  ))
+                ) : (
+                  <Grid item>
+                    <p>Sorry no search results</p>
+                  </Grid>
+                )
+              }
             </Grid>
           </Grid>
         </Grid>
+
+
+
+
 
 
 
