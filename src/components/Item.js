@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Item({ id, title, cardImg, price, inCart, category }) {
+export default function Item({ id, title, imgHero, price, inCart, category }) {
   const { state, dispatch } = React.useContext(Store);
   const classes = useStyles();
 
@@ -51,7 +51,7 @@ export default function Item({ id, title, cardImg, price, inCart, category }) {
 
         <div style={{ overflow: 'hidden', background: '#f6f6f6', paddingBottom: '75%', position: 'relative' }}>
           <div style={{ position: 'absolute', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img src={cardImg} alt={title} style={{ mixBlendMode: 'multiply' }} />
+            <img src={imgHero} alt={title} style={{ mixBlendMode: 'multiply' }} />
           </div>
         </div>
 

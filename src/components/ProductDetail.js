@@ -9,6 +9,7 @@ import { ButtonContainer } from './Button';
 import { Link } from 'react-router-dom';
 import { Store } from '../Store';
 import { addToCart } from '../actions/Action'
+import { products } from '../data';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -39,17 +40,19 @@ export default function Details() {
   const { state, dispatch } = React.useContext(Store);
   const classes = useStyles();
 
-  const { id, img, category, info, price, title, imgs } = state.productDetail;
+  const { id, imgHero, category, info, price, title, imgs, kitProductsId } = state.productDetail;
+  const kitProducts = [];
 
-  /*
-  const isInCart = function () {
-    return state.cart.some(p => p.id === id);
+
+  if (kitProductsId.length > 0) {
+
+    kitProductsId.forEach(id => {
+      const p = state.products.find(p => p.id === id);
+
+      kitProducts.push(p);
+    });
   }
 
-  React.useEffect((props) => {
-    isInCart(); 
-  })
-*/
 
   return (
     <Container>
@@ -65,17 +68,36 @@ export default function Details() {
             spacing={2}
           >
 
-            {imgs.map(img => (
-              <Grid item className={classes.gridItemProduct}>
-
-                <div style={{ overflow: 'hidden', background: '#f6f6f6', paddingBottom: '75%', position: 'relative' }}>
-                  <div style={{ position: 'absolute', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src={img} alt={title} style={{ mixBlendMode: 'multiply' }} />
-                  </div>
+            <Grid item className={classes.gridItemProduct}>
+              <div style={{ overflow: 'hidden', background: '#f6f6f6', paddingBottom: '75%', position: 'relative' }}>
+                <div style={{ position: 'absolute', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <img src={imgHero} alt={title} style={{ mixBlendMode: 'multiply' }} />
                 </div>
+              </div>
+            </Grid>
 
-              </Grid>
-            ))}
+
+            {kitProducts.length === 0 ?
+              imgs.map(img => (
+                <Grid item className={classes.gridItemProduct}>
+                  <div style={{ overflow: 'hidden', background: '#f6f6f6', paddingBottom: '75%', position: 'relative' }}>
+                    <div style={{ position: 'absolute', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <img src={imgHero} alt={title} style={{ mixBlendMode: 'multiply' }} />
+                    </div>
+                  </div>
+                </Grid>
+              ))
+              :
+              kitProducts.map(p => (
+                <Grid item className={classes.gridItemProduct}>
+                  <div style={{ overflow: 'hidden', background: '#f6f6f6', paddingBottom: '75%', position: 'relative' }}>
+                    <div style={{ position: 'absolute', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <img src={p.imgHero} alt={title} style={{ mixBlendMode: 'multiply' }} />
+                    </div>
+                  </div>
+                </Grid>
+              ))
+            }
           </Grid>
 
 
@@ -104,7 +126,7 @@ export default function Details() {
           <div className="col-10 mx-auto text-center text-slanted text-blue my-5">
             <h1>{title}</h1>
             <p></p>
-            <img src={img} alt="test" />
+            <img src={imgHero} alt="test" />
             <p>{info}</p>
             <p>price: {price}</p>
             <div>
@@ -154,5 +176,23 @@ export default function Details() {
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+  /*
+  const isInCart = function () {
+    return state.cart.some(p => p.id === id);
+  }
+
+  React.useEffect((props) => {
+    isInCart();
+  })
 */
+
+
 

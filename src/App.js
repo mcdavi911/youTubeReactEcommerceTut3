@@ -7,7 +7,7 @@ import './App.css';
 //import 'bootstrap/dist/css/bootstrap.min.css'
 import Navbar from './components/Topbar';
 import ProductList from './components/ProductList';
-import Details from './components/Details';
+import Details from './components/ProductDetail';
 import Cart from './components/cart/Cart';
 import Default from './components/Default';
 import Banner from './components/Banner';

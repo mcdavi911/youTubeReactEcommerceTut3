@@ -24,13 +24,9 @@ export const products = [
   {
     id: 1,
     title: "Nodalview Cases",
-    cardImg: "img/products/cases.jpg",
-    kit: [
-      
-    ],
-    imgs: [
-      "img/products/cases.jpg"
-    ],
+    imgHero: "img/products/cases.jpg",
+    kitProductsId: [],
+    imgs: [],
     price: 19,
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
@@ -41,10 +37,9 @@ export const products = [
   {
     id: 2,
     title: "Nodalview Arm",
-    cardImg: "img/products/brasnodal-nodalview.jpg",
-    imgs: [
-      "img/products/brasnodal-nodalview.jpg"
-    ],
+    imgHero: "img/products/brasnodal-nodalview.jpg",
+    kitProductsId: [],
+    imgs: [],
     price: 39,
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
@@ -54,12 +49,9 @@ export const products = [
   {
     id: 3,
     title: "Starter Kit Duo",
-    cardImg: "img/products/kit-duo-pack.jpg",
-    imgs: [
-      "img/products/kit-duo-pack.jpg",
-      "img/products/brasnodal-nodalview.jpg"
-      
-    ],
+    imgHero: "img/products/kit-duo-pack.jpg",
+    kitProductsId: [1,2,4,5,6], 
+    imgs: [],
     price: 138,
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
@@ -69,11 +61,9 @@ export const products = [
   {
     id: 4,
     title: "Nodalview 360°",
-    cardImg: "img/products/lens360.png",
-    imgs: [
-      
-      
-    ],
+    imgHero: "img/products/lens360.png",
+    kitProductsId: [],
+    imgs: [],
     price: 18,
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
@@ -83,11 +73,9 @@ export const products = [
   {
     id: 5,
     title: "Nodalview Pro Photo Lens",
-    cardImg: "img/products/nodalview-pro-photo-lens.jpg",
-    imgs: [
-      
-      
-    ],
+    imgHero: "img/products/nodalview-pro-photo-lens.jpg",
+    kitProductsId: [],
+    imgs: [],
     price: 24,
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
@@ -97,11 +85,9 @@ export const products = [
   {
     id: 6,
     title: "Nodalview Motor",
-    cardImg: "img/products/nodalview-motor.jpg",
-    imgs: [
-      
-      
-    ],
+    imgHero: "img/products/nodalview-motor.jpg",
+    kitProductsId: [],
+    imgs: [],
     price: 129,
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
@@ -112,11 +98,9 @@ export const products = [
   {
     id: 7,
     title: "100 HDR Photos",
-    cardImg: "img/products/nodalivew-100Hdr-prepaid.jpg",
-    imgs: [
-      
-      
-    ],
+    imgHero: "img/products/nodalivew-100Hdr-prepaid.jpg",
+    kitProductsId: [],
+    imgs: [],
     price: 129,
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
@@ -124,15 +108,12 @@ export const products = [
     category: 'Prepaid Credits',
     
   },
-
   {
     id: 8,
     title: "Motorised Duo Pack",
-    cardImg: "img/products/nodalview-pack-duo-motorised-V2.png",
-    imgs: [
-      
-      
-    ],
+    imgHero: "img/products/nodalview-pack-duo-motorised-V2.png",
+    kitProductsId: [],
+    imgs: [],
     price: 649,
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
@@ -142,48 +123,16 @@ export const products = [
   {
     id: 9,
     title: "Pro Pack 125",
-    cardImg: "img/products/Nodalview-pro-kit-125.jpg",
-    imgs: [
-        
-    ],
+    imgHero: "img/products/Nodalview-pro-kit-125.jpg",
+    kitProductsId: [],
+    imgs: [],
     price: 599,
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
     count: 0,
     category: 'Kits'
   }
-  
 ];
-
-
-
-export const kits = [
-  
-  {
-    id: 1,
-    title: "Pro Pack 125",
-    cardImg: "img/products/Nodalview-pro-kit-125.jpg",
-    kit: [
-      
-    ],
-    imgs: [
-        
-    ],
-    price: 599,
-    info:
-      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
-    count: 0,
-    category: 'Kits'
-  }
-]
-
-
-
-
-
-
-products[0].kit.push(products[2])
-products[0].kit.push(products[3])
 
 
 
@@ -191,10 +140,9 @@ export const productDetail =
 {
   id: 1,
   title: "Nodalview Cases",
-  img: "img/products/cases.jpg",
-  imgs: [
-    "img/products/cases.jpg"
-  ],
+  imgHero: "img/products/cases.jpg",
+  kitProductsId: [],
+  imgs: [],
   price: 19,
   info:
     "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
