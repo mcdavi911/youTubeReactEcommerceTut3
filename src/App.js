@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 //import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
 
 import './App.css';
 //import 'bootstrap/dist/css/bootstrap.min.css'
@@ -10,6 +11,7 @@ import Details from './components/Details';
 import Cart from './components/cart/Cart';
 import Default from './components/Default';
 import Banner from './components/Banner';
+
 
 
 /*
@@ -26,7 +28,7 @@ function App() {
     <React.Fragment>
       <Navbar />
       <Banner />
-
+      <Box style={{height: 30}}></Box>
       <Switch>
         <Route exact path="/" component={ProductList} />
         <Route path="/details" component={Details} />

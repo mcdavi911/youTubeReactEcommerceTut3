@@ -50,7 +50,9 @@ import ThreeSixty from '@material-ui/icons/ThreeSixty'
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    boxShadow: 'none'
+    //boxShadow: 'none',
+    boxShadow: 'inset 0 -1px 0 0 #e5e5e5',
+    //marginBottom: theme.spacing(2)
   },
 
   grow: {
@@ -126,6 +128,7 @@ const useStyles = makeStyles((theme) => ({
       marginRight: theme.spacing(1),
     }
   },
+  /*
   menuWrapper: {
     //width: '100%',
     width: theme.spacing(65),
@@ -148,7 +151,8 @@ const useStyles = makeStyles((theme) => ({
       //flexDirection: 'row-reverse',
       flexDirection: 'column',
       alignContent: 'center',
-      padding: `${theme.spacing.unit * 1.5}px ${theme.spacing.unit * 2}px`,
+      //padding: `${theme.spacing.unit * 1.5}px ${theme.spacing.unit * 2}px`,
+      padding: theme.spacing(2, 2),
       fontWeight: 700,
 
       position: 'relative',
@@ -172,6 +176,7 @@ const useStyles = makeStyles((theme) => ({
       }
     }
   },
+  */
   backdrop: {
     zIndex: theme.zIndex.appBar + 1,
     //zIndex: 1,
@@ -194,7 +199,7 @@ export default function Navbar() {
   const { state, dispatch } = React.useContext(Store);
   const [isSearchToggle, setIsSearchToggle] = React.useState(false);
 
-  console.log(isSearchToggle)
+  /*console.log(isSearchToggle)*/
 
   const toggleSearch = () => {
     setIsSearchToggle((prevState) => !prevState);
@@ -212,8 +217,8 @@ export default function Navbar() {
 
 
   React.useEffect(() => {
-    setCategory(dispatch, (state.searchTerm.length === 0 ? undefined : 'search'))
-    
+    setCategory(dispatch, state.searchTerm.length === 0 ? undefined : 'search')
+
   }, [state.searchTerm, dispatch]);
 
 

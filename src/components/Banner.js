@@ -7,7 +7,8 @@ import Box from '@material-ui/core/Box';
 const useStyles = makeStyles((theme) => ({
   root: {
     boxShadow: 'rgb(229, 229, 229) 0px -1px 0px 0px inset',
-    background: 'rgb(247, 247, 247)',
+    background: '#f6f6f6',
+    //marginBottom: theme.spacing(1)
   }
 }));
 
@@ -25,9 +26,3 @@ export default function Banner() {
   )
 }
 
-
-/*
-  box-shadow: rgb(229, 229, 229) 0px -1px 0px 0px inset;
-
-  background: rgb(247, 247, 247);
-*/

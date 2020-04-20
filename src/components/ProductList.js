@@ -53,7 +53,10 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'capitalize',
     marginTop: 0,
     fontWeight: 500
-  }
+  },
+
+  
+
 }));
 
 
@@ -65,12 +68,17 @@ export default function ProductList() {
   return (
     <React.Fragment>
       <Container>
-        <Grid container>
+        <Grid container spacing={3}>
           <Grid item sm={2}>
 
             <List className={classes.listNav} component="nav" aria-label="product categories" disablePadding>
-              {itemCategories.map(({ label, icon: Icon }, idx) =>
-                <ListItem button key={idx} onClick={() => { setCategory(dispatch, label); setSearchResults(dispatch, state.products, label) }}>
+              {itemCategories.map(({id, label, icon: Icon }, idx) =>
+                <ListItem
+                  key={idx}
+                  selected={state.category === label}
+                  button 
+                  onClick={() => { setCategory(dispatch, label); setSearchResults(dispatch, state.products, label) }}
+                >
                   <ListItemIcon>
                     <Icon />
                   </ListItemIcon>
@@ -88,19 +96,18 @@ export default function ProductList() {
               container
               direction="row"
               alignItems="center"
-              spacing="2"
-              className={classes.test}
+              spacing={2}
             >
               {state.searchResults.length !== 0 ?
                 (
                   state.searchResults.map(p => (
-                    <Grid item className={classes.gridItemProduct}>
-                      <Item key={p.id} {...p} />
+                    <Grid key={p.id} item className={classes.gridItemProduct}>
+                      <Item {...p} />
                     </Grid>
                   ))
                 ) : (
                   <Grid item>
-                    <p>Sorry no search results</p>
+                    <p>Sorry no search results for <strong>{state.searchTerm}</strong></p>
                   </Grid>
                 )
               }
@@ -108,60 +115,7 @@ export default function ProductList() {
           </Grid>
         </Grid>
 
-
-
-
-
-
-
-
-
-        <div style={{ marginBottom: 1200 }}></div>
-
-        <Grid container>
-          <Grid item sm={2}>
-            <List style={{ textTransform: 'uppercase' }}>
-              {
-                /*
-                {itemCategories.map(c =>
-                <ListItem>{c}</ListItem>
-              )}
-                */
-              }
-
-            </List>
-          </Grid>
-          <Grid item sm={10}>
-            <Grid container spacing={3}>
-              {state.searchResults.map(p => (
-                <Grid item sm={4}>
-                  <Product key={p.id} {...p} />
-                </Grid>
-              ))}
-            </Grid>
-
-            {
-              /*
-              <Box display="flex" flexWrap="wrap" style={{flexBasis: '33%', width: '100%'}}>
-              {state.searchResults.map(p => (
-                <Product key={p.id} {...p} />
-              ))}
-            </Box>
-              */
-            }
-
-          </Grid>
-        </Grid>
-
-
-
       </Container>
-
-
-
-
-
-
     </React.Fragment>
   )
 }

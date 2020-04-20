@@ -17,6 +17,21 @@
   /* z-index: 1 !important; */ 
 }
 
+
+/* quick fix solution. Do properly with withStyles higher order component */
+.MuiListItem-root.Mui-selected {
+  color: #ea4f4f !important;
+  /*background: none !important;*/
+  /*border-bottom: 3px solid #ea4f4f; */
+  /*box-shadow: inset -3px 0 0 0 #ea4f4f;*/
+}
+
+/* quick fix solution. Do properly with withStyles higher order component */
+.MuiListItem-root.Mui-selected svg { 
+  color: #ea4f4f !important;
+}
+
+
 /*
 :root {
   --mainBlue:#2a2a72;
