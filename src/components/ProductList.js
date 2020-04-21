@@ -67,7 +67,7 @@ export default function ProductList() {
 
   return (
     <React.Fragment>
-      <Container>
+      <Container disableGutters>
         <Grid container spacing={3}>
           <Grid item sm={2}>
 

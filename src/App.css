@@ -19,6 +19,7 @@
 
 
 /* quick fix solution. Do properly with withStyles higher order component */
+/* container hoc as well to include diablegutters by default */
 .MuiListItem-root.Mui-selected {
   color: #ea4f4f !important;
   /*background: none !important;*/
@@ -27,6 +28,7 @@
 }
 
 /* quick fix solution. Do properly with withStyles higher order component */
+/* container hoc as well to include diablegutters by default */
 .MuiListItem-root.Mui-selected svg { 
   color: #ea4f4f !important;
 }

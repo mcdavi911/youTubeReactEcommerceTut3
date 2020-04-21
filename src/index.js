@@ -16,7 +16,7 @@ const theme = createMuiTheme({
       
     },
     primary: {
-      main: '#e56565', // nodalview brand color
+      main: '#e35656', // '#e56565', // nodalview brand color
       dark: '#ea4f4f' // brand color more saturated
     },
     text: {
@@ -24,7 +24,7 @@ const theme = createMuiTheme({
     }
   },
   typography: {
-    //fontSize: 40,
+    //fontSize: 16,  use default theme body1 instead chaning fontsize globally
     
     fontFamily: [
       'Open Sans', 'sans-serif'

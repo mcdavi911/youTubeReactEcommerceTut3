@@ -229,7 +229,7 @@ export default function Navbar() {
 
       <AppBar className={classes.appBar} color="inherit" position="static">
 
-        <Container>
+        <Container disableGutters>
           <Toolbar disableGutters className={classes.toolbar}>
 
             <Link to='/' className={isSearchToggle ? classes.hidden : ""} onClick={() => { setCategory(dispatch); setSearchResults(dispatch, state.products) }}>

@@ -17,7 +17,7 @@ export default function Banner() {
 
   return (
     <div className={classes.root}>
-      <Container>
+      <Container disableGutters>
         <Box display="flex" alignItems="center" justifyContent="center" p={3}>
           hello from banner
         </Box>

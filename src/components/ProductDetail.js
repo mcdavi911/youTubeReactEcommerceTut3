@@ -4,12 +4,25 @@ import Breadcrumbs from './Breadcrumbs';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import Input from '@material-ui/core/Input';
+import Checkbox from '@material-ui/core/Checkbox';
+import ListItemText from '@material-ui/core/ListItemText';
+
+
+
 
 import { ButtonContainer } from './Button';
 import { Link } from 'react-router-dom';
 import { Store } from '../Store';
 import { addToCart } from '../actions/Action'
 import { products } from '../data';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,7 +45,15 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.text.primary,
       margin: 0
     }
-  }
+  },
+  test: {
+    ...theme.typography.body1
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+    //width: '100%'
+  },
 }));
 
 
@@ -43,7 +64,6 @@ export default function Details() {
   const { id, imgHero, category, info, price, title, imgs, kitProductsId } = state.productDetail;
   const kitProducts = [];
 
-
   if (kitProductsId.length > 0) {
 
     kitProductsId.forEach(id => {
@@ -53,13 +73,26 @@ export default function Details() {
     });
   }
 
+  const names = [
+    'Oliver Hansen',
+    'Van Henry',
+    'April Tucker',
+    'Ralph Hubbard',
+    'Omar Alexander',
+    'Carlos Abbott',
+    'Miriam Wagner',
+    'Bradley Wilkerson',
+    'Virginia Andrews',
+    'Kelly Snyder',
+  ];
+
 
   return (
-    <Container>
+    <Container disableGutters>
       <Breadcrumbs />
 
       <Grid container>
-        <Grid item sm="8">
+        <Grid item sm={8}>
 
           <Grid
             container
@@ -100,21 +133,96 @@ export default function Details() {
             }
           </Grid>
 
-
-
         </Grid>
-        <Grid item sm="4">
-          <Box p={3}>
-            <div className={classes.productInfo}>
-              <p>{category}</p>
-              <p>{price} €</p>
+        <Grid item sm={4}>
+          <div style={{ padding: '0px 56px 0px 64px' }}>
+            <div className={classes.productInfo} style={{ marginBottom: 4 }}>
+              <Typography variant="body1" component="h2">{category}</Typography>
+              <Typography component="div">{price} €</Typography>
             </div>
 
-            <h1 style={{}}>{title}</h1>
-            <p>{info}</p>
-          </Box>
+            <Typography variant="h5" component="h1" style={{ marginBottom: 12, fontSize: 28, fontWeight: 600, lineHeight: 1.2, letterSpacing: '0.007em' }}>{title}</Typography>
 
 
+
+            <FormControl className={classes.formControl}>
+              <InputLabel id="demo-mutiple-name-label">Device</InputLabel>
+              <Select
+                labelId="demo-mutiple-name-label"
+                id="demo-mutiple-name"
+                multiple
+                value={['personName']}
+                onChange={'handleChange'}
+                input={<Input />}
+                MenuProps={'MenuProps'}
+              >
+                {names.map((name) => (
+                  <MenuItem key={name} value={name} style={''}>
+                    {name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
+
+            <FormControl className={classes.formControl}>
+              <InputLabel id="demo-mutiple-checkbox-label">Model</InputLabel>
+              <Select
+                labelId="demo-mutiple-checkbox-label"
+                id="demo-mutiple-checkbox"
+                multiple
+                value={['personName']}
+                onChange={'handleChange'}
+                input={<Input />}
+                renderValue={(selected) => selected.join(', ')}
+                MenuProps={'MenuProps'}
+              >
+                {names.map((name) => (
+                  <MenuItem key={name} value={name}>
+                    <Checkbox checked={'personName.indexOf(name) > -1'} />
+                    <ListItemText primary={name} />
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
+
+
+            {
+              /*
+              <div style={{ display: 'inline-block' }}>
+              <p>Case</p>
+              <span>Device</span>
+              <span>Apple</span>
+              <span>Huwei</span>
+              <span>Samsung</span>
+            </div>
+              */
+            }
+
+
+
+            {
+              /*
+            <ul>
+              {kitProducts.map(p => (
+                <li>
+                  <Typography>
+                    {p.title}
+                  </Typography>
+                </li>
+              ))}
+            </ul>
+              */
+            }
+
+
+
+            <Button variant="contained" color="primary" style={{ width: '100%', padding: '16px 24px', borderRadius: 100, marginBottom: 12 }}>Add to Basket</Button>
+
+            <Typography>{info}</Typography>
+
+          </div>
         </Grid>
       </Grid>
 
@@ -146,7 +254,7 @@ export default function Details() {
         </div>
       </div>
 
-    </Container>
+    </Container >
   )
 }
 
