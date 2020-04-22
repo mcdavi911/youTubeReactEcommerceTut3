@@ -8,6 +8,7 @@ import { Store } from '../Store'
 import { setSearchTerm, setSearchResults, setCategory, toggleMobileDrawer } from '../actions/Action'
 
 //import logo from '../assets/img/nodalview-nav-logo.png'
+import Search from './Search'
 
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -20,7 +21,7 @@ import InputBase from '@material-ui/core/InputBase'
 import Badge from '@material-ui/core/Badge';
 import Hidden from '@material-ui/core/Hidden';
 
-import Search from '@material-ui/icons/Search'
+import SearchIcon from '@material-ui/icons/Search'
 import ShoppingBasket from '@material-ui/icons/ShoppingBasket'
 import MenuIcon from '@material-ui/icons/Menu';
 //import ShoppingCart from '@material-ui/icons/ShoppingCart'
@@ -55,8 +56,8 @@ const useStyles = makeStyles((theme) => ({
     //boxShadow: 'none',
     boxShadow: 'inset 0 -1px 0 0 #e5e5e5',
     //marginBottom: theme.spacing(2)
+    zIndex: theme.zIndex.drawer + 1,
   },
-
   grow: {
     flexGrow: 1,
   },
@@ -71,19 +72,23 @@ const useStyles = makeStyles((theme) => ({
   },
   search: {
     position: 'relative',
-    //position: 'absolute',
-    zIndex: 9999,
-    boxShadow: '0px 5px 12px rgba(0, 0, 0, 0.15)',
-    borderRadius: 100,
-    width: '30%',
-    minWidth: theme.spacing(50),
-    background: 'white',
+    borderRadius: theme.shape.borderRadius,
+    border: '1px solid #ccc',
+    //backgroundColor: fade(theme.palette.common.white, 0.15),
     '&:hover': {
-      //backgroundColor: fade(theme.palette.common.black, 1),
-    }
+      //backgroundColor: fade(theme.palette.common.white, 0.25),
+    },
+    '&:focus': {
+      //border: '1px solid grey',
+    },
+    marginRight: theme.spacing(2),
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(3),
+      width: 'auto',
+    },
   },
-
-
   searchIcon: {
     padding: theme.spacing(0, 2),
     height: '100%',
@@ -97,13 +102,13 @@ const useStyles = makeStyles((theme) => ({
     color: 'inherit',
   },
   inputInput: {
-    padding: theme.spacing(2, 2, 2, 1),
+    padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      //width: '20ch',
+      width: '20ch',
     },
   },
   sectionDesktop: {
@@ -130,77 +135,26 @@ const useStyles = makeStyles((theme) => ({
       marginRight: theme.spacing(1),
     }
   },
-  /*
-  menuWrapper: {
-    //width: '100%',
-    width: theme.spacing(65),
-    textAlign: 'center',
-    //margin: '0 auto',
-    //position: 'absolute',
-    //bottom: -75,
-    //left: 0,
-    display: "flex",
-    justifyContent: "center",
-    alignSelf: 'flex-end',
-    //borderRadius: theme.shape.borderRadius,
-    '& > a': {
-      color: theme.palette.text.primary,
-      //marginLeft: theme.spacing(.5),
-      //marginRight: theme.spacing(.5),
-      textDecoration: 'none',
-      display: "flex",
-      flexGrow: 1,
-      //flexDirection: 'row-reverse',
-      flexDirection: 'column',
-      alignContent: 'center',
-      //padding: `${theme.spacing.unit * 1.5}px ${theme.spacing.unit * 2}px`,
-      padding: theme.spacing(2, 2),
-      fontWeight: 700,
 
-      position: 'relative',
-      overflow: 'hidden',
 
-      '&:before': {
-        content: '""',
-        position: 'absolute',
-        background: theme.palette.primary.dark,
-        bottom: 0,
-        left: '0',
-        right: '0',
-        height: '3px',
-        transform: 'translateX(-100%)',
-        opacity: 0,
-        transition: 'transform .2s linear,opacity .2s linear'
-      },
-      '&:hover:before': {
-        transform: 'translateX(0)',
-        opacity: 1
-      }
-    }
-  },
-  */
-  backdrop: {
-    zIndex: theme.zIndex.appBar + 1,
-    //zIndex: 1,
-    //color: '#fff',
-  },
   hidden: {
     visibility: 'hidden'
   },
   toolbar: {
-    minHeight: theme.spacing(10)
+    //minHeight: theme.spacing(10)
   },
   brand: {
     height: 25.4561,
     width: 'auto',
-    
+
     [theme.breakpoints.up('md')]: {
       height: 28.12348
     },
     [theme.breakpoints.up('lg')]: {
       flexBasis: (100 / 3) + '%',
     }
-  }
+  },
+
 }));
 
 
@@ -209,13 +163,17 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar() {
   const classes = useStyles();
   const { state, dispatch } = React.useContext(Store);
-  const [isSearchToggle, setIsSearchToggle] = React.useState(false);
+  //const [isSearchToggle, setIsSearchToggle] = React.useState(false);
+
+  //const [isDrawerToggle, setIsDrawerToggle] = React.useState(false);
 
   /*console.log(isSearchToggle)*/
 
+  /*
   const toggleSearch = () => {
     setIsSearchToggle((prevState) => !prevState);
   }
+  */
 
   const searchChange = e => {
     setSearchTerm(dispatch, e.target.value);
@@ -232,17 +190,17 @@ export default function Navbar() {
 
   }, [state.searchTerm, dispatch]);
 
-  
+
+  // toggleMobileDrawer(dispatch, state.toggleMobileDrawer)
 
   return (
     <>
-
-      <AppBar className={classes.appBar} color="inherit" position="static">
+      <AppBar className={classes.appBar} color="inherit">
         <Container>
           <Toolbar disableGutters className={classes.toolbar}>
 
             <Hidden mdUp>
-              <IconButton onClick={() => toggleMobileDrawer(dispatch, true)} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+              <IconButton onClick={() => toggleMobileDrawer(dispatch)} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                 <MenuIcon />
               </IconButton>
 
@@ -250,46 +208,29 @@ export default function Navbar() {
             </Hidden>
 
 
-            <Link to='/' className={isSearchToggle ? classes.hidden : ""} onClick={() => { setCategory(dispatch); setSearchResults(dispatch, state.products) }}>
+            <Link to='/' onClick={() => { setCategory(dispatch); setSearchResults(dispatch, state.products) }}>
               <img className={classes.brand} src="img/nodalview-shop-logo.png" alt="nodalview logo" />
             </Link>
 
             <div className={classes.grow} />
 
             <Hidden smDown>
-              <div className={classes.search}>
-                <div className={classes.searchIcon}>
-                  <Search />
-                </div>
-
-                <InputBase
-                  fullWidth
-                  value={state.searchTerm}
-                  onChange={searchChange}
-                  placeholder="Search…"
-                  classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                  }}
-                  inputProps={{ 'aria-label': 'search' }}
-                />
-              </div>
-
-              <div className={classes.grow} />
+              <Search />
+            <div className={classes.grow} />
             </Hidden>
 
 
 
-            <div className={isSearchToggle ? classes.hidden : ""}>
 
-              <Link to="/cart" style={{ marginRight: 12 }}>
-                <IconButton>
-                  <Badge badgeContent={state.cart.length} color="primary">
-                    <ShoppingBasket />
-                  </Badge>
-                </IconButton>
-              </Link>
-            </div>
+
+            <Link to="/cart" style={{ marginRight: 12 }}>
+              <IconButton>
+                <Badge badgeContent={state.cart.length} color="primary">
+                  <ShoppingBasket />
+                </Badge>
+              </IconButton>
+            </Link>
+
 
 
 

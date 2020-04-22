@@ -2,16 +2,18 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Hidden from '@material-ui/core/Hidden'
 import Drawer from '@material-ui/core/Drawer';
+import Box from '@material-ui/core/Box';
 import { Store } from '../Store'
 import { toggleMobileDrawer } from '../actions/Action'
 import VerticalNav from './VerticalNav'
+import Search from './Search'
 
-
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   drawerInner: {
-    paddingTop: 55,
+    //paddingTop: 80.4568987,
     //width: '100vw',
-    width: 250,
+    //width: 250,
+    height: '100vh'
   },
   list: {
     width: 250,
@@ -19,7 +21,8 @@ const useStyles = makeStyles({
   fullList: {
     width: 'auto',
   },
-});
+  toolbar: theme.mixins.toolbar
+}));
 
 
 
@@ -29,9 +32,14 @@ export default function MobileDrawer() {
 
   return (
     <Hidden mdUp>
-      <Drawer anchor={"left"} open={state.toggleMobileDrawer} onClose={() => toggleMobileDrawer(dispatch, false)}>
-        <div className={classes.drawerInner}>
+      <Drawer anchor={"top"} open={state.toggleMobileDrawer} onClose={() => toggleMobileDrawer(dispatch, false)}>
+        <div className={classes.toolbar}></div>
 
+        <div className={classes.drawerInner}>
+          <Box p={2}>
+            <Search />
+          </Box>
+          
           <VerticalNav />
         </div>
       </Drawer>

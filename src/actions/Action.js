@@ -58,7 +58,7 @@ export const setCategory = (dispatch, category = 'all products') => {
   })
 }
 
-
+/*
 export const toggleMobileDrawer = (dispatch, open) => {
 
   return dispatch({
@@ -66,7 +66,15 @@ export const toggleMobileDrawer = (dispatch, open) => {
     payload: open
   })
 }
+*/
 
+export const toggleMobileDrawer = (dispatch) => {
+
+  return dispatch({
+    type: 'TOGGLE_MOBILE_DRAWER',
+    payload: null
+  })
+}
 
 
 

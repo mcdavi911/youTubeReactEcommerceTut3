@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-//import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 
 import './App.css';
@@ -15,19 +15,20 @@ import MobileDrawer from './components/MobileDrawer';
 
 
 
-/*
+
 const useStyles = makeStyles((theme) => ({
-  //toolbar: theme.mixins.toolbar,
+  toolbar: theme.mixins.toolbar,
 }));
-*/
+
 
 
 function App() {
-  //const classes = useStyles();
+  const classes = useStyles();
 
   return (
     <React.Fragment>
       <Navbar />
+      <div className={classes.toolbar}></div>
       <Banner />
       <Box style={{height: 30}}></Box>
       <MobileDrawer></MobileDrawer>
