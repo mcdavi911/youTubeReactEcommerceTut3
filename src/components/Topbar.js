@@ -175,9 +175,22 @@ export default function Navbar() {
   }
   */
 
+  const cartAmount = () => {
+    if (state.cart.length === 0) return;
+    let count = 0;
+    
+    state.cart.forEach(p => {
+      count += p.count;
+    })
+
+    return count
+  };
+
+  /*
   const searchChange = e => {
     setSearchTerm(dispatch, e.target.value);
   };
+  */
 
 
   React.useEffect(() => {
@@ -216,7 +229,7 @@ export default function Navbar() {
 
             <Hidden smDown>
               <Search />
-            <div className={classes.grow} />
+              <div className={classes.grow} />
             </Hidden>
 
 
@@ -225,7 +238,7 @@ export default function Navbar() {
 
             <Link to="/cart" style={{ marginRight: 12 }}>
               <IconButton>
-                <Badge badgeContent={state.cart.length} color="primary">
+                <Badge badgeContent={cartAmount()} color="primary">
                   <ShoppingBasket />
                 </Badge>
               </IconButton>

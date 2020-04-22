@@ -68,6 +68,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Details() {
   const { state, dispatch } = React.useContext(Store);
   const classes = useStyles();
+  const [quantity, setQuantity] = React.useState();
 
   const { id, imgHero, category, info, price, title, imgs, kitProductsId } = state.productDetail;
   const kitProducts = [];
@@ -83,11 +84,21 @@ export default function Details() {
 
   const quantityNumbers = () => {
     let children = []
-    for (let i = 0; i < 10; i++) {
-      children.push(<option aria-label="None" value="">{i + 1}</option>)
+    for (let idx = 0; idx < 10; idx++) {
+      children.push(<option aria-label="None" value={idx + 1}>{idx + 1}</option>)
     }
 
     return children;
+  }
+
+  const handleQuantity = (e) => {
+    console.log('quantity', e.target.value)
+    
+    console.log('productDetail',state.productDetail);
+    const quantity = e.target.value;
+
+  
+    setQuantity(parseInt(quantity));
   }
 
 
@@ -174,7 +185,7 @@ export default function Details() {
               <Typography component="div">{price} €</Typography>
             </div>
 
-            <Typography variant="h5" component="h1" style={{ marginBottom: 24, fontSize: 28, fontWeight: 600, lineHeight: 1.2, letterSpacing: '0.007em' }}>{title}</Typography>
+            <Typography variant="h5" component="h1" style={{ /*, fontSize: 28,*/ fontWeight: 600, lineHeight: 1.2, letterSpacing: '0.007em' }}>{title}</Typography>
 
             <ul>
               {kitProducts.map(p => (
@@ -198,6 +209,7 @@ export default function Details() {
                   classes={{ root: classes.selectTest }}
                   native
                   value={state.age}
+                  onChange={handleQuantity}
                   inputProps={{
                     name: 'age',
                     id: 'outlined-age-native-simple',
@@ -208,7 +220,7 @@ export default function Details() {
               </FormControl>
             </Box>
 
-            <Button variant="contained" color="primary" style={{ marginBottom: 24, width: '100%', padding: '16px 24px', borderRadius: 100 }}>Add to Basket</Button>
+            <Button onClick={() => addToCart(dispatch, state.productDetail, quantity)} variant="contained" color="primary" style={{ marginBottom: 24, width: '100%', padding: '16px 24px', borderRadius: 100 }} >Add to Basket</Button>
 
             <Typography style={{ lineHeight: 1.75 }}>{info}</Typography>
 

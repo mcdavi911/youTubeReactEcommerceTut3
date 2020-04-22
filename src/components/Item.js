@@ -53,13 +53,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Item({ id, title, imgHero, price, inCart, category }) {
+export default function Item(product) {
   const { state, dispatch } = React.useContext(Store);
   const classes = useStyles();
+  const { id, title, imgHero, price, category } = product;
 
   return (
     <div>
-      <Link to="/details" className={classes.linkActionArea} onClick={() => setProductDetail(dispatch, state.products, id)}>
+      <Link to="/details" className={classes.linkActionArea} onClick={() => setProductDetail(dispatch, product)}>
 
         <div style={{ overflow: 'hidden', background: '#f6f6f6', paddingBottom: '75%', position: 'relative' }}>
           <div style={{ position: 'absolute', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

@@ -6,7 +6,7 @@ import produce from 'immer'
 const initialState = {
   products,
   productDetail,
-  cart: products,
+  cart: [],
   category: 'all products',
   searchTerm: '',
   searchResults: [],
@@ -19,14 +19,21 @@ const reducer = produce((draft, action) => {
     case 'HANDLE_DETAIL':
       break;
     case 'ADD_TO_CART':
-      const pIdx = draft.cart.findIndex(p => p.id === action.payload.id)
+      
+      
+      if(draft.cart.length > 0) {
+        const pIdx = draft.cart.findIndex(p => p.id === action.payload.id)
 
-      if (pIdx === -1) {
+        if (pIdx === -1) {
+          draft.cart.push(action.payload)
+          return
+        } else {
+          draft.cart[pIdx].count += action.payload.count;
+        }
+      } else {
         draft.cart.push(action.payload)
-        return
       }
-
-      draft.cart[pIdx].count++
+      
       break;
     case 'SET_PRODUCT_DETAIL':
       draft.productDetail = action.payload;
