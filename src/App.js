@@ -11,6 +11,7 @@ import Details from './components/ProductDetail';
 import Cart from './components/cart/Cart';
 import Default from './components/Default';
 import Banner from './components/Banner';
+import MobileDrawer from './components/MobileDrawer';
 
 
 
@@ -29,6 +30,7 @@ function App() {
       <Navbar />
       <Banner />
       <Box style={{height: 30}}></Box>
+      <MobileDrawer></MobileDrawer>
       <Switch>
         <Route exact path="/" component={ProductList} />
         <Route path="/details" component={Details} />

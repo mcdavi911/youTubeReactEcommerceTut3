@@ -19,6 +19,21 @@ export const itemCategories = [
   {label: 'prepaid credits', icon: CreditCard},
 ]
 
+export const devices = {
+  apple: [
+     {id: 1, name: 'IPhone 11'},
+     {id: 2, name: 'IPhone 11 Pro'},
+  ],
+  samsung: [
+    {id: 3, name: 'Note 9'},
+    {id: 4, name: 'Note 8'},
+  ],
+  huawei: [
+    {id: 5, name: 'Mate 9'},
+    {id: 6, name: 'P 30'},
+  ]
+}
+
 
 export const products = [
   {

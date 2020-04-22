@@ -17,6 +17,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import Icon from '@material-ui/core/Icon'
 
+/*
 // MUI Icons
 import Search from '@material-ui/icons/Search'
 import ShoppingBasket from '@material-ui/icons/ShoppingBasket'
@@ -27,7 +28,7 @@ import WorkOutline from '@material-ui/icons/WorkOutline'
 import PhotoCamera from '@material-ui/icons/PhotoCamera'
 import ThreeSixty from '@material-ui/icons/ThreeSixty'
 import CreditCard from '@material-ui/icons/CreditCard'
-
+*/
 
 const useStyles = makeStyles((theme) => ({
   test: {
@@ -41,7 +42,10 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   gridItemProduct: {
-    flexBasis: (100 / 3) + '%',
+    flexBasis: (100 / 2) + '%',
+    [theme.breakpoints.up('lg')]: {
+      flexBasis: (100 / 3) + '%',
+    }
   },
   listNav: {
     textTransform: 'capitalize',
@@ -54,9 +58,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 0,
     fontWeight: 500
   },
-
-  
-
 }));
 
 
@@ -67,9 +68,9 @@ export default function ProductList() {
 
   return (
     <React.Fragment>
-      <Container disableGutters>
+      <Container>
         <Grid container spacing={3}>
-          <Grid item sm={2}>
+          <Grid item sm={3} md={2}>
 
             <List className={classes.listNav} component="nav" aria-label="product categories" disablePadding>
               {itemCategories.map(({id, label, icon: Icon }, idx) =>
@@ -87,7 +88,7 @@ export default function ProductList() {
               )}
             </List>
           </Grid>
-          <Grid item sm={10}>
+          <Grid item sm={9} md={10}>
             <header>
               <h1 className={classes.categoryHeading}>{state.category}</h1>
             </header>

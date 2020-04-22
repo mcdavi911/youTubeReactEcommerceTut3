@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components'
-import { ButtonContainer } from './Button'
+//import { ButtonContainer } from './Button'
 import { Store } from '../Store'
 //import SearchInput from './SearchInput'
 import { setSearchTerm, setSearchResults, setCategory } from '../actions/Action'
@@ -10,24 +10,26 @@ import { setSearchTerm, setSearchResults, setCategory } from '../actions/Action'
 //import logo from '../assets/img/nodalview-nav-logo.png'
 
 
-import { makeStyles, createStyles, fade } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
 import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
+//import Typography from '@material-ui/core/Typography'
 import InputBase from '@material-ui/core/InputBase'
-import Box from '@material-ui/core/Box'
+//import Box from '@material-ui/core/Box'
 import Badge from '@material-ui/core/Badge';
+import Hidden from '@material-ui/core/Hidden';
 
 import Search from '@material-ui/icons/Search'
 import ShoppingBasket from '@material-ui/icons/ShoppingBasket'
+import MenuIcon from '@material-ui/icons/Menu';
 //import ShoppingCart from '@material-ui/icons/ShoppingCart'
-import Smartphone from '@material-ui/icons/Smartphone'
-import Camera from '@material-ui/icons/Camera'
-import WorkOutline from '@material-ui/icons/WorkOutline'
-import PhotoCamera from '@material-ui/icons/PhotoCamera'
+//import Smartphone from '@material-ui/icons/Smartphone'
+//import Camera from '@material-ui/icons/Camera'
+//import WorkOutline from '@material-ui/icons/WorkOutline'
+//import PhotoCamera from '@material-ui/icons/PhotoCamera'
 
-import CreditCard from '@material-ui/icons/CreditCard'
+//import CreditCard from '@material-ui/icons/CreditCard'
 //import CardGiftcard from '@material-ui/icons/CardGiftcard'
 
 import IconButton from '@material-ui/core/IconButton';
@@ -40,7 +42,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 //import FlipCameraAndroid from '@material-ui/icons/FlipCameraAndroid'
 //import Loop from '@material-ui/icons/Loop'
 //import Sync from '@material-ui/icons/Sync'
-import ThreeSixty from '@material-ui/icons/ThreeSixty'
+//import ThreeSixty from '@material-ui/icons/ThreeSixty'
 
 
 // search overlay
@@ -225,12 +227,21 @@ export default function Navbar() {
 
   return (
     <>
-      <Backdrop className={classes.backdrop} open={isSearchToggle} onClick={() => setIsSearchToggle(false)} />
+
 
       <AppBar className={classes.appBar} color="inherit" position="static">
-
-        <Container disableGutters>
+        <Container>
           <Toolbar disableGutters className={classes.toolbar}>
+
+            <Hidden mdUp>
+              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                <MenuIcon />
+              </IconButton>
+
+
+              <div className={classes.grow} />
+            </Hidden>
+
 
             <Link to='/' className={isSearchToggle ? classes.hidden : ""} onClick={() => { setCategory(dispatch); setSearchResults(dispatch, state.products) }}>
               <img style={{ height: 32, width: 'auto' }} src="img/nodalview-shop-logo.png" alt="nodalview logo" />
@@ -238,106 +249,35 @@ export default function Navbar() {
 
             <div className={classes.grow} />
 
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <Search />
-              </div>
-
-              <InputBase
-                fullWidth
-                value={state.searchTerm}
-                onChange={searchChange}
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-              />
-            </div>
-
-
-            {
-              /*
-                  
-            {isSearchToggle ? (
-              <div className={classes.menuWrapper} style={{ alignSelf: isSearchToggle ? 'center' : '' }}>
-
-                <div className={classes.search}>
-                  <div className={classes.searchIcon}>
-                    <Search />
-                  </div>
-
-                  <InputBase
-                    fullWidth
-                    value={state.searchTerm}
-                    onChange={handleChange}
-                    placeholder="Search…"
-                    classes={{
-                      root: classes.inputRoot,
-                      input: classes.inputInput,
-                    }}
-                    inputProps={{ 'aria-label': 'search' }}
-                  />
-
+            <Hidden smDown>
+              <div className={classes.search}>
+                <div className={classes.searchIcon}>
+                  <Search />
                 </div>
 
-
-
+                <InputBase
+                  fullWidth
+                  value={state.searchTerm}
+                  onChange={searchChange}
+                  placeholder="Search…"
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput,
+                  }}
+                  inputProps={{ 'aria-label': 'search' }}
+                />
               </div>
-            ) : (
-                <div class={classes.menuWrapper}>
-                  <Link href="#" style={{}}>
-                    <span>
-                      <WorkOutline />
-                    </span>
-                  Kits
-                </Link>
-                  <Link href="#">
-                    <span>
-                      <Camera />
-                    </span>
-                  Lenses
-                </Link>
-                  <Link href="#">
-                    <span>
-                      <Smartphone />
-                    </span>
-                  Cases
-                </Link>
-                  <Link href="#">
-                    <span>
-                      <ThreeSixty />
-                    </span>
-                  Motor
-                </Link>
-                  <Link href="#">
-                    <span>
-                      <PhotoCamera />
-                    </span>
-                  Tripods
-                </Link>
-                  <Link href="#">
-                    <span>
-                      <CreditCard />
-                    </span>
-                    {/*Prepaid } Credits
-                </Link>
-                </div>
-              )}
+
+              <div className={classes.grow} />
+            </Hidden>
 
 
-            
-              */
-            }
-
-            <div className={classes.grow} />
 
             <div className={isSearchToggle ? classes.hidden : ""}>
 
               <Link to="/cart" style={{ marginRight: 12 }}>
                 <IconButton>
-                  <Badge badgeContent={4} color="primary">
+                  <Badge badgeContent={state.cart.length} color="primary">
                     <ShoppingBasket />
                   </Badge>
                 </IconButton>

@@ -15,13 +15,13 @@ import Checkbox from '@material-ui/core/Checkbox';
 import ListItemText from '@material-ui/core/ListItemText';
 
 
-
-
 import { ButtonContainer } from './Button';
 import { Link } from 'react-router-dom';
 import { Store } from '../Store';
 import { addToCart } from '../actions/Action'
-import { products } from '../data';
+import { products, devices } from '../data';
+
+
 
 
 
@@ -52,8 +52,16 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
-    //width: '100%'
+    //width: '100%',
+    marginRight: theme.spacing(3)
   },
+  testy: {
+    width: '100%'
+  },
+  selectTest: {
+    padding: 8
+  },
+ 
 }));
 
 
@@ -73,22 +81,47 @@ export default function Details() {
     });
   }
 
-  const names = [
-    'Oliver Hansen',
-    'Van Henry',
-    'April Tucker',
-    'Ralph Hubbard',
-    'Omar Alexander',
-    'Carlos Abbott',
-    'Miriam Wagner',
-    'Bradley Wilkerson',
-    'Virginia Andrews',
-    'Kelly Snyder',
-  ];
+  const quantityNumbers = () => {
+    let children = []
+    for (let i = 0; i < 10; i++) {
+      children.push(<option aria-label="None" value="">{i + 1}</option>)
+    }
+
+    return children;
+  }
+
+
+
+  const casesSelect = (
+    <FormControl variant="outlined" className={classes.formControl} style={{ display: 'block' }}>
+      <InputLabel htmlFor="outlined-age-native-simple">Device</InputLabel>
+      <Select
+        fullWidth
+        native
+        value={state.age}
+
+        label="Device"
+        inputProps={{
+          name: 'device',
+          id: 'outlined-age-native-simple',
+        }}
+      >
+        <option aria-label="None" value="" />
+
+        {Object.entries(devices).map(([d, model], idx) => (
+          <optgroup key={idx} label={d} style={{ textTransform: 'capitalize' }}>
+            {model.map((m, idx) => (
+              <option key={idx} value={m.id}>{m.name}</option>
+            ))}
+          </optgroup>
+        ))}
+      </Select>
+    </FormControl>);
 
 
   return (
-    <Container disableGutters>
+    <Container>
+
       <Breadcrumbs />
 
       <Grid container>
@@ -111,8 +144,8 @@ export default function Details() {
 
 
             {kitProducts.length === 0 ?
-              imgs.map(img => (
-                <Grid item className={classes.gridItemProduct}>
+              imgs.map((img, idx) => (
+                <Grid key={idx} item className={classes.gridItemProduct}>
                   <div style={{ overflow: 'hidden', background: '#f6f6f6', paddingBottom: '75%', position: 'relative' }}>
                     <div style={{ position: 'absolute', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <img src={imgHero} alt={title} style={{ mixBlendMode: 'multiply' }} />
@@ -121,8 +154,8 @@ export default function Details() {
                 </Grid>
               ))
               :
-              kitProducts.map(p => (
-                <Grid item className={classes.gridItemProduct}>
+              kitProducts.map((p, idx) => (
+                <Grid key={idx} item className={classes.gridItemProduct}>
                   <div style={{ overflow: 'hidden', background: '#f6f6f6', paddingBottom: '75%', position: 'relative' }}>
                     <div style={{ position: 'absolute', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <img src={p.imgHero} alt={title} style={{ mixBlendMode: 'multiply' }} />
@@ -141,166 +174,51 @@ export default function Details() {
               <Typography component="div">{price} €</Typography>
             </div>
 
-            <Typography variant="h5" component="h1" style={{ marginBottom: 12, fontSize: 28, fontWeight: 600, lineHeight: 1.2, letterSpacing: '0.007em' }}>{title}</Typography>
+            <Typography variant="h5" component="h1" style={{ marginBottom: 24, fontSize: 28, fontWeight: 600, lineHeight: 1.2, letterSpacing: '0.007em' }}>{title}</Typography>
 
-
-
-            <FormControl className={classes.formControl}>
-              <InputLabel id="demo-mutiple-name-label">Device</InputLabel>
-              <Select
-                labelId="demo-mutiple-name-label"
-                id="demo-mutiple-name"
-                multiple
-                value={['personName']}
-                onChange={'handleChange'}
-                input={<Input />}
-                MenuProps={'MenuProps'}
-              >
-                {names.map((name) => (
-                  <MenuItem key={name} value={name} style={''}>
-                    {name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-
-
-            <FormControl className={classes.formControl}>
-              <InputLabel id="demo-mutiple-checkbox-label">Model</InputLabel>
-              <Select
-                labelId="demo-mutiple-checkbox-label"
-                id="demo-mutiple-checkbox"
-                multiple
-                value={['personName']}
-                onChange={'handleChange'}
-                input={<Input />}
-                renderValue={(selected) => selected.join(', ')}
-                MenuProps={'MenuProps'}
-              >
-                {names.map((name) => (
-                  <MenuItem key={name} value={name}>
-                    <Checkbox checked={'personName.indexOf(name) > -1'} />
-                    <ListItemText primary={name} />
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-
-
-
-            {
-              /*
-              <div style={{ display: 'inline-block' }}>
-              <p>Case</p>
-              <span>Device</span>
-              <span>Apple</span>
-              <span>Huwei</span>
-              <span>Samsung</span>
-            </div>
-              */
-            }
-
-
-
-            {
-              /*
             <ul>
               {kitProducts.map(p => (
                 <li>
                   <Typography>
                     {p.title}
                   </Typography>
+
+                  {p.title.toLowerCase() === 'nodalview cases' && casesSelect}
                 </li>
               ))}
             </ul>
-              */
-            }
 
+            {title.toLowerCase() === 'nodalview cases' && casesSelect}
 
+            <Box display="flex" style={{ marginTop: 16, marginBottom: 16, marginLeft: 8 }}>
+              <p style={{ marginRight: 8 }}>Quantity</p>
+              <FormControl style={{ marginLeft: 0, minWidth: 32 }} variant="outlined" className={classes.formControl}>
 
-            <Button variant="contained" color="primary" style={{ width: '100%', padding: '16px 24px', borderRadius: 100, marginBottom: 12 }}>Add to Basket</Button>
+                <Select
+                  classes={{ root: classes.selectTest }}
+                  native
+                  value={state.age}
+                  inputProps={{
+                    name: 'age',
+                    id: 'outlined-age-native-simple',
+                  }}
+                >
+                  {quantityNumbers()}
+                </Select>
+              </FormControl>
+            </Box>
 
-            <Typography>{info}</Typography>
+            <Button variant="contained" color="primary" style={{ marginBottom: 24, width: '100%', padding: '16px 24px', borderRadius: 100 }}>Add to Basket</Button>
+
+            <Typography style={{ lineHeight: 1.75 }}>{info}</Typography>
 
           </div>
         </Grid>
       </Grid>
 
-      <div style={{ marginBottom: 1200 }}></div>
-
-      <div className="container py-5">
-        {console.log('stateDetail', state)}
-        <div className="row">
-          <div className="col-10 mx-auto text-center text-slanted text-blue my-5">
-            <h1>{title}</h1>
-            <p></p>
-            <img src={imgHero} alt="test" />
-            <p>{info}</p>
-            <p>price: {price}</p>
-            <div>
-              <Link to="/">
-                <ButtonContainer>
-                  back to products
-                </ButtonContainer>
-              </Link>
-              <ButtonContainer
-                onClick={() => addToCart(dispatch, state.products, id)}
-                disabled={true ? true : false}
-              >
-                {true ? "inCart" : "add to cart"}
-              </ButtonContainer>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </Container >
   )
 }
-
-/*
-  <div className="container py-5">
-  {console.log('stateDetail', state)}
-  <div className="row">
-    <div className="col-10 mx-auto text-center text-slanted text-blue my-5">
-      <h1>{title}</h1>
-      <p>{company}</p>
-      <img src={img} alt="test" />
-      <p>{info}</p>
-      <p>price: {price}</p>
-      <div>
-        <Link to="/">
-          <ButtonContainer>
-            back to products
-          </ButtonContainer>
-        </Link>
-        <ButtonContainer
-          onClick={() => addToCart(dispatch, state.products, id)}
-          disabled={inCart ? true : false}
-        >
-          {isInCart() ? "inCart" : "add to cart"}
-        </ButtonContainer>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-  /*
-  const isInCart = function () {
-    return state.cart.some(p => p.id === id);
-  }
-
-  React.useEffect((props) => {
-    isInCart();
-  })
-*/
 
 
 

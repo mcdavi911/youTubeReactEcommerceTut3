@@ -13,7 +13,6 @@ const theme = createMuiTheme({
   palette: {
     background: {
       default: '#fff',
-      
     },
     primary: {
       main: '#e35656', // '#e56565', // nodalview brand color
@@ -36,8 +35,6 @@ const theme = createMuiTheme({
     },
   },
 
-
-  
   breakpoints: {
     values: {
       xs: 0,
