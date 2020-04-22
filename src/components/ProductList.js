@@ -5,10 +5,12 @@ import Title from './Title'
 import { Store } from '../Store'
 import { itemCategories } from '../data'
 import Item from './Item'
+import VerticalNav from './VerticalNav'
 import { setSearchResults, setCategory } from '../actions/Action'
 
 // MUI
 import Container from '@material-ui/core/Container'
+import Hidden from '@material-ui/core/Hidden'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import Grid from '@material-ui/core/Grid'
@@ -16,6 +18,7 @@ import Box from '@material-ui/core/Box'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import Icon from '@material-ui/core/Icon'
+
 
 /*
 // MUI Icons
@@ -42,7 +45,13 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   gridItemProduct: {
-    flexBasis: (100 / 2) + '%',
+    flexBasis: '100%',
+    [theme.breakpoints.up('sm')]: {
+      flexBasis: (100 / 2) + '%',
+    },
+    [theme.breakpoints.up('md')]: {
+      //flexBasis: (100 / 2) + '%',
+    },
     [theme.breakpoints.up('lg')]: {
       flexBasis: (100 / 3) + '%',
     }
@@ -69,26 +78,15 @@ export default function ProductList() {
   return (
     <React.Fragment>
       <Container>
-        <Grid container spacing={3}>
-          <Grid item sm={3} md={2}>
 
-            <List className={classes.listNav} component="nav" aria-label="product categories" disablePadding>
-              {itemCategories.map(({id, label, icon: Icon }, idx) =>
-                <ListItem
-                  key={idx}
-                  selected={state.category === label}
-                  button 
-                  onClick={() => { setCategory(dispatch, label); setSearchResults(dispatch, state.products, label) }}
-                >
-                  <ListItemIcon>
-                    <Icon />
-                  </ListItemIcon>
-                  <ListItemText primary={label} />
-                </ListItem>
-              )}
-            </List>
+        <Grid container spacing={3}>
+          <Grid item sm={'auto'} md={2} lg={2}>
+
+            <Hidden smDown>
+              <VerticalNav />
+            </Hidden>
           </Grid>
-          <Grid item sm={9} md={10}>
+          <Grid item sm={12} md={10} lg={10}>
             <header>
               <h1 className={classes.categoryHeading}>{state.category}</h1>
             </header>

@@ -1,9 +1,18 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
+import Hidden from '@material-ui/core/Hidden'
 import Drawer from '@material-ui/core/Drawer';
+import { Store } from '../Store'
+import { toggleMobileDrawer } from '../actions/Action'
+import VerticalNav from './VerticalNav'
 
 
 const useStyles = makeStyles({
+  drawerInner: {
+    paddingTop: 55,
+    //width: '100vw',
+    width: 250,
+  },
   list: {
     width: 250,
   },
@@ -15,14 +24,17 @@ const useStyles = makeStyles({
 
 
 export default function MobileDrawer() {
-
-  const [toggleDrawer, setToggleDrawer] = React.useState(true);
+  const { state, dispatch } = React.useContext(Store);
+  const classes = useStyles();
 
   return (
-    <div>
-      <Drawer anchor={"left"} open={toggleDrawer} onClose={() => setToggleDrawer(false)}>
-        hello
+    <Hidden mdUp>
+      <Drawer anchor={"left"} open={state.toggleMobileDrawer} onClose={() => toggleMobileDrawer(dispatch, false)}>
+        <div className={classes.drawerInner}>
+
+          <VerticalNav />
+        </div>
       </Drawer>
-    </div>
+    </Hidden>
   )
 }

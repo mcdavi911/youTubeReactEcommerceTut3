@@ -5,7 +5,7 @@ import styled from 'styled-components'
 //import { ButtonContainer } from './Button'
 import { Store } from '../Store'
 //import SearchInput from './SearchInput'
-import { setSearchTerm, setSearchResults, setCategory } from '../actions/Action'
+import { setSearchTerm, setSearchResults, setCategory, toggleMobileDrawer } from '../actions/Action'
 
 //import logo from '../assets/img/nodalview-nav-logo.png'
 
@@ -33,7 +33,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 //import CardGiftcard from '@material-ui/icons/CardGiftcard'
 
 import IconButton from '@material-ui/core/IconButton';
-import Backdrop from '@material-ui/core/Backdrop';
+//import Backdrop from '@material-ui/core/Backdrop';
 
 // Icon options for motor
 //import Settings from '@material-ui/icons/Settings'
@@ -187,9 +187,19 @@ const useStyles = makeStyles((theme) => ({
   hidden: {
     visibility: 'hidden'
   },
-
   toolbar: {
     minHeight: theme.spacing(10)
+  },
+  brand: {
+    height: 25.4561,
+    width: 'auto',
+    
+    [theme.breakpoints.up('md')]: {
+      height: 28.12348
+    },
+    [theme.breakpoints.up('lg')]: {
+      flexBasis: (100 / 3) + '%',
+    }
   }
 }));
 
@@ -207,7 +217,6 @@ export default function Navbar() {
     setIsSearchToggle((prevState) => !prevState);
   }
 
-
   const searchChange = e => {
     setSearchTerm(dispatch, e.target.value);
   };
@@ -223,28 +232,26 @@ export default function Navbar() {
 
   }, [state.searchTerm, dispatch]);
 
-
+  
 
   return (
     <>
-
 
       <AppBar className={classes.appBar} color="inherit" position="static">
         <Container>
           <Toolbar disableGutters className={classes.toolbar}>
 
             <Hidden mdUp>
-              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+              <IconButton onClick={() => toggleMobileDrawer(dispatch, true)} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                 <MenuIcon />
               </IconButton>
-
 
               <div className={classes.grow} />
             </Hidden>
 
 
             <Link to='/' className={isSearchToggle ? classes.hidden : ""} onClick={() => { setCategory(dispatch); setSearchResults(dispatch, state.products) }}>
-              <img style={{ height: 32, width: 'auto' }} src="img/nodalview-shop-logo.png" alt="nodalview logo" />
+              <img className={classes.brand} src="img/nodalview-shop-logo.png" alt="nodalview logo" />
             </Link>
 
             <div className={classes.grow} />
@@ -289,29 +296,6 @@ export default function Navbar() {
           </Toolbar>
         </Container>
       </AppBar >
-
-      {
-        /*
-        <div className={classes.search}>
-        <div className={classes.searchIcon}>
-          <Search />
-        </div>
-    
-        <InputBase
-          fullWidth
-          value={state.searchTerm}
-          onChange={handleChange}
-          placeholder="Search…"
-          classes={{
-            root: classes.inputRoot,
-            input: classes.inputInput,
-          }}
-          inputProps={{ 'aria-label': 'search' }}
-        />
-      </div>
-        */
-      }
-
 
     </>
   )

@@ -10,6 +10,7 @@ const initialState = {
   category: 'all products',
   searchTerm: '',
   searchResults: [],
+  toggleMobileDrawer: false,
   cartTax: 1.6
 }
 
@@ -39,6 +40,9 @@ const reducer = produce((draft, action) => {
       break;
     case 'SET_CATEGORY':
       draft.category = action.payload;
+      break;
+    case 'TOGGLE_MOBILE_DRAWER':
+      draft.toggleMobileDrawer = action.payload;
       break;
     case 'CART_INCREMENT':
       const pIdx2 = draft.cart.findIndex(p => p.id === action.payload)

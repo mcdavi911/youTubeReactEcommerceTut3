@@ -38,6 +38,18 @@ const useStyles = makeStyles((theme) => ({
       margin: 0
     }
   },
+  img: {
+    mixBlendMode: 'multiply',
+    [theme.breakpoints.up('sm')]: {
+      transform: 'scale(1)'
+    },
+    [theme.breakpoints.up('md')]: {
+      transform: 'scale(.8)'
+    },
+    [theme.breakpoints.up('lg')]: {
+    
+    }
+  }
 }));
 
 
@@ -51,7 +63,7 @@ export default function Item({ id, title, imgHero, price, inCart, category }) {
 
         <div style={{ overflow: 'hidden', background: '#f6f6f6', paddingBottom: '75%', position: 'relative' }}>
           <div style={{ position: 'absolute', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img src={imgHero} alt={title} style={{ mixBlendMode: 'multiply' }} />
+            <img className={classes.img} src={imgHero} alt={title} />
           </div>
         </div>
 
