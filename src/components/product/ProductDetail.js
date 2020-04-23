@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import Breadcrumbs from './Breadcrumbs';
+import Breadcrumbs from '../Breadcrumbs';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -9,19 +9,18 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import Input from '@material-ui/core/Input';
-import Checkbox from '@material-ui/core/Checkbox';
-import ListItemText from '@material-ui/core/ListItemText';
 
 
-import { ButtonContainer } from './Button';
-import { Link } from 'react-router-dom';
-import { Store } from '../Store';
-import { addToCart } from '../actions/Action'
-import { products, devices } from '../data';
+import ProductImg from './ProductImg'
+//import MenuItem from '@material-ui/core/MenuItem';
+//import Input from '@material-ui/core/Input';
+//import Checkbox from '@material-ui/core/Checkbox';
+//import ListItemText from '@material-ui/core/ListItemText';
 
 
+import { Store } from '../../Store';
+import { addToCart } from '../../actions/Action'
+import { devices } from '../../data';
 
 
 
@@ -61,7 +60,6 @@ const useStyles = makeStyles((theme) => ({
   selectTest: {
     padding: 8
   },
- 
 }));
 
 
@@ -70,7 +68,7 @@ export default function Details() {
   const classes = useStyles();
   const [quantity, setQuantity] = React.useState(1);
 
-  const { id, count, imgHero, category, info, price, title, imgs, kitProductsId } = state.productDetail;
+  const { id, imgHero, category, info, price, title, imgs, kitProductsId } = state.productDetail;
   const kitProducts = [];
 
   if (kitProductsId.length > 0) {
@@ -93,11 +91,10 @@ export default function Details() {
 
   const handleQuantity = (e) => {
     console.log('quantity', e.target.value)
-    
-    console.log('productDetail',state.productDetail);
+
+    console.log('productDetail', state.productDetail);
     const quantity = e.target.value;
 
-  
     setQuantity(parseInt(quantity));
   }
 
@@ -135,50 +132,38 @@ export default function Details() {
 
       <Breadcrumbs />
 
-      <Grid container>
-        <Grid item sm={8}>
+      
+        <Box display="flex">
+          <div style={{flexGrow: 1}}>
+            <Grid
+              container
+              direction="row"
+              alignItems="center"
+              spacing={2}
+            >
+              <Grid item className={classes.gridItemProduct}>
+                <ProductImg imgHero={imgHero} title={title} />
+              </Grid>
 
-          <Grid
-            container
-            direction="row"
-            alignItems="center"
-            spacing={2}
-          >
 
-            <Grid item className={classes.gridItemProduct}>
-              <div style={{ overflow: 'hidden', background: '#f6f6f6', paddingBottom: '75%', position: 'relative' }}>
-                <div style={{ position: 'absolute', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <img src={imgHero} alt={title} style={{ mixBlendMode: 'multiply' }} />
-                </div>
-              </div>
+              {kitProducts.length === 0 ?
+                imgs.map((img, idx) => (
+                  <Grid key={idx} item className={classes.gridItemProduct}>
+                    <ProductImg imgHero={imgHero} title={title} />
+                  </Grid>
+                ))
+                :
+                kitProducts.map((p, idx) => (
+                  <Grid key={idx} item className={classes.gridItemProduct}>
+                    <ProductImg imgHero={p.imgHero} title={p.title} />
+                  </Grid>
+                ))
+              }
             </Grid>
+          </div>
+          <div style={{ width: 464 }}>
+              
 
-
-            {kitProducts.length === 0 ?
-              imgs.map((img, idx) => (
-                <Grid key={idx} item className={classes.gridItemProduct}>
-                  <div style={{ overflow: 'hidden', background: '#f6f6f6', paddingBottom: '75%', position: 'relative' }}>
-                    <div style={{ position: 'absolute', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <img src={imgHero} alt={title} style={{ mixBlendMode: 'multiply' }} />
-                    </div>
-                  </div>
-                </Grid>
-              ))
-              :
-              kitProducts.map((p, idx) => (
-                <Grid key={idx} item className={classes.gridItemProduct}>
-                  <div style={{ overflow: 'hidden', background: '#f6f6f6', paddingBottom: '75%', position: 'relative' }}>
-                    <div style={{ position: 'absolute', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <img src={p.imgHero} alt={title} style={{ mixBlendMode: 'multiply' }} />
-                    </div>
-                  </div>
-                </Grid>
-              ))
-            }
-          </Grid>
-
-        </Grid>
-        <Grid item sm={4}>
           <div style={{ padding: '0px 56px 0px 64px' }}>
             <div className={classes.productInfo} style={{ marginBottom: 4 }}>
               <Typography variant="body1" component="h2">{category}</Typography>
@@ -225,8 +210,16 @@ export default function Details() {
             <Typography style={{ lineHeight: 1.75 }}>{info}</Typography>
 
           </div>
-        </Grid>
-      </Grid>
+
+
+
+          </div>
+        </Box>
+
+
+        
+        
+      
 
     </Container >
   )

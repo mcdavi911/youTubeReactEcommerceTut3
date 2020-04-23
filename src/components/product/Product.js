@@ -2,8 +2,8 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 //import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Store } from '../Store';
-import { setProductDetail, addToCart } from '../actions/Action'
+import { Store } from '../../Store';
+import { setProductDetail, addToCart } from '../../actions/Action'
 //import { findByLabelText } from '@testing-library/react'
 import { Typography } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Item(product) {
+export default function Product(product) {
   const { state, dispatch } = React.useContext(Store);
   const classes = useStyles();
   const { id, title, imgHero, price, category } = product;

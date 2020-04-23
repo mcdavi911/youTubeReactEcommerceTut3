@@ -1,12 +1,12 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+
+import Title from '../Title'
+import { Store } from '../../Store'
+import { itemCategories } from '../../data'
 import Product from './Product'
-import Title from './Title'
-import { Store } from '../Store'
-import { itemCategories } from '../data'
-import Item from './Item'
-import VerticalNav from './VerticalNav'
-import { setSearchResults, setCategory } from '../actions/Action'
+import VerticalNav from '../VerticalNav'
+import { setSearchResults, setCategory } from '../../actions/Action'
 
 // MUI
 import Container from '@material-ui/core/Container'
@@ -101,7 +101,7 @@ export default function ProductList() {
                 (
                   state.searchResults.map(p => (
                     <Grid key={p.id} item className={classes.gridItemProduct}>
-                      <Item {...p} />
+                      <Product {...p} />
                     </Grid>
                   ))
                 ) : (

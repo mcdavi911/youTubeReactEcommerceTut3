@@ -39,7 +39,7 @@ const theme = createMuiTheme({
     values: {
       xs: 0,
       sm: 640, // default 600
-      md: 990, // default 960
+      md: 1024, // 1st change 990, // default 960
       lg: 1440, // default 1280
       xl: 1920
     }

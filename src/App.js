@@ -6,8 +6,8 @@ import Box from '@material-ui/core/Box';
 import './App.css';
 //import 'bootstrap/dist/css/bootstrap.min.css'
 import Navbar from './components/Topbar';
-import ProductList from './components/ProductList';
-import Details from './components/ProductDetail';
+import ProductList from './components/product/ProductList';
+import Details from './components/product/ProductDetail';
 import Cart from './components/cart/Cart';
 import Default from './components/Default';
 import Banner from './components/Banner';
