@@ -1,8 +1,7 @@
 import produce from 'immer'
 
 
-export const addToCart = (dispatch, product, quantity) => {
-  //const product = products.find(p => p.id === id);
+export const addToCart = (dispatch, product, quantity = 1) => {
   console.log('from action quantity', quantity);
 
   const productNew = produce(product, draft => {
@@ -17,7 +16,6 @@ export const addToCart = (dispatch, product, quantity) => {
 
 
 export const setProductDetail = (dispatch, product) => {
-  //const product = products.find(p => p.id === id);
 
   return dispatch({
     type: 'SET_PRODUCT_DETAIL',

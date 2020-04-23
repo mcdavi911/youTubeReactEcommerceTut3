@@ -68,9 +68,9 @@ const useStyles = makeStyles((theme) => ({
 export default function Details() {
   const { state, dispatch } = React.useContext(Store);
   const classes = useStyles();
-  const [quantity, setQuantity] = React.useState();
+  const [quantity, setQuantity] = React.useState(1);
 
-  const { id, imgHero, category, info, price, title, imgs, kitProductsId } = state.productDetail;
+  const { id, count, imgHero, category, info, price, title, imgs, kitProductsId } = state.productDetail;
   const kitProducts = [];
 
   if (kitProductsId.length > 0) {
@@ -134,6 +134,8 @@ export default function Details() {
     <Container>
 
       <Breadcrumbs />
+
+  <h1>{count}</h1>
 
       <Grid container>
         <Grid item sm={8}>

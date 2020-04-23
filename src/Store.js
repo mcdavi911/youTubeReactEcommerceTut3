@@ -16,17 +16,13 @@ const initialState = {
 
 const reducer = produce((draft, action) => {
   switch (action.type) {
-    case 'HANDLE_DETAIL':
-      break;
     case 'ADD_TO_CART':
-      
       
       if(draft.cart.length > 0) {
         const pIdx = draft.cart.findIndex(p => p.id === action.payload.id)
 
         if (pIdx === -1) {
           draft.cart.push(action.payload)
-          return
         } else {
           draft.cart[pIdx].count += action.payload.count;
         }
