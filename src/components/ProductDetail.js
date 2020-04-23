@@ -135,8 +135,6 @@ export default function Details() {
 
       <Breadcrumbs />
 
-  <h1>{count}</h1>
-
       <Grid container>
         <Grid item sm={8}>
 
