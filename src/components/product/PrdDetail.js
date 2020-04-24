@@ -3,13 +3,15 @@ import { makeStyles } from '@material-ui/core/styles'
 import Breadcrumbs from '../Breadcrumbs';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
+//import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
-import DetailBasket from './DetailBasket'
+//import Button from '@material-ui/core/Button';
+//import FormControl from '@material-ui/core/FormControl';
+//import InputLabel from '@material-ui/core/InputLabel';
+//import Select from '@material-ui/core/Select';
+import PrdDetailBasket from './PrdDetailBasket'
+import PrdDetailBasketCase from './PrdDetailBasketCase'
+import PrdDetailBasketKit from './PrdDetailBasketKit'
 
 import Carousel from 'nuka-carousel';
 
@@ -17,7 +19,7 @@ import Carousel from 'nuka-carousel';
 import RightRail from '../../layouts/RightRail'
 
 
-import ProductImg from './ProductImg'
+import PImg from './PrdImg'
 //import MenuItem from '@material-ui/core/MenuItem';
 //import Input from '@material-ui/core/Input';
 //import Checkbox from '@material-ui/core/Checkbox';
@@ -26,7 +28,7 @@ import ProductImg from './ProductImg'
 
 import { Store } from '../../Store';
 import { addToCart } from '../../actions/Action'
-import { devices } from '../../data';
+import { devices, productType } from '../../data';
 
 
 
@@ -70,30 +72,39 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function Details(props) {
+export default function PrdDetail(props) {
   const { state, dispatch } = React.useContext(Store);
   const classes = useStyles();
-  // useState for quantity? try variable?
-  //const [quantity, setQuantity] = React.useState(1);
+
   let quantity = 1;
 
   const { id, imgHero, category, info, price, title, imgs, childIds } = state.productDetail;
-  const kitProducts = [];
 
 
-  // get childProducts > hooks
-  if (childIds.length > 0) {
+  let detail;
 
-    childIds.forEach(id => {
-      const p = state.products.find(p => p.id === id);
-
-      kitProducts.push(p);
-    });
+  switch (category) {
+    case productType.KIT:
+      detail = { basket: <PrdDetailBasketKit /> };
+      break;
+    //case productType.LENSE:
+    //break;
+    case productType.CASE:
+      detail = { basket: <PrdDetailBasketCase /> };
+      break;
+    //case productType.MOTOR:
+    //break;
+    //case productType.TRIPODS:
+    //break;
+    //case productType.PREPAID_CREDIT:
+    //break;
+    default:
+      detail = { basket: <PrdDetailBasket /> };
   }
 
-  // use hook combine all images in one array
-  
-  
+
+
+
 
 
   const pImgs = (
@@ -107,22 +118,28 @@ export default function Details(props) {
       >
 
         <Grid item className={classes.gridItemProduct}>
-          <ProductImg imgHero={imgHero} title={title} />
+          <PImg imgHero={imgHero} title={title} />
         </Grid>
 
-        {kitProducts.length === 0 ?
+        {
+          /*
+{kitProducts.length === 0 ?
           imgs.map((img, idx) => (
             <Grid key={idx} item className={classes.gridItemProduct}>
-              <ProductImg imgHero={imgHero} title={title} />
+              <PImg imgHero={imgHero} title={title} />
             </Grid>
           ))
           :
           kitProducts.map((p, idx) => (
             <Grid key={idx} item className={classes.gridItemProduct}>
-              <ProductImg imgHero={p.imgHero} title={p.title} />
+              <PImg imgHero={p.imgHero} title={p.title} />
             </Grid>
           ))
         }
+          */
+        }
+
+        
       </Grid>
 
       <Carousel>
@@ -140,11 +157,14 @@ export default function Details(props) {
   );
 
 
+
+
+
   return (
     <>
       <Container>
         <Breadcrumbs />
-        <RightRail left={pImgs} right={<DetailBasket />} />
+        <RightRail left={pImgs} right={detail.basket} />
       </Container >
     </>
   )

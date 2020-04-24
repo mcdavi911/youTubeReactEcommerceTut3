@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Title from '../Title'
 import { Store } from '../../Store'
 import { itemCategories } from '../../data'
-import Product from './Product'
+import PrdCard from './PrdCard'
 import VerticalNav from '../VerticalNav'
 import { setSearchResults, setCategory } from '../../actions/Action'
 
@@ -26,7 +26,7 @@ import Search from '@material-ui/icons/Search'
 import ShoppingBasket from '@material-ui/icons/ShoppingBasket'
 //import ShoppingCart from '@material-ui/icons/ShoppingCart'
 import Smartphone from '@material-ui/icons/Smartphone'
-import Camera from '@material-ui/icons/Camera'
+import Camera from '@material-ui/icons/Camera' 
 import WorkOutline from '@material-ui/icons/WorkOutline'
 import PhotoCamera from '@material-ui/icons/PhotoCamera'
 import ThreeSixty from '@material-ui/icons/ThreeSixty'
@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function ProductList() {
+export default function P_List() {
   const { state, dispatch } = React.useContext(Store);
   const classes = useStyles();
 
@@ -101,7 +101,7 @@ export default function ProductList() {
                 (
                   state.searchResults.map(p => (
                     <Grid key={p.id} item className={classes.gridItemProduct}>
-                      <Product {...p} />
+                      <PrdCard {...p} />
                     </Grid>
                   ))
                 ) : (

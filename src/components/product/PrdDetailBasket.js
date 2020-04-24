@@ -12,7 +12,8 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import { addToCart } from '../../actions/Action'
-import { devices } from '../../data';
+
+import { devices, productType } from '../../data';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -54,13 +55,75 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function DetailBasket() {
+export default function PrdDetailBasket({children}) {
   const { state, dispatch } = React.useContext(Store);
   const classes = useStyles();
   let quantity = 1;
 
   const { id, imgHero, category, info, price, title, imgs, childIds } = state.productDetail;
+
+
+  //const kitProducts = [];
   const kitProducts = [];
+
+
+
+  // get childProducts > hooks
+  if (childIds.length > 0) {
+
+    childIds.forEach(id => {
+      const p = state.products.find(p => p.id === id);
+
+      kitProducts.push(p);
+    });
+  }
+
+  
+
+  
+
+
+
+  let basketContent;
+
+{
+  /*
+switch (category) {
+    case productType.KIT:
+      basketContent = (
+        <ul>
+          {kitProducts.map(p => (
+            <li key={p.id}>
+              <Typography>
+                {p.title}
+              </Typography>
+
+              {p.title.toLowerCase() === 'nodalview cases' && casesSelect}
+            </li>
+          ))}
+        </ul>
+      );
+      break;
+    case productType.LENSE:
+
+      break;
+    case productType.CASE:
+      basketContent = casesSelect
+      break;
+    case productType.MOTOR:
+      break;
+    case productType.TRIPODS:
+      break;
+    case productType.PREPAID_CREDIT:
+      break;
+    default:
+    // code block
+
+  }
+  */
+}
+
+  
 
 
   const initQuantitySelect = () => {
@@ -73,7 +136,7 @@ export default function DetailBasket() {
   }
 
 
-
+  /*
   if (childIds.length > 0) {
 
     childIds.forEach(id => {
@@ -82,35 +145,11 @@ export default function DetailBasket() {
       kitProducts.push(p);
     });
   }
+  */
 
 
 
-  // make own component
-  const casesSelect = (
-    <FormControl variant="outlined" className={classes.formControl} style={{ display: 'block' }}>
-      <InputLabel htmlFor="outlined-age-native-simple">Device</InputLabel>
-      <Select
-        fullWidth
-        native
-        /*value={category}*/
-
-        label="Device"
-        inputProps={{
-          name: 'device',
-          id: 'outlined-age-native-simple',
-        }}
-      >
-        <option aria-label="None" value="" />
-
-        {Object.entries(devices).map(([brand, model], idx) => (
-          <optgroup key={idx} label={brand} style={{ textTransform: 'capitalize' }}>
-            {model.map((m, idx) => (
-              <option key={idx} value={m.id}>{m.name}</option>
-            ))}
-          </optgroup>
-        ))}
-      </Select>
-    </FormControl>);
+ 
 
 
 
@@ -125,9 +164,11 @@ export default function DetailBasket() {
         fontSize: 28, fontWeight: 600, lineHeight: 1.2, letterSpacing: '0.007em'
       }}> {title}</Typography >
 
+      {children}
 
-
-      <ul>
+      {
+        /*
+        <ul>
         {kitProducts.map(p => (
           <li>
             <Typography>
@@ -138,8 +179,16 @@ export default function DetailBasket() {
           </li>
         ))}
       </ul>
+        */
+      }
 
-      {title.toLowerCase() === 'nodalview cases' && casesSelect}
+      {
+        /*
+        {title.toLowerCase() === 'nodalview cases' && casesSelect}
+        */
+      }
+
+      
 
       <Box display="flex" style={{ marginTop: 16, marginBottom: 16, marginLeft: 8 }}>
         <p style={{ marginRight: 8 }}>Quantity</p>
@@ -148,7 +197,7 @@ export default function DetailBasket() {
           <Select
             classes={{ root: classes.selectTest }}
             native
-            value={category}
+            /*value={category}*/
             onChange={(e) => quantity = parseInt(e.target.value)}
             inputProps={{
               name: 'age',

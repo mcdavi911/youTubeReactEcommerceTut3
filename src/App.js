@@ -6,8 +6,8 @@ import Box from '@material-ui/core/Box';
 import './App.css';
 //import 'bootstrap/dist/css/bootstrap.min.css'
 import Navbar from './components/Topbar';
-import ProductList from './components/product/ProductList';
-import Details from './components/product/ProductDetail';
+import PrdList from './components/product/PrdList';
+import PrdDetail from './components/product/PrdDetail';
 import Cart from './components/cart/Cart';
 import Default from './components/Default';
 import Banner from './components/Banner';
@@ -33,8 +33,8 @@ function App() {
       <Box style={{height: 30}}></Box>
       <MobileDrawer></MobileDrawer>
       <Switch>
-        <Route exact path="/" component={ProductList} />
-        <Route path="/details" component={Details} />
+        <Route exact path="/" component={PrdList} />
+        <Route path="/details" component={PrdDetail} />
         <Route path="/cart" component={Cart} />
         <Route component={Default} />
       </Switch>

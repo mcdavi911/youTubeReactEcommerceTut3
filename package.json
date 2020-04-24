@@ -24,7 +24,10 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app", 
+    "rules": {
+      "react/jsx-pascal-case": [3, {"all-caps": true} ]
+    }
   },
   "browserslist": {
     "production": [

@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Product(product) {
+export default function PrdCard(product) {
   const { state, dispatch } = React.useContext(Store);
   const classes = useStyles();
   const { id, title, imgHero, price, category } = product;
