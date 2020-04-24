@@ -9,6 +9,12 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
+import DetailBasket from './DetailBasket'
+
+import Carousel from 'nuka-carousel';
+
+
+import RightRail from '../../layouts/RightRail'
 
 
 import ProductImg from './ProductImg'
@@ -63,165 +69,84 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Details() {
+
+export default function Details(props) {
   const { state, dispatch } = React.useContext(Store);
   const classes = useStyles();
-  const [quantity, setQuantity] = React.useState(1);
+  // useState for quantity? try variable?
+  //const [quantity, setQuantity] = React.useState(1);
+  let quantity = 1;
 
-  const { id, imgHero, category, info, price, title, imgs, kitProductsId } = state.productDetail;
+  const { id, imgHero, category, info, price, title, imgs, childIds } = state.productDetail;
   const kitProducts = [];
 
-  if (kitProductsId.length > 0) {
 
-    kitProductsId.forEach(id => {
+  // get childProducts > hooks
+  if (childIds.length > 0) {
+
+    childIds.forEach(id => {
       const p = state.products.find(p => p.id === id);
 
       kitProducts.push(p);
     });
   }
 
-  const quantityNumbers = () => {
-    let children = []
-    for (let idx = 0; idx < 10; idx++) {
-      children.push(<option aria-label="None" value={idx + 1}>{idx + 1}</option>)
-    }
-
-    return children;
-  }
-
-  const handleQuantity = (e) => {
-    console.log('quantity', e.target.value)
-
-    console.log('productDetail', state.productDetail);
-    const quantity = e.target.value;
-
-    setQuantity(parseInt(quantity));
-  }
+  // use hook combine all images in one array
+  
+  
 
 
+  const pImgs = (
+    <>
 
-  const casesSelect = (
-    <FormControl variant="outlined" className={classes.formControl} style={{ display: 'block' }}>
-      <InputLabel htmlFor="outlined-age-native-simple">Device</InputLabel>
-      <Select
-        fullWidth
-        native
-        value={state.age}
-
-        label="Device"
-        inputProps={{
-          name: 'device',
-          id: 'outlined-age-native-simple',
-        }}
+      <Grid
+        container
+        direction="row"
+        alignItems="center"
+        spacing={2}
       >
-        <option aria-label="None" value="" />
 
-        {Object.entries(devices).map(([d, model], idx) => (
-          <optgroup key={idx} label={d} style={{ textTransform: 'capitalize' }}>
-            {model.map((m, idx) => (
-              <option key={idx} value={m.id}>{m.name}</option>
-            ))}
-          </optgroup>
-        ))}
-      </Select>
-    </FormControl>);
+        <Grid item className={classes.gridItemProduct}>
+          <ProductImg imgHero={imgHero} title={title} />
+        </Grid>
+
+        {kitProducts.length === 0 ?
+          imgs.map((img, idx) => (
+            <Grid key={idx} item className={classes.gridItemProduct}>
+              <ProductImg imgHero={imgHero} title={title} />
+            </Grid>
+          ))
+          :
+          kitProducts.map((p, idx) => (
+            <Grid key={idx} item className={classes.gridItemProduct}>
+              <ProductImg imgHero={p.imgHero} title={p.title} />
+            </Grid>
+          ))
+        }
+      </Grid>
+
+      <Carousel>
+        <img
+          src={`http://placehold.it/1000x400/7732bb/ffffff/&text=slide1`}
+          alt={`Slide ${1}`}
+          key="1"
+
+          style={{
+            height: 400
+          }}
+        />
+      </Carousel>
+    </>
+  );
 
 
   return (
-    <Container>
-
-      <Breadcrumbs />
-
-      
-        <Box display="flex">
-          <div style={{flexGrow: 1}}>
-            <Grid
-              container
-              direction="row"
-              alignItems="center"
-              spacing={2}
-            >
-              <Grid item className={classes.gridItemProduct}>
-                <ProductImg imgHero={imgHero} title={title} />
-              </Grid>
-
-
-              {kitProducts.length === 0 ?
-                imgs.map((img, idx) => (
-                  <Grid key={idx} item className={classes.gridItemProduct}>
-                    <ProductImg imgHero={imgHero} title={title} />
-                  </Grid>
-                ))
-                :
-                kitProducts.map((p, idx) => (
-                  <Grid key={idx} item className={classes.gridItemProduct}>
-                    <ProductImg imgHero={p.imgHero} title={p.title} />
-                  </Grid>
-                ))
-              }
-            </Grid>
-          </div>
-          <div style={{ width: 464 }}>
-              
-
-          <div style={{ padding: '0px 56px 0px 64px' }}>
-            <div className={classes.productInfo} style={{ marginBottom: 4 }}>
-              <Typography variant="body1" component="h2">{category}</Typography>
-              <Typography component="div">{price} €</Typography>
-            </div>
-
-            <Typography variant="h5" component="h1" style={{ /*, fontSize: 28,*/ fontWeight: 600, lineHeight: 1.2, letterSpacing: '0.007em' }}>{title}</Typography>
-
-            <ul>
-              {kitProducts.map(p => (
-                <li>
-                  <Typography>
-                    {p.title}
-                  </Typography>
-
-                  {p.title.toLowerCase() === 'nodalview cases' && casesSelect}
-                </li>
-              ))}
-            </ul>
-
-            {title.toLowerCase() === 'nodalview cases' && casesSelect}
-
-            <Box display="flex" style={{ marginTop: 16, marginBottom: 16, marginLeft: 8 }}>
-              <p style={{ marginRight: 8 }}>Quantity</p>
-              <FormControl style={{ marginLeft: 0, minWidth: 32 }} variant="outlined" className={classes.formControl}>
-
-                <Select
-                  classes={{ root: classes.selectTest }}
-                  native
-                  value={state.age}
-                  onChange={handleQuantity}
-                  inputProps={{
-                    name: 'age',
-                    id: 'outlined-age-native-simple',
-                  }}
-                >
-                  {quantityNumbers()}
-                </Select>
-              </FormControl>
-            </Box>
-
-            <Button onClick={() => addToCart(dispatch, state.productDetail, quantity)} variant="contained" color="primary" style={{ marginBottom: 24, width: '100%', padding: '16px 24px', borderRadius: 100 }} >Add to Basket</Button>
-
-            <Typography style={{ lineHeight: 1.75 }}>{info}</Typography>
-
-          </div>
-
-
-
-          </div>
-        </Box>
-
-
-        
-        
-      
-
-    </Container >
+    <>
+      <Container>
+        <Breadcrumbs />
+        <RightRail left={pImgs} right={<DetailBasket />} />
+      </Container >
+    </>
   )
 }
 
