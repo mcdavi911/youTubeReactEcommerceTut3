@@ -1,5 +1,4 @@
-import Search from '@material-ui/icons/Search'
-import ShoppingBasket from '@material-ui/icons/ShoppingBasket'
+
 //import ShoppingCart from '@material-ui/icons/ShoppingCart'
 import Smartphone from '@material-ui/icons/Smartphone'
 import Camera from '@material-ui/icons/Camera'

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Store } from '../Store'
-import { setSearchTerm } from '../actions/Action'
+import Action from '../actions/Action'
 import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search'
 import InputBase from '@material-ui/core/InputBase'
@@ -64,7 +64,7 @@ export default function Search() {
       <InputBase
         placeholder="Search…"
         value={state.searchTerm}
-        onChange={(e) => setSearchTerm(dispatch, e.target.value)}
+        onChange={(e) => Action.setSearchTerm(dispatch, e.target.value)}
         classes={{
           root: classes.inputRoot,
           input: classes.inputInput,

@@ -9,7 +9,7 @@ import { Store } from '../Store'
 
 
 export default function Breadcrumbs() {
-  const { state, dispatch } = React.useContext(Store);
+  const { state, /*dispatch*/ } = React.useContext(Store);
   
 
   

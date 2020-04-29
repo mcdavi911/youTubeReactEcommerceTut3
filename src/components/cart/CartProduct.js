@@ -2,7 +2,7 @@ import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 
-import ActCart from '../../actions/ActCart'
+import ActionCart from '../../actions/ActionCart'
 
 export default function CartProduct(props) {
   const { id, title, img, price, count } = props.product;
@@ -32,7 +32,7 @@ export default function CartProduct(props) {
               <span
                 className="btn btn-black mx-1"
                 onClick={() => {
-                  return ActCart.changeCount(props.dispatch, props.product, -1);
+                  return ActionCart.changeCount(props.dispatch, props.product, -1);
                 }}
               >
                 -
@@ -41,7 +41,7 @@ export default function CartProduct(props) {
               <span
                 className="btn btn-black mx-1"
                 onClick={() => {
-                  return ActCart.changeCount(props.dispatch, props.product);
+                  return ActionCart.changeCount(props.dispatch, props.product);
                 }}
               >
                 +
@@ -50,7 +50,7 @@ export default function CartProduct(props) {
           </Box>
         </Grid>
         <Grid item md={2}>
-          <div className=" cart-icon" onClick={() => ActCart.remove(props.dispatch, id)}> {/*removeItem(id)}>*/}
+          <div className=" cart-icon" onClick={() => ActionCart.remove(props.dispatch, id)}> {/*removeItem(id)}>*/}
             <i className="fas fa-trash" />
           </div>
         </Grid>

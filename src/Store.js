@@ -18,23 +18,6 @@ const reducer = produce((draft, action) => {
   let idx;
 
   switch (action.type) {
-    /*
-    case 'ADD_TO_CART':
-      
-      if(draft.cart.length > 0) {
-        idx = draft.cart.findIndex(p => p.id === action.payload.id)
-
-        if (idx === -1) {
-          draft.cart.push(action.payload)
-        } else {
-          draft.cart[idx].count += action.payload.count;
-        }
-      } else {
-        draft.cart.push(action.payload)
-      }
-      
-      break;
-      */
     case 'SET_PRODUCT_DETAIL':
       draft.productDetail = action.payload;
       break;
@@ -52,7 +35,7 @@ const reducer = produce((draft, action) => {
       break;
     case 'CART_CHANGE_COUNT':
 
-      if(draft.cart.length > 0) {
+      if (draft.cart.length > 0) {
         idx = draft.cart.findIndex(p => p.id === action.payload.id)
 
         if (idx === -1) {
@@ -66,18 +49,7 @@ const reducer = produce((draft, action) => {
       } else {
         draft.cart.push(action.payload);
       }
-      
       break;
-      /*
-    case 'CART_INCREMENT':
-      idx = draft.cart.findIndex(p => p.id === action.payload)
-      draft.cart[idx].count++
-      break;
-    case 'CART_DECREMENT':
-      idx = draft.cart.findIndex(p => p.id === action.payload)
-      if (draft.cart[idx].count > 0) draft.cart[idx].count--
-      break;
-      */
     case 'CART_REMOVE':
       idx = draft.cart.findIndex(p => p.id === action.payload)
       draft.cart.splice(idx, 1)

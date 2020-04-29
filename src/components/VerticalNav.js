@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import { itemCategories } from '../data'
-import { setSearchResults, setProductType } from '../actions/Action'
+import Action from '../actions/Action'
 import { Store } from '../Store'
 
 //import Box from '@material-ui/core/Box'
@@ -50,7 +50,7 @@ export default function VerticalNav() {
             key={idx}
             selected={state.productType === label}
             button
-            onClick={() => { setProductType(dispatch, label); setSearchResults(dispatch, state.products, label) }}
+            onClick={() => { Action.setProductType(dispatch, label); Action.setSearchResults(dispatch, state.products, label) }}
           >
             <ListItemIcon>
               <Icon />

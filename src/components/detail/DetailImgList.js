@@ -1,13 +1,9 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 
-import { Store } from '../../Store';
-import PrdImg from './PrdImg'
-import Prd from './Prd'
-
+import DetailImg from './DetailImg'
 import Carousel from 'nuka-carousel';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -17,14 +13,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function PrdDetailImg({imgs}) {
+export default function DetailImgList({imgs}) {
   const classes = useStyles();
-  //const { state, /*dispatch*/ } = React.useContext(Store);
-  //const { title, getImgs } = state.productDetail;
-
-  //console.log('YOYOYO', state.productDetail.getImgs);
-
-
 
   return (
     <div>
@@ -36,7 +26,7 @@ export default function PrdDetailImg({imgs}) {
       >
         {imgs.map(({src,alt}, idx) => (
           <Grid key={idx} item className={classes.gridItemProduct}>
-            <PrdImg src={alt} alt={alt} />
+            <DetailImg src={src} alt={alt} />
           </Grid>
         ))}
       </Grid>

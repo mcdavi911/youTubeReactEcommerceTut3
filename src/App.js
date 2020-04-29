@@ -3,14 +3,14 @@ import { Switch, Route } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 
-import Prd from './components/product/Prd';
+import Product from './components/product/Product';
 import { products } from './data';
 
 import './App.css';
 //import 'bootstrap/dist/css/bootstrap.min.css'
 import Navbar from './components/Topbar';
-import PrdList from './components/product/PrdList';
-import PrdDetail from './components/product/PrdDetail';
+import PrdList from './components/product/ProductList';
+import Detail from './components/detail/Detail';
 import Cart from './components/cart/Cart';
 import Default from './components/Default';
 import Banner from './components/Banner';
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const classes = useStyles();
 
-  Prd.setPrds(products);
+  Product.setPrds(products);
 
   return (
     <React.Fragment>
@@ -36,7 +36,7 @@ function App() {
       <MobileDrawer></MobileDrawer>
       <Switch>
         <Route exact path="/" component={PrdList} />
-        <Route path="/details" component={PrdDetail} />
+        <Route path="/details" component={Detail} />
         <Route path="/cart" component={Cart} />
         <Route component={Default} />
       </Switch>

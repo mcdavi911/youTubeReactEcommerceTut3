@@ -1,6 +1,6 @@
 
 
-export default class Prd {
+export default class Product {
   static prds = []
   children = []
 
@@ -22,7 +22,7 @@ export default class Prd {
     if (this.childIds.length === 0) return;
 
     this.childIds.forEach(id => {
-      const product = Prd.prds.find(p => p.id === id);
+      const product = Product.prds.find(p => p.id === id);
       this.children.push(product);
     })
   }
@@ -31,19 +31,19 @@ export default class Prd {
   static create(product) {
     const { id, title, imgHero, imgs, childIds, price, info, count, productType } = product;
 
-    return new Prd(id, title, imgHero, imgs, childIds, price, info, count, productType);
+    return new Product(id, title, imgHero, imgs, childIds, price, info, count, productType);
   }
 
   static setPrds(products) {
-    Prd.prds = products;
+    Product.prds = products;
   }
 
   
 
-  get getImgs() {
-    if (this.childIds.length === 0) return { src: this.imgHero, alt: this.imgs };
+  getImgs() { 
+    if (this.childIds.length === 0) return [{ src: this.imgHero, alt: this.imgs }];
 
-    if (Prd.prds.length === 0) return;
+    // if (Product.prds.length === 0) return;
 
     const childImgs = this.children.map(p => ({ src: p.imgHero, alt: p.title }))
 
@@ -52,10 +52,8 @@ export default class Prd {
 
   get getChildren() {
     if (this.childIds.length === 0) {
-      throw new Error('No children found')
+      console.error('No children found in this kit');
     }
-
-   
 
     return this.children;
   }

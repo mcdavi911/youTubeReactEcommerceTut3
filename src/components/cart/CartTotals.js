@@ -1,7 +1,6 @@
 import React from 'react'
 import { Store } from '../../Store'
-import { cartClear } from '../../actions/Action'
-import ActCart from '../../actions/ActCart'
+import ActionCart from '../../actions/ActionCart'
 //import PaypalButton from './PaypalButton'
 
 export default function CartTotals(props) {
@@ -22,7 +21,7 @@ export default function CartTotals(props) {
     <div className="col-10 mx-auto">
       <button
         className="btn btn-warning float-right"
-        onClick={() => ActCart.clear(dispatch)}
+        onClick={() => ActionCart.clear(dispatch)}
       >Clear cart
       </button>
       <p>SUBTOTAL: {cartSubtotal()}</p>

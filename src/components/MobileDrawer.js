@@ -4,7 +4,7 @@ import Hidden from '@material-ui/core/Hidden'
 import Drawer from '@material-ui/core/Drawer';
 import Box from '@material-ui/core/Box';
 import { Store } from '../Store'
-import { toggleMobileDrawer } from '../actions/Action'
+import Action from '../actions/Action'
 import VerticalNav from './VerticalNav'
 import Search from './Search'
 
@@ -32,7 +32,7 @@ export default function MobileDrawer() {
 
   return (
     <Hidden mdUp>
-      <Drawer anchor={"top"} open={state.toggleMobileDrawer} onClose={() => toggleMobileDrawer(dispatch, false)}>
+      <Drawer anchor={"top"} open={state.toggleMobileDrawer} onClose={() => Action.toggleMobileDrawer(dispatch, false)}>
         <div className={classes.toolbar}></div>
 
         <div className={classes.drawerInner}>

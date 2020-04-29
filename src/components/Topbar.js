@@ -1,54 +1,27 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-
-import styled from 'styled-components'
-//import { ButtonContainer } from './Button'
 import { Store } from '../Store'
-//import SearchInput from './SearchInput'
-import { setSearchTerm, setSearchResults, setProductType, toggleMobileDrawer } from '../actions/Action'
 
-//import logo from '../assets/img/nodalview-nav-logo.png'
+import Action from '../actions/Action';
+
+
 import Search from './Search'
-
 
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
 import Toolbar from '@material-ui/core/Toolbar'
-//import Typography from '@material-ui/core/Typography'
-import InputBase from '@material-ui/core/InputBase'
-//import Box from '@material-ui/core/Box'
 import Badge from '@material-ui/core/Badge';
 import Hidden from '@material-ui/core/Hidden';
 
-import SearchIcon from '@material-ui/icons/Search'
 import ShoppingBasket from '@material-ui/icons/ShoppingBasket'
 import MenuIcon from '@material-ui/icons/Menu';
-//import ShoppingCart from '@material-ui/icons/ShoppingCart'
-//import Smartphone from '@material-ui/icons/Smartphone'
-//import Camera from '@material-ui/icons/Camera'
-//import WorkOutline from '@material-ui/icons/WorkOutline'
-//import PhotoCamera from '@material-ui/icons/PhotoCamera'
 
-//import CreditCard from '@material-ui/icons/CreditCard'
-//import CardGiftcard from '@material-ui/icons/CardGiftcard'
 
 import IconButton from '@material-ui/core/IconButton';
-//import Backdrop from '@material-ui/core/Backdrop';
-
-// Icon options for motor
-//import Settings from '@material-ui/icons/Settings'
-//import Cached from '@material-ui/icons/Cached'
-//import FlashOn from '@material-ui/icons/FlashOn'
-//import FlipCameraAndroid from '@material-ui/icons/FlipCameraAndroid'
-//import Loop from '@material-ui/icons/Loop'
-//import Sync from '@material-ui/icons/Sync'
-//import ThreeSixty from '@material-ui/icons/ThreeSixty'
 
 
-// search overlay
-// search dropdown
-// search transition
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -163,17 +136,6 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar() {
   const classes = useStyles();
   const { state, dispatch } = React.useContext(Store);
-  //const [isSearchToggle, setIsSearchToggle] = React.useState(false);
-
-  //const [isDrawerToggle, setIsDrawerToggle] = React.useState(false);
-
-  /*console.log(isSearchToggle)*/
-
-  /*
-  const toggleSearch = () => {
-    setIsSearchToggle((prevState) => !prevState);
-  }
-  */
 
   const cartAmount = () => {
     if (state.cart.length === 0) return;
@@ -186,25 +148,17 @@ export default function Navbar() {
     return count
   };
 
-  /*
-  const searchChange = e => {
-    setSearchTerm(dispatch, e.target.value);
-  };
-  */
 
 
   React.useEffect(() => {
-    setSearchResults(dispatch, state.products, state.searchTerm);
+    Action.setSearchResults(dispatch, state.products, state.searchTerm);
   }, [state.searchTerm, state.products, dispatch]);
 
 
   React.useEffect(() => {
-    setProductType(dispatch, state.searchTerm.length === 0 ? undefined : 'search')
+    Action.setProductType(dispatch, state.searchTerm.length === 0 ? undefined : 'search')
 
   }, [state.searchTerm, dispatch]);
-
-
-  // toggleMobileDrawer(dispatch, state.toggleMobileDrawer)
 
   return (
     <>
@@ -213,7 +167,7 @@ export default function Navbar() {
           <Toolbar disableGutters className={classes.toolbar}>
 
             <Hidden mdUp>
-              <IconButton onClick={() => toggleMobileDrawer(dispatch)} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+              <IconButton onClick={() => Action.toggleMobileDrawer(dispatch)} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                 <MenuIcon />
               </IconButton>
 
@@ -221,7 +175,7 @@ export default function Navbar() {
             </Hidden>
 
 
-            <Link to='/' onClick={() => { setProductType(dispatch); setSearchResults(dispatch, state.products) }}>
+            <Link to='/' onClick={() => { Action.setProductType(dispatch); Action.setSearchResults(dispatch, state.products) }}>
               <img className={classes.brand} src="img/nodalview-shop-logo.png" alt="nodalview logo" />
             </Link>
 

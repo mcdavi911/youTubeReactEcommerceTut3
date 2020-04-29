@@ -2,18 +2,13 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Store } from '../../Store';
 
-import Breadcrumbs from '../Breadcrumbs';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
-import ActCart from '../../actions/ActCart'
 
-import { devices, productTypes } from '../../data';
+import Select from '@material-ui/core/Select';
+import ActionCart from '../../actions/ActionCart'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -55,32 +50,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function PrdDetailSide({children}) {
+export default function DetailSide({ children }) {
   const { state, dispatch } = React.useContext(Store);
   const classes = useStyles();
   let quantity = 1;
 
-  console.log('asfdadsfadsf',state.productDetail);
+  const { productType, info, price, title } = state.productDetail;
 
-  const { id, imgHero, productType, info, price, title, imgs, childIds } = state.productDetail;
-  
-  //const kitProducts = [];
-  //const kitProducts = []; 
-
-  // get childProducts > hooks
-  /*
-  if (childIds.length > 0) {
-
-    childIds.forEach(id => {
-      const p = state.products.find(p => p.id === id);
-
-      kitProducts.push(p);
-    });
-  }
-  */
-
-
-  const initQuantitySelect = () => {
+  const populateQuantitySelect = () => {
     let quantities = []
     for (let idx = 0; idx < 10; idx++) {
       quantities.push(<option key={idx} aria-label="None" value={idx + 1}>{idx + 1}</option>)
@@ -93,7 +70,7 @@ export default function PrdDetailSide({children}) {
   return (
     <div style={{ padding: '0px 56px 0px 64px' }}>
       <div className={classes.productInfo} style={{ marginBottom: 4 }}>
-        <Typography variant="body1" component="h2">{productType}</Typography>
+        <Typography variant="body1" component="h2" style={{ textTransform: 'capitalize' }}>{productType}</Typography>
         <Typography component="div">{price} €</Typography>
       </div>
 
@@ -117,14 +94,14 @@ export default function PrdDetailSide({children}) {
               id: 'outlined-age-native-simple',
             }}
           >
-            {initQuantitySelect()}
+            {populateQuantitySelect()}
           </Select>
         </FormControl>
       </Box>
 
-      <Button onClick={() => ActCart.changeCount(dispatch, state.productDetail, quantity)} variant="contained" color="primary" style={{ marginBottom: 24, width: '100%', padding: '16px 24px', borderRadius: 100 }} >Add to Basket</Button>
+      <Button onClick={() => ActionCart.changeCount(dispatch, state.productDetail, quantity)} variant="contained" color="primary" style={{ marginBottom: 24, width: '100%', padding: '16px 24px', borderRadius: 100 }} >Add to Basket</Button>
 
       <Typography style={{ lineHeight: 1.75 }}>{info}</Typography>
-    </div >
+    </div>
   )
 }

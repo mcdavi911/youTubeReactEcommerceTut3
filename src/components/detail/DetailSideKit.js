@@ -1,17 +1,16 @@
 import React from 'react'
-import PrdDetailSide from './PrdDetailSide'
+import DetailSide from './DetailSide'
 import { devices, productTypes } from '../../data';
 import Typography from '@material-ui/core/Typography';
-import SlctSelect from '../select/SlctSelect'
-import { Store } from '../../Store';
+import SlctSelect from '../SlctSelect'
 
-export default function PrdDetailSideKit({childProducts}) {
+export default function DetailSideKit({childProducts}) {
   
   return (
     <div>
-      <PrdDetailSide>
+      <DetailSide>
         <ul>
-          {childProducts.map(p => (
+          {childProducts.length > 0 && childProducts.map(p => (
             <li key={p.id}>
               <Typography>
                 {p.title}
@@ -21,7 +20,7 @@ export default function PrdDetailSideKit({childProducts}) {
             </li>
           ))}
         </ul>
-      </PrdDetailSide>
+      </DetailSide>
     </div>
   )
 }
