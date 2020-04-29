@@ -3,6 +3,9 @@ import { Switch, Route } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 
+import Prd from './components/product/Prd';
+import { products } from './data';
+
 import './App.css';
 //import 'bootstrap/dist/css/bootstrap.min.css'
 import Navbar from './components/Topbar';
@@ -14,16 +17,15 @@ import Banner from './components/Banner';
 import MobileDrawer from './components/MobileDrawer';
 
 
-
-
 const useStyles = makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
 }));
 
 
-
 function App() {
   const classes = useStyles();
+
+  Prd.setPrds(products);
 
   return (
     <React.Fragment>

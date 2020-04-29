@@ -13,7 +13,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import { addToCart } from '../../actions/Action'
 
-import { devices, productType } from '../../data';
+import { devices, productTypes } from '../../data';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -55,20 +55,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function PrdDetailBasket({children}) {
+export default function PrdDetailSide({children}) {
   const { state, dispatch } = React.useContext(Store);
   const classes = useStyles();
   let quantity = 1;
 
-  const { id, imgHero, category, info, price, title, imgs, childIds } = state.productDetail;
+  console.log('asfdadsfadsf',state.productDetail);
 
-
+  const { id, imgHero, productType, info, price, title, imgs, childIds } = state.productDetail;
+  
   //const kitProducts = [];
-  const kitProducts = [];
-
-
+  //const kitProducts = []; 
 
   // get childProducts > hooks
+  /*
   if (childIds.length > 0) {
 
     childIds.forEach(id => {
@@ -77,86 +77,23 @@ export default function PrdDetailBasket({children}) {
       kitProducts.push(p);
     });
   }
-
-  
-
-  
-
-
-
-  let basketContent;
-
-{
-  /*
-switch (category) {
-    case productType.KIT:
-      basketContent = (
-        <ul>
-          {kitProducts.map(p => (
-            <li key={p.id}>
-              <Typography>
-                {p.title}
-              </Typography>
-
-              {p.title.toLowerCase() === 'nodalview cases' && casesSelect}
-            </li>
-          ))}
-        </ul>
-      );
-      break;
-    case productType.LENSE:
-
-      break;
-    case productType.CASE:
-      basketContent = casesSelect
-      break;
-    case productType.MOTOR:
-      break;
-    case productType.TRIPODS:
-      break;
-    case productType.PREPAID_CREDIT:
-      break;
-    default:
-    // code block
-
-  }
   */
-}
-
-  
 
 
   const initQuantitySelect = () => {
-    let children = []
+    let quantities = []
     for (let idx = 0; idx < 10; idx++) {
-      children.push(<option aria-label="None" value={idx + 1}>{idx + 1}</option>)
+      quantities.push(<option key={idx} aria-label="None" value={idx + 1}>{idx + 1}</option>)
     }
 
-    return children;
+    return quantities;
   }
-
-
-  /*
-  if (childIds.length > 0) {
-
-    childIds.forEach(id => {
-      const p = state.products.find(p => p.id === id);
-
-      kitProducts.push(p);
-    });
-  }
-  */
-
-
-
- 
-
 
 
   return (
     <div style={{ padding: '0px 56px 0px 64px' }}>
       <div className={classes.productInfo} style={{ marginBottom: 4 }}>
-        <Typography variant="body1" component="h2">{category}</Typography>
+        <Typography variant="body1" component="h2">{productType}</Typography>
         <Typography component="div">{price} €</Typography>
       </div>
 
@@ -166,30 +103,6 @@ switch (category) {
 
       {children}
 
-      {
-        /*
-        <ul>
-        {kitProducts.map(p => (
-          <li>
-            <Typography>
-              {p.title}
-            </Typography>
-
-            {p.title.toLowerCase() === 'nodalview cases' && casesSelect}
-          </li>
-        ))}
-      </ul>
-        */
-      }
-
-      {
-        /*
-        {title.toLowerCase() === 'nodalview cases' && casesSelect}
-        */
-      }
-
-      
-
       <Box display="flex" style={{ marginTop: 16, marginBottom: 16, marginLeft: 8 }}>
         <p style={{ marginRight: 8 }}>Quantity</p>
         <FormControl style={{ marginLeft: 0, minWidth: 32 }} variant="outlined" className={classes.formControl}>
@@ -197,7 +110,7 @@ switch (category) {
           <Select
             classes={{ root: classes.selectTest }}
             native
-            /*value={category}*/
+            /*value={productType}*/
             onChange={(e) => quantity = parseInt(e.target.value)}
             inputProps={{
               name: 'age',
@@ -212,7 +125,6 @@ switch (category) {
       <Button onClick={() => addToCart(dispatch, state.productDetail, quantity)} variant="contained" color="primary" style={{ marginBottom: 24, width: '100%', padding: '16px 24px', borderRadius: 100 }} >Add to Basket</Button>
 
       <Typography style={{ lineHeight: 1.75 }}>{info}</Typography>
-
     </div >
   )
 }

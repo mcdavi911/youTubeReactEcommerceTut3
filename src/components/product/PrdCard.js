@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 export default function PrdCard(product) {
   const { state, dispatch } = React.useContext(Store);
   const classes = useStyles();
-  const { id, title, imgHero, price, category } = product;
+  const { id, title, imgHero, price, productType } = product;
 
   return (
     <div>
@@ -74,7 +74,7 @@ export default function PrdCard(product) {
             <p>{title}</p>
             <p>{price} €</p>
           </div>
-          <p style={{ fontSize: '1rem', color: 'rgb(141, 141, 141)', marginTop: 0 }}>{category}</p>
+          <p style={{ fontSize: '1rem', color: 'rgb(141, 141, 141)', marginTop: 0 }}>{productType}</p>
         </div>
       </Link>
     </div>

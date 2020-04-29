@@ -7,7 +7,7 @@ const initialState = {
   products,
   productDetail,
   cart: [],
-  category: 'all products',
+  productType: 'all products',
   searchTerm: '',
   searchResults: [],
   toggleMobileDrawer: false,
@@ -33,7 +33,6 @@ const reducer = produce((draft, action) => {
       break;
     case 'SET_PRODUCT_DETAIL':
       draft.productDetail = action.payload;
-
       break;
     case 'SET_SEARCH_TERM':
       draft.searchTerm = action.payload;
@@ -41,8 +40,8 @@ const reducer = produce((draft, action) => {
     case 'SET_SEARCH_RESULTS':
       draft.searchResults = action.payload;
       break;
-    case 'SET_CATEGORY':
-      draft.category = action.payload;
+    case 'SET_PRODUCT_TYPE':
+      draft.productType = action.payload;
       break;
     case 'TOGGLE_MOBILE_DRAWER':
       draft.toggleMobileDrawer = !draft.toggleMobileDrawer;

@@ -2,15 +2,14 @@ import produce from 'immer'
 
 
 export const addToCart = (dispatch, product, quantity = 1) => {
-  console.log('from action quantity', quantity);
-
+  
   const productNew = produce(product, draft => {
     draft.count += quantity;
   })
 
   return dispatch({
     type: 'ADD_TO_CART',
-    payload: productNew
+    payload: {...productNew}
   })
 }
 
@@ -37,7 +36,7 @@ export const setSearchResults = (dispatch, products, term = null) => {
 
   if (term) {
     searchResults = products.filter(p =>
-    p.category.toLowerCase().includes(term));
+    p.productType.toLowerCase().includes(term));
 
     //if (searchResults.length === 0) searchResults = products;
   }
@@ -49,11 +48,11 @@ export const setSearchResults = (dispatch, products, term = null) => {
 }
 
 
-export const setCategory = (dispatch, category = 'all products') => {
+export const setProductType = (dispatch, productType = 'all products') => {
 
   return dispatch({
-    type: 'SET_CATEGORY',
-    payload: category
+    type: 'SET_PRODUCT_TYPE',
+    payload: productType
   })
 }
 

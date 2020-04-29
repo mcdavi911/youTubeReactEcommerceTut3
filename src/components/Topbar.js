@@ -5,7 +5,7 @@ import styled from 'styled-components'
 //import { ButtonContainer } from './Button'
 import { Store } from '../Store'
 //import SearchInput from './SearchInput'
-import { setSearchTerm, setSearchResults, setCategory, toggleMobileDrawer } from '../actions/Action'
+import { setSearchTerm, setSearchResults, setProductType, toggleMobileDrawer } from '../actions/Action'
 
 //import logo from '../assets/img/nodalview-nav-logo.png'
 import Search from './Search'
@@ -199,7 +199,7 @@ export default function Navbar() {
 
 
   React.useEffect(() => {
-    setCategory(dispatch, state.searchTerm.length === 0 ? undefined : 'search')
+    setProductType(dispatch, state.searchTerm.length === 0 ? undefined : 'search')
 
   }, [state.searchTerm, dispatch]);
 
@@ -221,7 +221,7 @@ export default function Navbar() {
             </Hidden>
 
 
-            <Link to='/' onClick={() => { setCategory(dispatch); setSearchResults(dispatch, state.products) }}>
+            <Link to='/' onClick={() => { setProductType(dispatch); setSearchResults(dispatch, state.products) }}>
               <img className={classes.brand} src="img/nodalview-shop-logo.png" alt="nodalview logo" />
             </Link>
 

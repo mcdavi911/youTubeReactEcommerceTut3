@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import { itemCategories } from '../data'
-import { setSearchResults, setCategory } from '../actions/Action'
+import { setSearchResults, setProductType } from '../actions/Action'
 import { Store } from '../Store'
 
 //import Box from '@material-ui/core/Box'
@@ -34,11 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
     }
   },
-  categoryHeading: {
-    textTransform: 'capitalize',
-    marginTop: 0,
-    fontWeight: 500
-  },
+ 
 }));
  
 
@@ -52,9 +48,9 @@ export default function VerticalNav() {
         {itemCategories.map(({ id, label, icon: Icon }, idx) =>
           <ListItem
             key={idx}
-            selected={state.category === label}
+            selected={state.productType === label}
             button
-            onClick={() => { setCategory(dispatch, label); setSearchResults(dispatch, state.products, label) }}
+            onClick={() => { setProductType(dispatch, label); setSearchResults(dispatch, state.products, label) }}
           >
             <ListItemIcon>
               <Icon />

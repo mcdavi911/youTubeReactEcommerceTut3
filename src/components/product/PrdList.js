@@ -6,7 +6,7 @@ import { Store } from '../../Store'
 import { itemCategories } from '../../data'
 import PrdCard from './PrdCard'
 import VerticalNav from '../VerticalNav'
-import { setSearchResults, setCategory } from '../../actions/Action'
+import { setSearchResults, setProductType } from '../../actions/Action'
 
 // MUI
 import Container from '@material-ui/core/Container'
@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
 
     }
   },
-  categoryHeading: {
+  productTypeHeading: {
     textTransform: 'capitalize',
     marginTop: 0,
     fontWeight: 500
@@ -88,7 +88,7 @@ export default function P_List() {
           </Grid>
           <Grid item sm={12} md={10} lg={10}>
             <header>
-              <h1 className={classes.categoryHeading}>{state.category}</h1>
+              <h1 className={classes.productTypeHeading}>{state.productType}</h1>
             </header>
 
             <Grid

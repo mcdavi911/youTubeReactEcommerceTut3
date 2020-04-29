@@ -54,8 +54,7 @@ export default function S_Select({devices}) {
         <Select
           fullWidth
           native
-          /*value={category}*/
-
+          /*value={productType}*/
           label="Device"
           inputProps={{
             name: 'device',

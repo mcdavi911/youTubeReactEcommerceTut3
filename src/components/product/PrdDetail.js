@@ -9,14 +9,17 @@ import Typography from '@material-ui/core/Typography';
 //import FormControl from '@material-ui/core/FormControl';
 //import InputLabel from '@material-ui/core/InputLabel';
 //import Select from '@material-ui/core/Select';
-import PrdDetailBasket from './PrdDetailBasket'
-import PrdDetailBasketCase from './PrdDetailBasketCase'
-import PrdDetailBasketKit from './PrdDetailBasketKit'
+import PrdDetailSide from './PrdDetailSide'
+import PrdDetailSideCase from './PrdDetailSideCase'
+import PrdDetailSideKit from './PrdDetailSideKit'
+import PrdDetailImg from './PrdDetailImg'
+
 
 import Carousel from 'nuka-carousel';
 
 
 import RightRail from '../../layouts/RightRail'
+import Prd from './Prd';
 
 
 import PImg from './PrdImg'
@@ -28,8 +31,7 @@ import PImg from './PrdImg'
 
 import { Store } from '../../Store';
 import { addToCart } from '../../actions/Action'
-import { devices, productType } from '../../data';
-
+import { devices, productTypes } from '../../data';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -78,93 +80,44 @@ export default function PrdDetail(props) {
 
   let quantity = 1;
 
-  const { id, imgHero, category, info, price, title, imgs, childIds } = state.productDetail;
+  const { id, imgHero, productType, info, price, title, imgs, childIds } = state.productDetail;
 
+  const prd = Prd.create(state.productDetail);
+
+  console.log('HELLO TEST HELLO333', productType);
+  console.log('HELLO TEST HELLO', prd.getImgs);
+
+  if (childIds.length !== 0) {
+    console.log('HELLO TEST HELLO222', prd.getChildren);
+  }
 
   let detail;
 
-  switch (category) {
-    case productType.KIT:
-      detail = { basket: <PrdDetailBasketKit /> };
+  switch (productType) {
+    case productTypes.KIT:
+      detail = { right: <PrdDetailSideKit childProducts={prd.getChildren} /> };
       break;
-    //case productType.LENSE:
+    //case productTypes.LENSE:
     //break;
-    case productType.CASE:
-      detail = { basket: <PrdDetailBasketCase /> };
+    case productTypes.CASE:
+      detail = { right: <PrdDetailSideCase /> };
       break;
-    //case productType.MOTOR:
+    //case productTypes.MOTOR:
     //break;
-    //case productType.TRIPODS:
+    //case productTypes.TRIPODS:
     //break;
-    //case productType.PREPAID_CREDIT:
+    //case productTypes.PREPAID_CREDIT:
     //break;
     default:
-      detail = { basket: <PrdDetailBasket /> };
+      detail = { right: <PrdDetailSide product={prd} dispatch={dispatch} /> };
   }
-
-
-
-
-
-
-  const pImgs = (
-    <>
-
-      <Grid
-        container
-        direction="row"
-        alignItems="center"
-        spacing={2}
-      >
-
-        <Grid item className={classes.gridItemProduct}>
-          <PImg imgHero={imgHero} title={title} />
-        </Grid>
-
-        {
-          /*
-{kitProducts.length === 0 ?
-          imgs.map((img, idx) => (
-            <Grid key={idx} item className={classes.gridItemProduct}>
-              <PImg imgHero={imgHero} title={title} />
-            </Grid>
-          ))
-          :
-          kitProducts.map((p, idx) => (
-            <Grid key={idx} item className={classes.gridItemProduct}>
-              <PImg imgHero={p.imgHero} title={p.title} />
-            </Grid>
-          ))
-        }
-          */
-        }
-
-        
-      </Grid>
-
-      <Carousel>
-        <img
-          src={`http://placehold.it/1000x400/7732bb/ffffff/&text=slide1`}
-          alt={`Slide ${1}`}
-          key="1"
-
-          style={{
-            height: 400
-          }}
-        />
-      </Carousel>
-    </>
-  );
-
-
-
 
 
   return (
     <>
       <Container>
         <Breadcrumbs />
-        <RightRail left={pImgs} right={detail.basket} />
+        <RightRail left={'hello'} right={detail.right} />
       </Container >
     </>
   )
