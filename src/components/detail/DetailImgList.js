@@ -7,8 +7,11 @@ import Grid from '@material-ui/core/Grid';
 
 
 const useStyles = makeStyles((theme) => ({
-  gridItemProduct: {
+  flexBasis50: {
     flexBasis: '50%',
+  },
+  flexBasis100: {
+    flexBasis: '100%',
   }
 }));
 
@@ -25,7 +28,7 @@ export default function DetailImgList({imgs}) {
         spacing={2}
       >
         {imgs.map(({src,alt}, idx) => (
-          <Grid key={idx} item className={classes.gridItemProduct}>
+          <Grid key={idx} item className={imgs.length > 1 ? classes.flexBasis50 : classes.flexBasis100}>
             <DetailImg src={src} alt={alt} />
           </Grid>
         ))}

@@ -4,9 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { Store } from '../../Store';
 import Action from '../../actions/Action'
-//import { findByLabelText } from '@testing-library/react'
-
-
 
 
 const useStyles = makeStyles((theme) => ({

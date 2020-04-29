@@ -43,7 +43,7 @@ export default class Product {
   getImgs() { 
     if (this.childIds.length === 0) return [{ src: this.imgHero, alt: this.imgs }];
 
-    // if (Product.prds.length === 0) return;
+    if (Product.prds.length === 0) return;
 
     const childImgs = this.children.map(p => ({ src: p.imgHero, alt: p.title }))
 
