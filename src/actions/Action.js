@@ -1,18 +1,6 @@
 import produce from 'immer'
 
 
-export const addToCart = (dispatch, product, quantity = 1) => {
-  
-  const productNew = produce(product, draft => {
-    draft.count += quantity;
-  })
-
-  return dispatch({
-    type: 'ADD_TO_CART',
-    payload: {...productNew}
-  })
-}
-
 
 export const setProductDetail = (dispatch, product) => {
 
@@ -77,6 +65,7 @@ export const toggleMobileDrawer = (dispatch) => {
 
 
 // Cart
+/*
 export const cartIncrement = (dispatch, id) => {
 
   return dispatch({
@@ -109,6 +98,6 @@ export const cartClear = (dispatch) => {
     payload: null
   })
 }
-
+*/
 
 

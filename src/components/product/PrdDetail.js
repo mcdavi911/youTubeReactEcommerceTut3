@@ -30,7 +30,6 @@ import PImg from './PrdImg'
 
 
 import { Store } from '../../Store';
-import { addToCart } from '../../actions/Action'
 import { devices, productTypes } from '../../data';
 
 

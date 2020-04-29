@@ -15,22 +15,26 @@ const initialState = {
 }
 
 const reducer = produce((draft, action) => {
+  let idx;
+
   switch (action.type) {
+    /*
     case 'ADD_TO_CART':
       
       if(draft.cart.length > 0) {
-        const pIdx = draft.cart.findIndex(p => p.id === action.payload.id)
+        idx = draft.cart.findIndex(p => p.id === action.payload.id)
 
-        if (pIdx === -1) {
+        if (idx === -1) {
           draft.cart.push(action.payload)
         } else {
-          draft.cart[pIdx].count += action.payload.count;
+          draft.cart[idx].count += action.payload.count;
         }
       } else {
         draft.cart.push(action.payload)
       }
       
       break;
+      */
     case 'SET_PRODUCT_DETAIL':
       draft.productDetail = action.payload;
       break;
@@ -46,17 +50,37 @@ const reducer = produce((draft, action) => {
     case 'TOGGLE_MOBILE_DRAWER':
       draft.toggleMobileDrawer = !draft.toggleMobileDrawer;
       break;
+    case 'CART_CHANGE_COUNT':
+
+      if(draft.cart.length > 0) {
+        idx = draft.cart.findIndex(p => p.id === action.payload.id)
+
+        if (idx === -1) {
+          draft.cart.push(action.payload)
+        } else {
+          draft.cart[idx].count += action.payload.count;
+          if (draft.cart[idx].count < 1) {
+            draft.cart[idx].count = 1;
+          }
+        }
+      } else {
+        draft.cart.push(action.payload);
+      }
+      
+      break;
+      /*
     case 'CART_INCREMENT':
-      const pIdx2 = draft.cart.findIndex(p => p.id === action.payload)
-      draft.cart[pIdx2].count++
+      idx = draft.cart.findIndex(p => p.id === action.payload)
+      draft.cart[idx].count++
       break;
     case 'CART_DECREMENT':
-      const pIdx3 = draft.cart.findIndex(p => p.id === action.payload)
-      if (draft.cart[pIdx3].count > 0) draft.cart[pIdx3].count--
+      idx = draft.cart.findIndex(p => p.id === action.payload)
+      if (draft.cart[idx].count > 0) draft.cart[idx].count--
       break;
+      */
     case 'CART_REMOVE':
-      const pIdx4 = draft.cart.findIndex(p => p.id === action.payload)
-      draft.cart.splice(pIdx4, 1)
+      idx = draft.cart.findIndex(p => p.id === action.payload)
+      draft.cart.splice(idx, 1)
       break;
     case 'CART_CLEAR':
       draft.cart = []

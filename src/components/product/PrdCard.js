@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 //import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Store } from '../../Store';
-import { setProductDetail, addToCart } from '../../actions/Action'
+import { setProductDetail } from '../../actions/Action'
 //import { findByLabelText } from '@testing-library/react'
 import { Typography } from '@material-ui/core';
 import Card from '@material-ui/core/Card';

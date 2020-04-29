@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
-import { addToCart } from '../../actions/Action'
+import ActCart from '../../actions/ActCart'
 
 import { devices, productTypes } from '../../data';
 
@@ -122,7 +122,7 @@ export default function PrdDetailSide({children}) {
         </FormControl>
       </Box>
 
-      <Button onClick={() => addToCart(dispatch, state.productDetail, quantity)} variant="contained" color="primary" style={{ marginBottom: 24, width: '100%', padding: '16px 24px', borderRadius: 100 }} >Add to Basket</Button>
+      <Button onClick={() => ActCart.changeCount(dispatch, state.productDetail, quantity)} variant="contained" color="primary" style={{ marginBottom: 24, width: '100%', padding: '16px 24px', borderRadius: 100 }} >Add to Basket</Button>
 
       <Typography style={{ lineHeight: 1.75 }}>{info}</Typography>
     </div >
