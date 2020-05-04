@@ -6,7 +6,7 @@ import produce from 'immer'
 const initialState = {
   products,
   productDetail: products[0],
-  cart: [],
+  cart: [products[0]],
   productType: 'all products',
   searchTerm: '',
   searchResults: [],
@@ -75,8 +75,8 @@ const reducer = produce((draft, action) => {
     }
     break;
     */
-    case 'CART_REMOVE':
-      idx = draft.cart.findIndex(p => p.id === action.payload)
+    case 'CART_DELETE':
+      idx = draft.cart.findIndex(p => p.id === action.id)
       draft.cart.splice(idx, 1)
       break;
     case 'CART_CLEAR':

@@ -3,11 +3,13 @@ import { makeStyles } from '@material-ui/core/styles'
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const useStyles = makeStyles((theme) => ({
 
-  selectTest: {
-    padding: 8
+  selectTest2: {
+    padding: '8px 8px 8px 72px',
+    fontSize: 14
   },
   formControl: {
     margin: theme.spacing(1),
@@ -21,8 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function SelectNum({ range, handleValue, setValue, label }) {
-
+export default function SelectNum2({ range, handleValue, setValue, label }) {
 
   const classes = useStyles();
   //let quantity = 1;
@@ -30,7 +31,7 @@ export default function SelectNum({ range, handleValue, setValue, label }) {
   const populateQuantitySelect = () => {
     let quantities = []
     for (let idx = 0; idx < range; idx++) {
-      quantities.push(<option key={idx} aria-label="None" value={idx + 1}>{idx + 1}</option>)
+      quantities.push(<MenuItem key={idx} aria-label="None" value={idx + 1}>{idx + 1}</MenuItem>)
     }
 
     return quantities;
@@ -39,20 +40,15 @@ export default function SelectNum({ range, handleValue, setValue, label }) {
 
   return (
     <>
-      <FormControl style={{flexDirection: 'row',alignItems:'center', marginLeft: 0, minWidth: 32 }} variant="outlined" className={classes.formControl}>
+      <FormControl style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 0 }} variant="outlined" className={classes.formControl}>
+        <div style={{ position: 'absolute', marginLeft: 8, fontSize: 14 }}>{label}</div>
 
         <Select
-          classes={{ root: classes.selectTest  }}
-          native
-          /*label={label}*/
+          classes={{ root: classes.selectTest2 }}
+          labelId="demo-simple-select-outlined-label"
+          id="demo-simple-select-outlined"
           value={setValue}
           onChange={(e) => handleValue(parseInt(e.target.value))}
-        /*
-        inputProps={{
-          name: 'age',
-          id: 'outlined-age-native-simple',
-        }}
-        */
         >
           {populateQuantitySelect()}
         </Select>
@@ -64,8 +60,7 @@ export default function SelectNum({ range, handleValue, setValue, label }) {
 
 
 /*
-        {label && <InputLabel htmlFor="outlined-age-native-simple">{label}</InputLabel>}
-
+  {label && <InputLabel htmlFor="outlined-age-native-simple">{label}</InputLabel>}
 
   <FormControl variant="outlined" className={classes.formControl}>
         <InputLabel htmlFor="outlined-age-native-simple">Age</InputLabel>
@@ -85,5 +80,4 @@ export default function SelectNum({ range, handleValue, setValue, label }) {
           <option value={30}>Thirty</option>
         </Select>
       </FormControl>
-
 */

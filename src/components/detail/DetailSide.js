@@ -75,7 +75,7 @@ export default function DetailSide({ children }) {
 
       {children}
 
-      <Box display="flex" style={{ marginTop: 16, marginBottom: 16, marginLeft: 8 }}>
+      <Box display="flex" alignItems="center" style={{ marginTop: 16, marginBottom: 16, marginLeft: 8 }}>
         <p style={{ marginRight: 8 }}>Quantity</p>
 
         <SelectNum range={10} handleValue={handleQuantity} />

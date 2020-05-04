@@ -1,43 +1,64 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
-import SelectNum from '../form/SelectNum';
+import SelectNum2 from '../form/SelectNum2';
 import { Store } from '../../Store'
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 
 import ActionCart from '../../actions/ActionCart'
+import { Typography } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 
 export default function CartProduct(props) {
   const { state, dispatch } = React.useContext(Store);
 
-  const {id, imgHero,count, title, productType, special, price } = props.product;
+  const { id, imgHero, count, title, productType, special, price } = props.product;
 
   const handleQuantity = (quantity) => {
     ActionCart.updateCount(dispatch, id, quantity);
-    
-    console.log('quantity',quantity);
+
+    console.log('quantity', quantity);
   }
 
   return (
     <>
-
       <Box display="flex" style={{ boxShadow: 'rgb(229, 229, 229) 0px -1px 0px 0px inset, rgb(229, 229, 229) 0px 0px 0px 0px inset' }}>
         <div>
           <img src={imgHero} alt={title} />
         </div>
-        <div>
-          <p>{title}</p>
-          <p>{productType}</p>
-          <p>{special}</p>
-          <p>{price}</p>
 
-          <p>Quantity {count}</p>
-          <SelectNum range={10} handleValue={handleQuantity} setValue={count} />
-        </div>
+        <Box style={{ width: '100%' }} display="flex" flexDirection="column" justifyContent="space-between">
+          <div>
+            <Box display="flex" justifyContent="space-between" style={{ textTransform: 'capitalize' }}>
+              <Typography style={{ color: '#111' }}>{title}</Typography>
+              <Typography style={{ color: 'rgb(141, 141, 141)', textTransform: 'capitalize' }}>
+                {price} €
+              </Typography>
+            </Box>
+
+            <div style={{ color: 'rgb(141, 141, 141)', textTransform: 'capitalize' }}>
+              <div>{productType}</div>
+              <div>{special}</div>
+            </div>
+
+
+            <Breadcrumbs separator="|" aria-label="breadcrumb" style={{marginTop: 8}}>
+              <Box display="flex" alignItems="center">
+                
+                <SelectNum2 range={10} handleValue={handleQuantity} setValue={count} label="Quantity"/>
+              </Box>
+              <Button className=" cart-icon" onClick={() => ActionCart.delete(dispatch, id)}>
+                Remove
+            </Button>
+            </Breadcrumbs>
+          </div>
+          <div>
+
+
+
+          </div>
+        </Box>
       </Box>
-
-
-
-
     </>
   )
 }

@@ -79,11 +79,12 @@ export default class ActionCart {
   }
   */
 
-  static remove = (dispatch, id) => {
+  static delete = (dispatch, id) => {
 
     return dispatch({
-      type: 'CART_REMOVE',
-      payload: id
+      type: 'CART_DELETE',
+      id,
+      payload: null
     })
   }
 
