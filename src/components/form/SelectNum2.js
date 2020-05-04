@@ -51,6 +51,7 @@ export default function SelectNum2({ range, handleValue, setValue, label }) {
           onChange={(e) => handleValue(parseInt(e.target.value))}
         >
           {populateQuantitySelect()}
+
         </Select>
       </FormControl>
     </>

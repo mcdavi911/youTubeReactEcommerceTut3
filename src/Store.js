@@ -10,8 +10,7 @@ const initialState = {
   productType: 'all products',
   searchTerm: '',
   searchResults: [],
-  toggleMobileDrawer: false,
-  cartTax: 1.6
+  toggleMobileDrawer: false
 }
 
 const reducer = produce((draft, action) => {

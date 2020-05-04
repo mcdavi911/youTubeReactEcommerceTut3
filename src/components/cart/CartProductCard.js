@@ -22,42 +22,34 @@ export default function CartProduct(props) {
 
   return (
     <>
-      <Box display="flex" style={{ boxShadow: 'rgb(229, 229, 229) 0px -1px 0px 0px inset, rgb(229, 229, 229) 0px 0px 0px 0px inset' }}>
-        <div>
-          <img src={imgHero} alt={title} />
+      <Box display="flex" style={{ padding: '24px 8px', boxShadow: 'rgba(0, 0, 0, 0.12) 0px -1px 0px 0px inset' }}>
+        <div style={{ marginRight: 20, background: '#f6f6f6', height: 150, width: 150, padding: 16 }}>
+          <img src={imgHero} alt={title} style={{ mixBlendMode: 'multiply', width: '100%', height: 'auto' }} />
         </div>
 
-        <Box style={{ width: '100%' }} display="flex" flexDirection="column" justifyContent="space-between">
-          <div>
-            <Box display="flex" justifyContent="space-between" style={{ textTransform: 'capitalize' }}>
-              <Typography style={{ color: '#111' }}>{title}</Typography>
-              <Typography style={{ color: 'rgb(141, 141, 141)', textTransform: 'capitalize' }}>
-                {price} €
-              </Typography>
+
+        <div style={{ flexGrow: 1 }}>
+          <Box display="flex" justifyContent="space-between" style={{ textTransform: 'capitalize' }}>
+            <Typography style={{ color: '#111', lineHeight: '1.7' }}>{title}</Typography>
+            <Typography style={{ color: 'rgb(141, 141, 141)', textTransform: 'capitalize' }}>
+              € {price}
+            </Typography>
+          </Box>
+
+          <div style={{ color: 'rgb(141, 141, 141)', textTransform: 'capitalize' }}>
+            <div>{productType}</div>
+            <div>{special}</div>
+          </div>
+
+          <Breadcrumbs separator="|" aria-label="breadcrumb" style={{ marginTop: 8 }}>
+            <Box display="flex" alignItems="center">
+              <SelectNum2 range={10} handleValue={handleQuantity} setValue={count} label="Quantity" />
             </Box>
-
-            <div style={{ color: 'rgb(141, 141, 141)', textTransform: 'capitalize' }}>
-              <div>{productType}</div>
-              <div>{special}</div>
-            </div>
-
-
-            <Breadcrumbs separator="|" aria-label="breadcrumb" style={{marginTop: 8}}>
-              <Box display="flex" alignItems="center">
-                
-                <SelectNum2 range={10} handleValue={handleQuantity} setValue={count} label="Quantity"/>
-              </Box>
-              <Button className=" cart-icon" onClick={() => ActionCart.delete(dispatch, id)}>
-                Remove
+            <Button style={{ fontSize: 14 }} onClick={() => ActionCart.delete(dispatch, id)}>
+              Remove
             </Button>
-            </Breadcrumbs>
-          </div>
-          <div>
-
-
-
-          </div>
-        </Box>
+          </Breadcrumbs>
+        </div>
       </Box>
     </>
   )

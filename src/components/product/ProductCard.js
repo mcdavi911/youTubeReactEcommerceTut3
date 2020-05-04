@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
   },
   productInfoWrapper: {
-  
     '&:hover > div > p:first-child': {
       color: theme.palette.primary.dark
     }
