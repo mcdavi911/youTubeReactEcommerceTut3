@@ -53,6 +53,7 @@ export const products = [
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub. Echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
+    special: '',
     productType: productTypes.CASE,
   },
   {
@@ -65,6 +66,7 @@ export const products = [
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
+    special: '',
     productType: productTypes.LENSE
   },
   {
@@ -77,6 +79,7 @@ export const products = [
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
+    special: '',
     productType: productTypes.KIT
   },
   {
@@ -89,6 +92,7 @@ export const products = [
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
+    special: '',
     productType: productTypes.LENSE
   },
   {
@@ -101,6 +105,7 @@ export const products = [
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
+    special: '',
     productType: productTypes.LENSE
   },
   {
@@ -113,6 +118,7 @@ export const products = [
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
+    special: '',
     productType: productTypes.MOTOR
   },
 
@@ -126,6 +132,7 @@ export const products = [
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
+    special: '',
     productType: productTypes.PREPAID_CREDIT
 
   },
@@ -139,6 +146,7 @@ export const products = [
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
+    special: '',
     productType: productTypes.KIT
   },
   {
@@ -151,6 +159,7 @@ export const products = [
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
+    special: '',
     productType: productTypes.KIT
   }
 ];
@@ -168,5 +177,6 @@ export const productDetail =
   info:
     "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
   count: 0,
+  special: '',
   productType: productTypes.KIT
 };

@@ -44,8 +44,40 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function S_Select({devices}) {
+export default function SelectList({ devices, handleValue }) {
   const classes = useStyles();
+
+  /*
+  const [state, setState] = React.useState({
+    age: '',
+    name: 'hai',
+  });
+  */
+  const [value, setValue] = React.useState();
+
+  const handleChange = (e) => {
+    //const name = event.target.value;
+    /*
+      setState({
+        ...state,
+        [name]: event.target.value,
+      });
+    */
+    // Action set SelectValue
+    // param Cases special value > use enum?
+    //
+    /*
+      {
+        type: 'SET_SELECT_VALUE',
+        payload: productType
+      }
+    */
+    setValue(e.target.value);
+    //console.log('value here', value);
+
+    handleValue(e.target.value);
+  };
+
 
   return (
     <div>
@@ -54,24 +86,51 @@ export default function S_Select({devices}) {
         <Select
           fullWidth
           native
-          /*value={productType}*/
+          value={value}
           label="Device"
-          inputProps={{
-            name: 'device',
-            id: 'outlined-age-native-simple',
-          }}
+          onChange={handleChange}
         >
           <option aria-label="None" value="" />
 
           {Object.entries(devices).map(([brand, model], idx) => (
             <optgroup key={idx} label={brand} style={{ textTransform: 'capitalize' }}>
               {model.map((m, idx) => (
-                <option key={idx} value={m.id}>{m.name}</option>
+                <option key={idx} value={m.name}>{m.name}</option>
               ))}
             </optgroup>
           ))}
         </Select>
       </FormControl>
+
+      {
+        /*
+<FormControl variant="outlined" className={classes.formControl} style={{ display: 'block' }}>
+    <InputLabel htmlFor="outlined-age-native-simple">Device</InputLabel>
+    <Select
+      fullWidth
+      native
+      value={state.age}
+      label="Device"
+      onChange={handleChange}
+      inputProps={{
+        name: 'device',
+        id: 'outlined-age-native-simple',
+      }}
+    >
+      <option aria-label="None" value="" />
+
+      {Object.entries(devices).map(([brand, model], idx) => (
+        <optgroup key={idx} label={brand} style={{ textTransform: 'capitalize' }}>
+          {model.map((m, idx) => (
+            <option key={idx} value={m.name}>{m.name}</option>
+          ))}
+        </optgroup>
+      ))}
+    </Select>
+  </FormControl>
+        */
+      }
+
     </div>
   )
 }

@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
   flexBasis100: {
     flexBasis: '100%',
-  }
+  } 
 }));
 
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Store } from '../../Store';
+import SelectNum from '../form/SelectNum'
 
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -8,7 +9,8 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 
 import Select from '@material-ui/core/Select';
-import ActionCart from '../../actions/ActionCart'
+import ActionCart from '../../actions/ActionCart';
+import Product from '../product/Product'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -52,20 +54,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function DetailSide({ children }) {
   const { state, dispatch } = React.useContext(Store);
+
   const classes = useStyles();
-  let quantity = 1;
+  let productQuantity = 1;
 
   const { productType, info, price, title } = state.productDetail;
 
-  const populateQuantitySelect = () => {
-    let quantities = []
-    for (let idx = 0; idx < 10; idx++) {
-      quantities.push(<option key={idx} aria-label="None" value={idx + 1}>{idx + 1}</option>)
-    }
-
-    return quantities;
-  }
-
+  const handleQuantity = (quantity) => productQuantity = quantity;
 
   return (
     <div style={{ padding: '0px 56px 0px 64px' }}>
@@ -76,30 +71,17 @@ export default function DetailSide({ children }) {
 
       <Typography variant="h5" component="h1" style={{
         fontSize: 28, fontWeight: 600, lineHeight: 1.2, letterSpacing: '0.007em'
-      }}> {title}</Typography >
+      }}> {title}</Typography>
 
       {children}
 
       <Box display="flex" style={{ marginTop: 16, marginBottom: 16, marginLeft: 8 }}>
         <p style={{ marginRight: 8 }}>Quantity</p>
-        <FormControl style={{ marginLeft: 0, minWidth: 32 }} variant="outlined" className={classes.formControl}>
 
-          <Select
-            classes={{ root: classes.selectTest }}
-            native
-            /*value={productType}*/
-            onChange={(e) => quantity = parseInt(e.target.value)}
-            inputProps={{
-              name: 'age',
-              id: 'outlined-age-native-simple',
-            }}
-          >
-            {populateQuantitySelect()}
-          </Select>
-        </FormControl>
+        <SelectNum range={10} handleValue={handleQuantity} />
       </Box>
 
-      <Button onClick={() => ActionCart.changeCount(dispatch, state.productDetail, quantity)} variant="contained" color="primary" style={{ marginBottom: 24, width: '100%', padding: '16px 24px', borderRadius: 100 }} >Add to Basket</Button>
+      <Button onClick={() => ActionCart.add(dispatch, state.productDetail, productQuantity)} variant="contained" color="primary" style={{ marginBottom: 24, width: '100%', padding: '16px 24px', borderRadius: 100 }} >Add to Basket</Button>
 
       <Typography style={{ lineHeight: 1.75 }}>{info}</Typography>
     </div>

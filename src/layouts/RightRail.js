@@ -9,10 +9,9 @@ export default function RightRail(props) {
         {props.left}
       </div>
 
-      <div style={{ width: 464 }}>
+      <div style={{ flex: '0 0 464px' }}>
         {props.right}
       </div >
     </Box>
-
   )
 }

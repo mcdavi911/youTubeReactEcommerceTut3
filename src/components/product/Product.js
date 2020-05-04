@@ -4,7 +4,7 @@ export default class Product {
   static prds = []
   children = []
 
-  constructor(id, title, imgHero, imgs, childIds, price, info, count, productType) {
+  constructor(id, title, imgHero, imgs, childIds, price, info, count, productType, special = '') {
     this.id = id;
     this.title = title;
     this.imgHero = imgHero;
@@ -14,6 +14,7 @@ export default class Product {
     this.info = info;
     this.count = count;
     this.productType = productType;
+    this.special = special;
 
     this.populateChildren();
   }
@@ -23,15 +24,18 @@ export default class Product {
 
     this.childIds.forEach(id => {
       const product = Product.prds.find(p => p.id === id);
-      this.children.push(product);
+      this.children.push({...product});
     })
   }
 
+  setSpecial(value) {
+    this.special = value;
+  }
 
   static create(product) {
-    const { id, title, imgHero, imgs, childIds, price, info, count, productType } = product;
+    const { id, title, imgHero, imgs, childIds, price, info, count, productType, special } = product;
 
-    return new Product(id, title, imgHero, imgs, childIds, price, info, count, productType);
+    return new Product(id, title, imgHero, imgs, childIds, price, info, count, productType, special);
   }
 
   static setPrds(products) {
@@ -57,4 +61,6 @@ export default class Product {
 
     return this.children;
   }
+
+  
 }

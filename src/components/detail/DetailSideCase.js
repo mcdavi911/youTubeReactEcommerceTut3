@@ -1,15 +1,27 @@
 import React from 'react'
 import DetailSide from './DetailSide'
-import SlctSelect from '../SlctSelect'
+import SelectList from '../form/SelectList'
 import { devices } from '../../data';
+import Action from '../../actions/Action';
+import {productTypes} from '../../data'
+import { Store } from '../../Store';
+import Product from '../product/Product';
 
 
 export default function DetailSideCase() {
-  
+  const { state, dispatch } = React.useContext(Store);
+
+  const handleValue = (value) => {
+    const prd = Product.create(state.productDetail);
+    prd.special = value;
+    
+    Action.setProductDetail(dispatch, prd);
+  }
+
   return (
     <div>
       <DetailSide>
-        <SlctSelect devices={devices} />
+        <SelectList devices={devices} handleValue={handleValue} />
       </DetailSide>
     </div>
   )

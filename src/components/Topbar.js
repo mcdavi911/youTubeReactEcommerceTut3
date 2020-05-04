@@ -133,7 +133,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function Navbar() {
+export default function Topbar() {
   const classes = useStyles();
   const { state, dispatch } = React.useContext(Store);
 

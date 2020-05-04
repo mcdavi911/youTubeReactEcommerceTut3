@@ -25,14 +25,16 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const classes = useStyles();
 
-  Product.setPrds(products);
+  React.useEffect(() => { 
+    Product.setPrds(products);
+  }, [])
 
   return (
     <React.Fragment>
       <Navbar />
       <div className={classes.toolbar}></div>
       <Banner />
-      <Box style={{height: 30}}></Box>
+      <Box style={{ height: 30 }}></Box>
       <MobileDrawer></MobileDrawer>
       <Switch>
         <Route exact path="/" component={PrdList} />

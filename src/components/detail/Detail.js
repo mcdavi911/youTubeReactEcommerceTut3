@@ -38,7 +38,7 @@ export default function Detail() {
     //case productTypes.PREPAID_CREDIT:
     //break;
     default:
-      detail = { right: <DetailSide product={prd} dispatch={dispatch} /> };
+      detail = { right: <DetailSide /> };
   }
 
   return (

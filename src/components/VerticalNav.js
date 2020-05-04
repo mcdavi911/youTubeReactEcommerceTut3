@@ -6,22 +6,11 @@ import { itemCategories } from '../data'
 import Action from '../actions/Action'
 import { Store } from '../Store'
 
-//import Box from '@material-ui/core/Box'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-//import Icon from '@material-ui/core/Icon'
 
 const useStyles = makeStyles((theme) => ({
-  test: {
-    //marginTop: theme.spacing(.1),
-    //alignContent: 'space-around',
-    //margin: theme.spacing(0, -2),
-
-    '& > div': {
-      //flexBasis: (100 / 3) + '%',
-      //padding: theme.spacing(2, 2, 2, 2),
-    }
-  },
+  
   gridItemProduct: {
     flexBasis: (100 / 2) + '%',
     [theme.breakpoints.up('lg')]: {
@@ -30,13 +19,8 @@ const useStyles = makeStyles((theme) => ({
   },
   listNav: {
     textTransform: 'capitalize',
-    '& span': {
-
-    }
-  },
- 
+  }
 }));
- 
 
 export default function VerticalNav() {
   const classes = useStyles();
@@ -45,7 +29,7 @@ export default function VerticalNav() {
   return (
     <div>
       <List className={classes.listNav} component="nav" aria-label="product categories" disablePadding>
-        {itemCategories.map(({ id, label, icon: Icon }, idx) =>
+        {itemCategories.map(({ label, icon: Icon }, idx) =>
           <ListItem
             key={idx}
             selected={state.productType === label}

@@ -1,10 +1,22 @@
+import { productTypes } from '../data'
+import Product from '../components/product/Product'
 
 export default class Action {
   static setProductDetail = (dispatch, product) => {
 
+    //const prd = Product.create(product);
+
+    /*
+    const caseChild = prd.children.filter(p => {
+      return p.productType === productTypes.CASE;
+    });
+
+    console.log('helloTest', caseChild);
+    */
+
     return dispatch({
       type: 'SET_PRODUCT_DETAIL',
-      payload: product
+      payload: {...product}
     })
   }
 
@@ -42,7 +54,6 @@ export default class Action {
     })
   }
 
-
   static toggleMobileDrawer = (dispatch) => {
 
     return dispatch({
@@ -51,6 +62,29 @@ export default class Action {
     })
   }
 
+  static setProductDetailSpecial = (dispatch, productType, caseModel) => {
+
+    /*
+    if (productType === productTypes.CASE) {
+      return dispatch({
+        type: 'SET_CASE_SPECIAL',
+        payload: caseModel
+      })
+    }
+    */
+
+    if (productType === productTypes.KIT) {
+
+      return dispatch({
+        type: 'SET_KIT_SPECIAL',
+        payload: caseModel
+      })
+    }
+
+    
+    
+    
+  }
 }
 
 
