@@ -23,27 +23,24 @@ export default function CartSummary(props) {
   /*console.log('yo props history here dawg', props.history)*/
 
   return (
-    <div>
-      <Typography style={{ fontSize: 22, fontWeight: 600, marginBottom: 12 }}>Summary</Typography>
+    <div style={{ padding: '0px 56px 0px 64px' }}>
+      <Typography style={{ fontSize: 22, marginBottom: 12 }}>Summary</Typography>
 
-      <Box variant="body2" display="flex" justifyContent="space-between">
-        <Typography>Subtotal</Typography>
-        <div>{cartSubtotal()}</div>
-      </Box>
-
-      
+      <Typography variant="body2" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 12, marginTop: 12 }}>
+        <span>Subtotal</span>
+        <span>€ {cartSubtotal()}</span>
+      </Typography>
 
       <Typography variant="body2" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 12, marginTop: 12 }}>
         <span>Estimated Delivery</span>
-        <span>{10}</span>
+        <span>€ {10}</span>
       </Typography>
-
 
       <Divider />
 
       <Typography variant="body2" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16, marginTop: 16 }}>
         <span>Total</span>
-        <span>{cartSubtotal() + 10}</span>
+        <span style={{color: 'rgb(17, 17, 17)'}}>€ {cartSubtotal() + 10}</span>
       </Typography>
 
       <Divider style={{marginBottom: 20}} />

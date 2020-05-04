@@ -81,7 +81,7 @@ export default function DetailSide({ children }) {
         <SelectNum range={10} handleValue={handleQuantity} />
       </Box>
 
-      <Button onClick={() => ActionCart.add(dispatch, state.productDetail, productQuantity)} variant="contained" color="primary" style={{ marginBottom: 24, width: '100%', padding: '16px 24px', borderRadius: 100 }} >Add to Basket</Button>
+      <Button onClick={() => ActionCart.add(dispatch, state.productDetail, productQuantity)} variant="contained" color="primary" style={{ marginBottom: 24, width: '100%', padding: '16px 24px', borderRadius: 100 }} >Add to Bag</Button>
 
       <Typography style={{ lineHeight: 1.75 }}>{info}</Typography>
     </div>

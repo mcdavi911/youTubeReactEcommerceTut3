@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import CartProductRow from './CartProductRow'
 import CartSummary from './CartSummary'
 import { Store } from '../../Store'
+import RightRail from '../../layouts/RightRail'
 
 import CartProductCard from './CartProductCard';
 
@@ -25,24 +26,28 @@ export default function Cart(props) {
   const { state, dispatch } = React.useContext(Store);
   const classes = useStyles();
 
+
+  const left = (
+    <>
+      <Typography component="h4" style={{ fontSize: 22, fontWeight: 500 }} >Bag</Typography>
+
+      {state.cart.length > 0 ? state.cart.map(p => (
+        <CartProductCard product={p} />
+      )) : (
+          <Typography variant="body2" style={{
+            marginTop: 8
+          }}>There are no items in your bag.</Typography>
+        )}
+    </>
+  );
+
+  const right = <CartSummary />;
+
+
+
   return (
     <Container classes={{ root: classes.container }}>
-      <Grid container spacing={5}>
-
-        <Grid item sm={12} md={8} lg={8}>
-          <Typography component="h4" style={{ fontSize: 22, fontWeight: 600 }} >Bag</Typography>
-
-          {state.cart.length > 0 ? state.cart.map(p => (
-            <CartProductCard product={p} />
-          )) : (
-              <Typography variant="body2">There are no items in your bag.</Typography>
-            )}
-        </Grid>
-
-        <Grid item sm={12} md={4} lg={4}>
-          <CartSummary />
-        </Grid>
-      </Grid>
+      <RightRail left={left} right={right} />
     </Container>
 
 
