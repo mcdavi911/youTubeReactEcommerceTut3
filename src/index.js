@@ -24,7 +24,8 @@ const theme = createMuiTheme({
   },
   typography: {
     //fontSize: 16,  use default theme body1 instead chaning fontsize globally
-    
+    fontSize: 15, // default is 14
+
     fontFamily: [
       'Open Sans', 'sans-serif'
     ].join(','),

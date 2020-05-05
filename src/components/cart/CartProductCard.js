@@ -31,15 +31,16 @@ export default function CartProduct(props) {
         <div style={{ flexGrow: 1 }}>
           <Box display="flex" justifyContent="space-between" style={{ textTransform: 'capitalize' }}>
             <Typography style={{ color: '#111', lineHeight: '1.7' }}>{title}</Typography>
-            <Typography style={{ color: 'rgb(141, 141, 141)', textTransform: 'capitalize' }}>
-              € {price}
+            <Typography variant="body2" style={{ color: 'rgb(17, 17, 17)', textTransform: 'capitalize' }}>
+              € {price.toFixed(2)}
             </Typography>
           </Box>
 
           <div style={{ color: 'rgb(141, 141, 141)', textTransform: 'capitalize' }}>
             <div>{productType}</div>
-            <div>{special}</div>
+            <div>{special[productType]}</div>
           </div>
+
 
           <Breadcrumbs separator="|" aria-label="breadcrumb" style={{ marginTop: 8 }}>
             <Box display="flex" alignItems="center">

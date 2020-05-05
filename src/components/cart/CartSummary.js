@@ -28,19 +28,19 @@ export default function CartSummary(props) {
 
       <Typography variant="body2" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 12, marginTop: 12 }}>
         <span>Subtotal</span>
-        <span>€ {cartSubtotal()}</span>
+        <span>€ {cartSubtotal().toFixed(2)}</span>
       </Typography>
 
       <Typography variant="body2" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 12, marginTop: 12 }}>
         <span>Estimated Delivery</span>
-        <span>€ {10}</span>
+        <span>€ {(10).toFixed(2)}</span>
       </Typography>
 
       <Divider />
 
       <Typography variant="body2" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16, marginTop: 16 }}>
         <span>Total</span>
-        <span style={{color: 'rgb(17, 17, 17)'}}>€ {cartSubtotal() + 10}</span>
+        <span style={{fontWeight: 600}}>€ {(cartSubtotal() + 10).toFixed(2)}</span>
       </Typography>
 
       <Divider style={{marginBottom: 20}} />

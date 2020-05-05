@@ -95,7 +95,7 @@ export default function SelectList({ devices, handleValue }) {
           {Object.entries(devices).map(([brand, model], idx) => (
             <optgroup key={idx} label={brand} style={{ textTransform: 'capitalize' }}>
               {model.map((m, idx) => (
-                <option key={idx} value={m.name}>{m.name}</option>
+                <option key={idx} value={`${brand} ${m.name}`}>{m.name}</option>
               ))}
             </optgroup>
           ))}

@@ -13,29 +13,17 @@ export default function DetailSideKit({ childProducts }) {
   const handleValue = (value) => {
     const prd = Product.create(state.productDetail);
     
+    prd.special = {
+      ...prd.special,
+      [prd.productType]: value
+    };
+
     prd.children.forEach(p => {
       if (p.productType === productTypes.CASE) {
         p.special = value;
-        console.log(p);
       }
     });
 
-    console.log('wazaa', prd);
-    
-    //const idx = prd.children.findIndex(p => p.productType === productTypes.CASE);
-    
-
-
-    //const prdChild = Product.create(prd.children[idx]);
-    //prdChild.special = value;
-    
-    //console.log('ZZZZ',prdChild);
-    //prd.children.splice(idx,1, prdChild);
-    
-
-    //const prdChild = prd.children.filter(p => p.productType === productTypes.CASE);
-    //prdChild.special = value;
-  
     Action.setProductDetail(dispatch, prd);
   }
 

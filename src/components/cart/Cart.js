@@ -31,8 +31,8 @@ export default function Cart(props) {
     <>
       <Typography component="h4" style={{ fontSize: 22, fontWeight: 500 }} >Bag</Typography>
 
-      {state.cart.length > 0 ? state.cart.map(p => (
-        <CartProductCard product={p} />
+      {state.cart.length > 0 ? state.cart.map((p,idx) => (
+        <CartProductCard key={idx} product={p} />
       )) : (
           <Typography variant="body2" style={{
             marginTop: 8
