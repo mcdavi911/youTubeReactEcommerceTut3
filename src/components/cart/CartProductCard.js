@@ -4,6 +4,7 @@ import Box from '@material-ui/core/Box'
 import SelectNum2 from '../form/SelectNum2';
 import { Store } from '../../Store'
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import Chip from '@material-ui/core/Chip';
 
 import ActionCart from '../../actions/ActionCart'
 import { Typography } from '@material-ui/core';
@@ -12,7 +13,7 @@ import Button from '@material-ui/core/Button';
 export default function CartProduct(props) {
   const { state, dispatch } = React.useContext(Store);
 
-  const { id, imgHero, count, title, productType, special, price } = props.product;
+  const { id, imgHero, count, title, productType, special, price, children } = props.product;
 
   const handleQuantity = (quantity) => {
     ActionCart.updateCount(dispatch, id, quantity);
@@ -39,6 +40,12 @@ export default function CartProduct(props) {
           <div style={{ color: 'rgb(141, 141, 141)', textTransform: 'capitalize' }}>
             <div>{productType}</div>
             <div>{special[productType]}</div>
+            
+            <ul>
+              {children && children.map(product => (
+                <li key={product.id}>{product.title} {product.special !== '' && (<>- <span style={{color: '#111'}}>{product.special}</span></>)}</li>
+              ))}
+            </ul>
           </div>
 
 

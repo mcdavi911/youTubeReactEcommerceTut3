@@ -63,6 +63,7 @@ export default function ProductCard(product) {
             <p>{title}</p>
             <p>{price} €</p>
           </div>
+
           <p style={{ fontSize: '1rem', color: 'rgb(141, 141, 141)', marginTop: 0, textTransform: 'capitalize' }}>{productType}</p>
         </div>
       </Link>

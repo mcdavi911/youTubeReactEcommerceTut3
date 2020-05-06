@@ -15,14 +15,6 @@ export default function DetailSideKit({ childProducts }) {
 
     product.buildSpecialId(value, productTypes.CASE);
 
-    /*
-    product.children.forEach(p => {
-      if (p.productType === productTypes.CASE) {
-        p.special = value;
-      }
-    });
-    */
-
     Action.setProductDetail(dispatch, product);
   }
 
@@ -36,6 +28,8 @@ export default function DetailSideKit({ childProducts }) {
             </Typography>
 
             {p.productType === productTypes.CASE && <SelectList devices={devices} handleValue={handleSelectCase} />}
+
+            {p.productType === productTypes.ARM && <SelectList devices={devices} handleValue={handleSelectCase} />}
           </li>
         ))}
       </ul>

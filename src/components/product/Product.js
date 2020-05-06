@@ -1,10 +1,12 @@
-
+import Validate from '../../utilities/Validate';
+import {productTypes} from '../../data';
 
 export default class Product {
   static prds = []
   children = []
+  specialId = {};
 
-  constructor(id, title, imgHero, imgs, childIds, price, info, count, productType, special = '') {
+  constructor(id, title, imgHero, imgs, childIds, price, info, count, productType, special = {}) {
     this.id = id;
     this.title = title;
     this.imgHero = imgHero;
@@ -16,21 +18,21 @@ export default class Product {
     this.productType = productType;
     this.special = special;
 
-    this.populateChildren();
+    this._populateChildren();
+
+    
   }
 
-  populateChildren() {
+  _populateChildren() {
     if (this.childIds.length === 0) return;
 
-    this.childIds.forEach(id => {
-      const product = Product.prds.find(p => p.id === id);
-      this.children.push({...product});
+    this.childIds.forEach(title => {
+      const product = Product.prds.find(p => p.title === title);
+      this.children.push({ ...product });
     })
   }
 
-  setSpecial(value) {
-    this.special = value;
-  }
+  
 
   static create(product) {
     const { id, title, imgHero, imgs, childIds, price, info, count, productType, special } = product;
@@ -42,9 +44,9 @@ export default class Product {
     Product.prds = products;
   }
 
-  
 
-  getImgs() { 
+
+  getImgs() {
     if (this.childIds.length === 0) return [{ src: this.imgHero, alt: this.imgs }];
 
     if (Product.prds.length === 0) return;
@@ -62,5 +64,38 @@ export default class Product {
     return this.children;
   }
 
+
+  _setSpecial(value, productType) {
+    this.special = {
+      ...this.special,
+      [productType]: value
+    };
+  }
+
+
+  _setChildSpecial (value, childProductType) {
+    this.children.forEach(p => {
+      if (p.productType === childProductType) {
+        p.special = value;
+      }
+    });
+  }
+
+
+  buildSpecialId(value, childProductType) {
+
+    if (value === null || childProductType === null) {
+      throw new Error('Product.buildSpecialId missing arguments');
+    }
+    
+    // check if children exist => set children special
+    if (this.children.length !== 0) this._setChildSpecial(value, childProductType);
   
+    this._setSpecial(value, childProductType);
+
+    // check if special obj is empty
+    if (Validate.isEmpty(this.special)) return;
+
+    this.specialId = `${this.productType}_${JSON.stringify(this.special)}`;
+  }
 }

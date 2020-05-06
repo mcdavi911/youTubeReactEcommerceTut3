@@ -80,10 +80,6 @@ export default class Action {
         payload: caseModel
       })
     }
-
-    
-    
-    
   }
 }
 

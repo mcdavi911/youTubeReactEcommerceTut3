@@ -6,28 +6,25 @@ import Action from '../../actions/Action';
 import { productTypes } from '../../data'
 import { Store } from '../../Store';
 import Product from '../product/Product';
-import produce from 'immer'
+//import produce from 'immer'
 
 
 
 export default function DetailSideCase() {
   const { state, dispatch } = React.useContext(Store);
 
-  const handleValue = (value) => {
-    const prd = Product.create(state.productDetail);
+  const handleSelectCase = (value) => {
+    const product = Product.create(state.productDetail);
 
-    prd.special = {
-      ...prd.special,
-      [prd.productType]: value
-    };
+    product.buildSpecialId(value, product.productType, productTypes.CASE);
 
-    Action.setProductDetail(dispatch, prd);
+    Action.setProductDetail(dispatch, product);
   }
 
   return (
     <div>
       <DetailSide>
-        <SelectList devices={devices} handleValue={handleValue} />
+        <SelectList devices={devices} handleValue={handleSelectCase} />
       </DetailSide>
     </div>
   )

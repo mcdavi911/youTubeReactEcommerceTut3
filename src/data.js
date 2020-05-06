@@ -6,45 +6,72 @@ import WorkOutline from '@material-ui/icons/WorkOutline'
 import PhotoCamera from '@material-ui/icons/PhotoCamera'
 import ThreeSixty from '@material-ui/icons/ThreeSixty'
 import CreditCard from '@material-ui/icons/CreditCard'
+import GUID from './utilities/GUID'
+
+
+
+
+
+
+export const productTypes2 = {
+  KIT: { key: 'KIT', value: 'kits' },
+  LENSE: { key: 'LENSE', value: 'lenses' },
+  CASE: { key: 'CASE', value: 'cases' },
+  ARM: { key: 'ARM', value: 'accessories' },
+  MOTOR: { key: 'MOTOR', value: 'accessories' },
+  TRIPOD: { key: 'TRIPOD', value: 'tripods' },
+  PREPAID_CREDIT: { key: 'PREPAID_CREDIT', value: 'prepaid credits' },
+  ACCESSORY: { key: 'ACCESSORY', value: 'accessories' }
+}
+
+
+
 
 export const productTypes = {
   KIT: 'kits',
   LENSE: 'lenses',
   CASE: 'cases',
-  MOTOR: 'motor',
+  ARM: 'accessories',
+  MOTOR: 'accessories',
   TRIPOD: 'tripods',
-  PREPAID_CREDIT: 'prepaid credits'
+  PREPAID_CREDIT: 'prepaid credits',
+  ACCESSORY: 'accessories'
 }
 
 
 export const itemCategories = [
-  { label: productTypes.KIT, icon: WorkOutline },
-  { label: productTypes.LENSE, icon: Camera },
-  { label: productTypes.CASE, icon: Smartphone },
-  { label: productTypes.MOTOR, icon: ThreeSixty },
-  { label: productTypes.TRIPOD, icon: PhotoCamera },
-  { label: productTypes.PREPAID_CREDIT, icon: CreditCard },
+  { id: GUID.uuidv4(), label: productTypes.KIT, icon: WorkOutline },
+  { id: GUID.uuidv4(), label: productTypes.LENSE, icon: Camera },
+  { id: GUID.uuidv4(), label: productTypes.CASE, icon: Smartphone },
+  //{ label: productTypes.MOTOR, icon: ThreeSixty },
+  { id: GUID.uuidv4(), label: productTypes.TRIPOD, icon: PhotoCamera },
+  { id: GUID.uuidv4(), label: productTypes.ACCESSORY, icon: ThreeSixty },
+  { id: GUID.uuidv4(), label: productTypes.PREPAID_CREDIT, icon: CreditCard }
 ]
 
 export const devices = {
   apple: [
-    { id: 1, name: 'IPhone 11' },
-    { id: 2, name: 'IPhone 11 Pro' },
+    { id: GUID.uuidv4(), name: 'IPhone 11' },
+    { id: GUID.uuidv4(), name: 'IPhone 11 Pro' },
   ],
   samsung: [
-    { id: 3, name: 'Note 9' },
-    { id: 4, name: 'Note 8' },
+    { id: GUID.uuidv4(), name: 'Note 9' },
+    { id: GUID.uuidv4(), name: 'Note 8' },
   ],
   huawei: [
-    { id: 5, name: 'Mate 9' },
-    { id: 6, name: 'P 30' },
+    { id: GUID.uuidv4(), name: 'Mate 9' },
+    { id: GUID.uuidv4(), name: 'P 30' },
   ]
 }
 
 
-export const products = [
+
+
+
+
+export let products = [
   {
-    id: 1,
+    id: GUID.uuidv4(),
     title: "Nodalview Cases",
     imgHero: "img/products/cases.jpg",
     childIds: [],
@@ -54,10 +81,11 @@ export const products = [
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub. Echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
     special: '',
+    specialId: '',
     productType: productTypes.CASE,
   },
   {
-    id: 2,
+    id: GUID.uuidv4(),
     title: "Nodalview Arm",
     imgHero: "img/products/brasnodal-nodalview.jpg",
     childIds: [],
@@ -67,23 +95,31 @@ export const products = [
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
     special: '',
-    productType: productTypes.LENSE
+    specialId: '',
+    productType: productTypes.ARM
   },
   {
-    id: 3,
+    id: GUID.uuidv4(),
     title: "Starter Kit Duo",
     imgHero: "img/products/kit-duo-pack.jpg",
-    childIds: [1, 2, 4, 5, 6],
+    childIds: [
+      "Nodalview Cases",
+      "Nodalview Arm",
+      "Nodalview 360°",
+      "Nodalview Pro Photo Lens",
+      "Nodalview Motor"
+    ],
     imgs: [],
     price: 138,
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
     special: '',
+    specialId: '',
     productType: productTypes.KIT
   },
   {
-    id: 4,
+    id: GUID.uuidv4(),
     title: "Nodalview 360°",
     imgHero: "img/products/lens360.png",
     childIds: [],
@@ -93,10 +129,11 @@ export const products = [
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
     special: '',
+    specialId: '',
     productType: productTypes.LENSE
   },
   {
-    id: 5,
+    id: GUID.uuidv4(),
     title: "Nodalview Pro Photo Lens",
     imgHero: "img/products/nodalview-pro-photo-lens.jpg",
     childIds: [],
@@ -106,10 +143,11 @@ export const products = [
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
     special: '',
+    specialId: '',
     productType: productTypes.LENSE
   },
   {
-    id: 6,
+    id: GUID.uuidv4(),
     title: "Nodalview Motor",
     imgHero: "img/products/nodalview-motor.jpg",
     childIds: [],
@@ -119,11 +157,12 @@ export const products = [
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
     special: '',
+    specialId: '',
     productType: productTypes.MOTOR
   },
 
   {
-    id: 7,
+    id: GUID.uuidv4(),
     title: "100 HDR Photos",
     imgHero: "img/products/nodalivew-100Hdr-prepaid.jpg",
     childIds: [],
@@ -133,11 +172,12 @@ export const products = [
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
     special: '',
+    specialId: '',
     productType: productTypes.PREPAID_CREDIT
 
   },
   {
-    id: 8,
+    id: GUID.uuidv4(),
     title: "Motorised Duo Pack",
     imgHero: "img/products/nodalview-pack-duo-motorised-V2.png",
     childIds: [],
@@ -147,25 +187,41 @@ export const products = [
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
     special: '',
+    specialId: '',
     productType: productTypes.KIT
   },
   {
-    id: 9,
+    id: GUID.uuidv4(),
     title: "Pro Pack 125",
     imgHero: "img/products/Nodalview-pro-kit-125.jpg",
-    childIds: [],
+    childIds: [
+      "Nodalview Cases",
+      "Nodalview Arm",
+      "Nodalview 360°",
+      "Nodalview Pro Photo Lens",
+      "Nodalview Motor",
+      "100 HDR Photos",
+    ],
     imgs: [],
     price: 599,
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
     special: '',
+    specialId: '',
     productType: productTypes.KIT
-  }
+  },
+
 ];
 
 
 
+
+
+
+
+
+/*
 export const productDetail =
 {
   id: 3,
@@ -180,3 +236,4 @@ export const productDetail =
   special: '',
   productType: productTypes.KIT
 };
+*/

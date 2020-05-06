@@ -10,6 +10,7 @@ import FormControl from '@material-ui/core/FormControl';
 
 import Select from '@material-ui/core/Select';
 import ActionCart from '../../actions/ActionCart';
+import { ActionCart2 } from '../../actions/ActionCart';
 import Product from '../product/Product'
 
 
@@ -62,6 +63,14 @@ export default function DetailSide({ children }) {
 
   const handleQuantity = (quantity) => productQuantity = quantity;
 
+
+  const handleAdd = () => {
+    const actionCart = new ActionCart2(dispatch, state.cart);
+
+    actionCart.add2(state.productDetail, productQuantity);
+  }
+  
+
   return (
     <div style={{ padding: '0px 56px 0px 64px' }}>
       <div className={classes.productInfo} style={{ marginBottom: 4 }}>
@@ -73,7 +82,9 @@ export default function DetailSide({ children }) {
         fontSize: 28, fontWeight: 600, lineHeight: 1.2, letterSpacing: '0.007em'
       }}> {title}</Typography>
 
+
       {children}
+      
 
       <Box display="flex" alignItems="center" style={{ marginTop: 16, marginBottom: 16, marginLeft: 8 }}>
         <p style={{ marginRight: 8 }}>Quantity</p>
@@ -81,7 +92,7 @@ export default function DetailSide({ children }) {
         <SelectNum range={10} handleValue={handleQuantity} />
       </Box>
 
-      <Button onClick={() => ActionCart.add(dispatch, state.productDetail, productQuantity)} variant="contained" color="primary" style={{ marginBottom: 24, width: '100%', padding: '16px 24px', borderRadius: 100 }} >Add to Bag</Button>
+      <Button onClick={handleAdd} variant="contained" color="primary" style={{ marginBottom: 24, width: '100%', padding: '16px 24px', borderRadius: 100 }} >Add to Bag</Button>
 
       <Typography style={{ lineHeight: 1.75 }}>{info}</Typography>
     </div>
