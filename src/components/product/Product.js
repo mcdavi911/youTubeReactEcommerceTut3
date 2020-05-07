@@ -1,26 +1,29 @@
 import Validate from '../../utilities/Validate';
-import {productTypes} from '../../data';
+import { productTypes } from '../../data';
+import produce from 'immer'
 
 export default class Product {
   static prds = []
-  children = []
+  //children = []
   specialId = {};
 
-  constructor(id, title, imgHero, imgs, childIds, price, info, count, productType, special = {}) {
+  constructor(id, title, imgHero, imgs, childIds, children = [], price, info, count, productType, special = {}, specialId = '') {
     this.id = id;
     this.title = title;
     this.imgHero = imgHero;
     this.imgs = imgs;
     this.childIds = childIds;
+    this.children = children;
     this.price = price;
     this.info = info;
     this.count = count;
     this.productType = productType;
     this.special = special;
+    this.specialId = specialId;
 
-    this._populateChildren();
-
-    
+    if (this.children.length === 0) {
+      this._populateChildren();
+    }
   }
 
   _populateChildren() {
@@ -32,12 +35,12 @@ export default class Product {
     })
   }
 
-  
 
-  static create(product) {
-    const { id, title, imgHero, imgs, childIds, price, info, count, productType, special } = product;
 
-    return new Product(id, title, imgHero, imgs, childIds, price, info, count, productType, special);
+  static construct(product) {
+    const { id, title, imgHero, imgs, childIds, children, price, info, count, productType, special, specialId } = product;
+
+    return new Product(id, title, imgHero, imgs, childIds, children, price, info, count, productType, special, specialId);
   }
 
   static setPrds(products) {
@@ -73,12 +76,14 @@ export default class Product {
   }
 
 
-  _setChildSpecial (value, childProductType) {
-    this.children.forEach(p => {
-      if (p.productType === childProductType) {
-        p.special = value;
+  _setChildSpecial(value, childProductType) {
+    this.children.map(child => {
+      if (child.productType === childProductType) {
+        produce(child, draft => {
+          draft.special = value;
+        })
       }
-    });
+    })
   }
 
 
@@ -87,10 +92,10 @@ export default class Product {
     if (value === null || childProductType === null) {
       throw new Error('Product.buildSpecialId missing arguments');
     }
-    
+
     // check if children exist => set children special
     if (this.children.length !== 0) this._setChildSpecial(value, childProductType);
-  
+
     this._setSpecial(value, childProductType);
 
     // check if special obj is empty

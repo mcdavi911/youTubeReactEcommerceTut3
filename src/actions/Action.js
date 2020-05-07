@@ -1,18 +1,14 @@
-import { productTypes } from '../data'
+import { productTypes2 } from '../data'
 import Product from '../components/product/Product'
 
 export default class Action {
-  static setProductDetail = (dispatch, product) => {
+  static setProductDetail = (dispatch, prd) => {
 
-    //const prd = Product.create(product);
-
-    /*
-    const caseChild = prd.children.filter(p => {
-      return p.productType === productTypes.CASE;
-    });
-
-    console.log('helloTest', caseChild);
-    */
+    const test = {...prd};
+    
+    console.log('TESTESTESTEST',test)
+    const product = Product.construct(test);
+    console.log('product here from action.Check children222', product)
 
     return dispatch({
       type: 'SET_PRODUCT_DETAIL',
@@ -62,6 +58,7 @@ export default class Action {
     })
   }
 
+  /*
   static setProductDetailSpecial = (dispatch, productType, caseModel) => {
 
     /*
@@ -71,9 +68,9 @@ export default class Action {
         payload: caseModel
       })
     }
-    */
+    /
 
-    if (productType === productTypes.KIT) {
+    if (productType === productTypes2.KIT.key) {
 
       return dispatch({
         type: 'SET_KIT_SPECIAL',
@@ -81,6 +78,8 @@ export default class Action {
       })
     }
   }
+  */
+  
 }
 
 

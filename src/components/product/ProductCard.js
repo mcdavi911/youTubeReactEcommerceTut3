@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { Store } from '../../Store';
 import Action from '../../actions/Action'
+import ProductTypes from '../../utilities/ProductTypes';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -42,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function ProductCard(product) {
+export default function ProductCard({product}) {
   const { /*state,*/ dispatch } = React.useContext(Store);
   const classes = useStyles();
   const { title, imgHero, price, productType } = product;
@@ -64,7 +65,7 @@ export default function ProductCard(product) {
             <p>{price} €</p>
           </div>
 
-          <p style={{ fontSize: '1rem', color: 'rgb(141, 141, 141)', marginTop: 0, textTransform: 'capitalize' }}>{productType}</p>
+          <p style={{ fontSize: '1rem', color: 'rgb(141, 141, 141)', marginTop: 0, textTransform: 'capitalize' }}>{ProductTypes.display(productType)}</p>
         </div>
       </Link>
     </div>

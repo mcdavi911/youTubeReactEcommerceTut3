@@ -3,10 +3,10 @@ import DetailSide from './DetailSide'
 import SelectList from '../form/SelectList'
 import { devices } from '../../data';
 import Action from '../../actions/Action';
-import { productTypes } from '../../data'
+import ProductTypes from '../../utilities/ProductTypes'
 import { Store } from '../../Store';
 import Product from '../product/Product';
-//import produce from 'immer'
+
 
 
 
@@ -14,9 +14,9 @@ export default function DetailSideCase() {
   const { state, dispatch } = React.useContext(Store);
 
   const handleSelectCase = (value) => {
-    const product = Product.create(state.productDetail);
+    const product = Product.construct(state.productDetail);
 
-    product.buildSpecialId(value, product.productType, productTypes.CASE);
+    product.buildSpecialId(value, product.productType, ProductTypes.case);
 
     Action.setProductDetail(dispatch, product);
   }

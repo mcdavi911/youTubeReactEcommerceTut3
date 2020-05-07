@@ -47,33 +47,11 @@ const useStyles = makeStyles((theme) => ({
 export default function SelectList({ devices, handleValue }) {
   const classes = useStyles();
 
-  /*
-  const [state, setState] = React.useState({
-    age: '',
-    name: 'hai',
-  });
-  */
   const [value, setValue] = React.useState();
 
   const handleChange = (e) => {
-    //const name = event.target.value;
-    /*
-      setState({
-        ...state,
-        [name]: event.target.value,
-      });
-    */
-    // Action set SelectValue
-    // param Cases special value > use enum?
-    //
-    /*
-      {
-        type: 'SET_SELECT_VALUE',
-        payload: productType
-      }
-    */
+
     setValue(e.target.value);
-    //console.log('value here', value);
 
     handleValue(e.target.value);
   };

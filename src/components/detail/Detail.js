@@ -12,31 +12,24 @@ import RightRail from '../../layouts/RightRail'
 import Product from '../product/Product';
 
 import { Store } from '../../Store';
-import { productTypes } from '../../data';
+import ProductTypes from '../../utilities/ProductTypes';
 
 
 
 export default function Detail() {
   const { state, dispatch } = React.useContext(Store);
-  const prd = Product.create(state.productDetail);
+  const product = Product.construct(state.productDetail);
+
 
   let detail;
 
-  switch (prd.productType) {
-    case productTypes.KIT:
-      detail = { right: <DetailSideKit childProducts={prd.getChildren} /> };
+  switch (product.productType) {
+    case ProductTypes.kit:
+      detail = { right: <DetailSideKit childProducts={product.getChildren} product={product} /> };
       break;
-    //case productTypes.LENSE:
-    //break;
-    case productTypes.CASE:
+    case ProductTypes.case:
       detail = { right: <DetailSideCase /> };
       break;
-    //case productTypes.MOTOR:
-    //break;
-    //case productTypes.TRIPODS:
-    //break;
-    //case productTypes.PREPAID_CREDIT:
-    //break;
     default:
       detail = { right: <DetailSide /> };
   }
@@ -45,7 +38,7 @@ export default function Detail() {
     <>
       <Container>
         <Breadcrumbs />
-        <RightRail left={<DetailImgList imgs={prd.getImgs()} />} right={detail.right} />
+        <RightRail left={<DetailImgList imgs={product.getImgs()} />} right={detail.right} />
       </Container >
     </>
   )

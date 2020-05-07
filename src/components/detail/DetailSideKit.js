@@ -1,41 +1,42 @@
 import React from 'react'
 import DetailSide from './DetailSide'
-import { devices, productTypes } from '../../data';
+import { devices } from '../../data';
+import ProductTypes from '../../utilities/ProductTypes';
 import Typography from '@material-ui/core/Typography';
 import SelectList from '../form/SelectList'
 import Action from '../../actions/Action';
 import { Store } from '../../Store';
 import Product from '../product/Product';
+import produce from 'immer'
 
 export default function DetailSideKit({ childProducts }) {
   const { state, dispatch } = React.useContext(Store);
 
-  const handleSelectCase = (value) => {
-    const product = Product.create(state.productDetail);
+  const product = Product.construct(state.productDetail);
+  
 
-    product.buildSpecialId(value, productTypes.CASE);
-
-    /*
-    product.children.forEach(p => {
-      if (p.productType === productTypes.CASE) {
-        p.special = value;
-      }
-    });
-    */
-
-    Action.setProductDetail(dispatch, product);
+  const handleSelectCase = (value, productType) => {
+  product.buildSpecialId(value, productType);
+  console.log('ÜÜÜÜÜÜ',product);
+  Action.setProductDetail(dispatch, product);
   }
 
   return (
     <DetailSide>
       <ul>
-        {childProducts.length > 0 && childProducts.map(p => (
-          <li key={p.id}>
+        {product.children.length > 0 && product.children.map(product => (
+          <li key={product.id}>
             <Typography>
-              {p.title}
+              {product.title}
             </Typography>
 
-            {p.productType === productTypes.CASE && <SelectList devices={devices} handleValue={handleSelectCase} />}
+            {product.productType === ProductTypes.case && <SelectList devices={devices} handleValue={(value) => handleSelectCase(value, ProductTypes.case)} />}
+
+            {product.productType === ProductTypes.arm && <SelectList devices={devices} handleValue={(value) => handleSelectCase(value, ProductTypes.arm)} />}
+
+            {product.productType === ProductTypes.motor && <SelectList devices={devices} handleValue={(value) => handleSelectCase(value, ProductTypes.motor)} />}
+
+            {product.productType === ProductTypes.lense && <SelectList devices={devices} handleValue={(value) => handleSelectCase(value, ProductTypes.lense)} />}
           </li>
         ))}
       </ul>

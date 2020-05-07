@@ -8,45 +8,19 @@ import ThreeSixty from '@material-ui/icons/ThreeSixty'
 import CreditCard from '@material-ui/icons/CreditCard'
 import GUID from './utilities/GUID'
 
+import ProductTypes from './utilities/ProductTypes';
 
 
 
-
-
-export const productTypes2 = {
-  KIT: { key: 'KIT', value: 'kits' },
-  LENSE: { key: 'LENSE', value: 'lenses' },
-  CASE: { key: 'CASE', value: 'cases' },
-  ARM: { key: 'ARM', value: 'accessories' },
-  MOTOR: { key: 'MOTOR', value: 'accessories' },
-  TRIPOD: { key: 'TRIPOD', value: 'tripods' },
-  PREPAID_CREDIT: { key: 'PREPAID_CREDIT', value: 'prepaid credits' },
-  ACCESSORY: { key: 'ACCESSORY', value: 'accessories' }
-}
-
-
-
-
-export const productTypes = {
-  KIT: 'kits',
-  LENSE: 'lenses',
-  CASE: 'cases',
-  ARM: 'accessories',
-  MOTOR: 'accessories',
-  TRIPOD: 'tripods',
-  PREPAID_CREDIT: 'prepaid credits',
-  ACCESSORY: 'accessories'
-}
 
 
 export const itemCategories = [
-  { id: GUID.uuidv4(), label: productTypes.KIT, icon: WorkOutline },
-  { id: GUID.uuidv4(), label: productTypes.LENSE, icon: Camera },
-  { id: GUID.uuidv4(), label: productTypes.CASE, icon: Smartphone },
-  //{ label: productTypes.MOTOR, icon: ThreeSixty },
-  { id: GUID.uuidv4(), label: productTypes.TRIPOD, icon: PhotoCamera },
-  { id: GUID.uuidv4(), label: productTypes.ACCESSORY, icon: ThreeSixty },
-  { id: GUID.uuidv4(), label: productTypes.PREPAID_CREDIT, icon: CreditCard }
+  { id: GUID.uuidv4(), label: ProductTypes.kit, icon: WorkOutline },
+  { id: GUID.uuidv4(), label: ProductTypes.lense, icon: Camera },
+  { id: GUID.uuidv4(), label: ProductTypes.case, icon: Smartphone },
+  { id: GUID.uuidv4(), label: ProductTypes.tripod, icon: PhotoCamera },
+  { id: GUID.uuidv4(), label: ProductTypes.accessory, icon: ThreeSixty },
+  { id: GUID.uuidv4(), label: ProductTypes.prepaidCredit, icon: CreditCard }
 ]
 
 export const devices = {
@@ -67,8 +41,6 @@ export const devices = {
 
 
 
-
-
 export let products = [
   {
     id: GUID.uuidv4(),
@@ -82,7 +54,7 @@ export let products = [
     count: 0,
     special: '',
     specialId: '',
-    productType: productTypes.CASE,
+    productType: ProductTypes.case,
   },
   {
     id: GUID.uuidv4(),
@@ -96,7 +68,7 @@ export let products = [
     count: 0,
     special: '',
     specialId: '',
-    productType: productTypes.ARM
+    productType: ProductTypes.arm
   },
   {
     id: GUID.uuidv4(),
@@ -116,7 +88,7 @@ export let products = [
     count: 0,
     special: '',
     specialId: '',
-    productType: productTypes.KIT
+    productType: ProductTypes.kit
   },
   {
     id: GUID.uuidv4(),
@@ -130,7 +102,7 @@ export let products = [
     count: 0,
     special: '',
     specialId: '',
-    productType: productTypes.LENSE
+    productType: ProductTypes.lense
   },
   {
     id: GUID.uuidv4(),
@@ -144,7 +116,7 @@ export let products = [
     count: 0,
     special: '',
     specialId: '',
-    productType: productTypes.LENSE
+    productType: ProductTypes.lense
   },
   {
     id: GUID.uuidv4(),
@@ -158,7 +130,7 @@ export let products = [
     count: 0,
     special: '',
     specialId: '',
-    productType: productTypes.MOTOR
+    productType: ProductTypes.motor
   },
 
   {
@@ -173,7 +145,7 @@ export let products = [
     count: 0,
     special: '',
     specialId: '',
-    productType: productTypes.PREPAID_CREDIT
+    productType: ProductTypes.prepaidCredit
 
   },
   {
@@ -188,7 +160,7 @@ export let products = [
     count: 0,
     special: '',
     specialId: '',
-    productType: productTypes.KIT
+    productType: ProductTypes.kit
   },
   {
     id: GUID.uuidv4(),
@@ -209,7 +181,7 @@ export let products = [
     count: 0,
     special: '',
     specialId: '',
-    productType: productTypes.KIT
+    productType: ProductTypes.kit
   },
 
 ];
