@@ -10,7 +10,7 @@ import GUID from './utilities/GUID'
 
 import ProductTypes from './utilities/ProductTypes';
 
-
+//import Product from './components/product/Product';
 
 
 
@@ -39,40 +39,66 @@ export const devices = {
 }
 
 
-
-
-export let products = [
+const kits = [
   {
     id: GUID.uuidv4(),
-    title: "Nodalview Cases",
-    imgHero: "img/products/cases.jpg",
-    childIds: [],
+    title: "Starter Kit 360°",
+    imgHero: "img/products/nodalview-starter-kit-360.jpg",
+    childIds: [
+      "Nodalview Cases",
+      "Nodalview Arm",
+      "Nodalview 360°"
+    ],
     imgs: [],
-    price: 19,
-    info:
-      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub. Echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
-    count: 0,
-    special: '',
-    specialId: '',
-    productType: ProductTypes.case,
-  },
-  {
-    id: GUID.uuidv4(),
-    title: "Nodalview Arm",
-    imgHero: "img/products/brasnodal-nodalview.jpg",
-    childIds: [],
-    imgs: [],
-    price: 39,
+    price: 138,
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
     special: '',
     specialId: '',
-    productType: ProductTypes.arm
+    productType: ProductTypes.kit
+  },
+  {
+    id: GUID.uuidv4(),
+    title: "Starter Kit Photo",
+    imgHero: "img/products/nodalview-starter-kit-photo.jpg",
+    childIds: [
+      "Nodalview Cases",
+      "Nodalview Arm",
+      "Nodalview Pro Photo Lens"
+    ],
+    imgs: [],
+    price: 138,
+    info:
+      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
+    count: 0,
+    special: '',
+    specialId: '',
+    productType: ProductTypes.kit
   },
   {
     id: GUID.uuidv4(),
     title: "Starter Kit Duo",
+    imgHero: "img/products/starter-kit-duo.jpg",
+    childIds: [
+      "Nodalview Cases",
+      "Nodalview Arm",
+      "Nodalview 360°",
+      "Nodalview Pro Photo Lens",
+      "Nodalview Motor"
+    ],
+    imgs: [],
+    price: 138,
+    info:
+      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
+    count: 0,
+    special: '',
+    specialId: '',
+    productType: ProductTypes.kit
+  },
+  {
+    id: GUID.uuidv4(),
+    title: "Kit Duo",
     imgHero: "img/products/kit-duo-pack.jpg",
     childIds: [
       "Nodalview Cases",
@@ -90,6 +116,63 @@ export let products = [
     specialId: '',
     productType: ProductTypes.kit
   },
+  {
+    id: GUID.uuidv4(),
+    title: "Pro Kit 125",
+    imgHero: "img/products/Nodalview-pro-kit-125.jpg",
+    childIds: [
+      "Nodalview Cases",
+      "Nodalview Arm",
+      "Nodalview 360°",
+      "Nodalview Pro Photo Lens",
+      "Nodalview Motor"
+    ],
+    imgs: [],
+    price: 138,
+    info:
+      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
+    count: 0,
+    special: '',
+    specialId: '',
+    productType: ProductTypes.kit
+  },
+  {
+    id: GUID.uuidv4(),
+    title: "Pro Kit 300",
+    imgHero: "img/products/Nodalview-pro-kit-300.jpg",
+    childIds: [
+      "Nodalview Cases",
+      "Nodalview Arm",
+      "Nodalview 360°",
+      "Nodalview Pro Photo Lens",
+      "Nodalview Motor"
+    ],
+    imgs: [],
+    price: 138,
+    info:
+      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
+    count: 0,
+    special: '',
+    specialId: '',
+    productType: ProductTypes.kit
+  },
+  {
+    id: GUID.uuidv4(),
+    title: "Kit Motor Duo",
+    imgHero: "img/products/nodalview-pack-duo-motorised-V2.png",
+    childIds: [],
+    imgs: [],
+    price: 649,
+    info:
+      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
+    count: 0,
+    special: '',
+    specialId: '',
+    productType: ProductTypes.kit
+  },
+];
+
+const lenses = [
   {
     id: GUID.uuidv4(),
     title: "Nodalview 360°",
@@ -118,21 +201,43 @@ export let products = [
     specialId: '',
     productType: ProductTypes.lense
   },
+]
+
+const cases = [
   {
     id: GUID.uuidv4(),
-    title: "Nodalview Motor",
-    imgHero: "img/products/nodalview-motor.jpg",
+    title: "Nodalview Cases",
+    imgHero: "img/products/cases.jpg",
     childIds: [],
     imgs: [],
-    price: 129,
+    price: 19,
     info:
-      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
+      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub. Echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
     special: '',
     specialId: '',
-    productType: ProductTypes.motor
-  },
+    productType: ProductTypes.case,
+  }
+]
 
+const tripods = [
+  {
+    id: GUID.uuidv4(),
+    title: "Nodalview Tripod",
+    imgHero: "img/products/tripod.jpeg",
+    childIds: [],
+    imgs: [],
+    price: 59,
+    info:
+      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub. Echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
+    count: 0,
+    special: '',
+    specialId: '',
+    productType: ProductTypes.tripod,
+  }
+];
+
+const prepaidCredits = [
   {
     id: GUID.uuidv4(),
     title: "100 HDR Photos",
@@ -150,62 +255,166 @@ export let products = [
   },
   {
     id: GUID.uuidv4(),
-    title: "Motorised Duo Pack",
-    imgHero: "img/products/nodalview-pack-duo-motorised-V2.png",
+    title: "500 HDR Photos",
+    imgHero: "img/products/nodalview-prepaid-500-hdr.jpg",
     childIds: [],
     imgs: [],
-    price: 649,
+    price: 299,
     info:
-      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
+      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub. Echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
     special: '',
     specialId: '',
-    productType: ProductTypes.kit
+    productType: ProductTypes.prepaidCredit,
   },
   {
     id: GUID.uuidv4(),
-    title: "Pro Pack 125",
-    imgHero: "img/products/Nodalview-pro-kit-125.jpg",
-    childIds: [
-      "Nodalview Cases",
-      "Nodalview Arm",
-      "Nodalview 360°",
-      "Nodalview Pro Photo Lens",
-      "Nodalview Motor",
-      "100 HDR Photos",
-    ],
+    title: "1000 HDR Photos",
+    imgHero: "img/products/nodalview-prepaid-1000-hdr.jpg",
+    childIds: [],
     imgs: [],
-    price: 599,
+    price: 399,
+    info:
+      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub. Echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
+    count: 0,
+    special: '',
+    specialId: '',
+    productType: ProductTypes.prepaidCredit,
+  },
+  {
+    id: GUID.uuidv4(),
+    title: "100 360° Panoramas",
+    imgHero: "img/products/nodalview-prepaid-100-360.jpg",
+    childIds: [],
+    imgs: [],
+    price: 349,
+    info:
+      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub. Echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
+    count: 0,
+    special: '',
+    specialId: '',
+    productType: ProductTypes.prepaidCredit,
+  },
+  {
+    id: GUID.uuidv4(),
+    title: "250 360° Panoramas",
+    imgHero: "img/products/nodalview-prepaid-250-360.jpg",
+    childIds: [],
+    imgs: [],
+    price: 749,
+    info:
+      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub. Echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
+    count: 0,
+    special: '',
+    specialId: '',
+    productType: ProductTypes.prepaidCredit,
+  },
+  {
+    id: GUID.uuidv4(),
+    title: "250 360° Panoramas",
+    imgHero: "img/products/nodalview-prepaid-1000-360.jpg",
+    childIds: [],
+    imgs: [],
+    price: 2399,
+    info:
+      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub. Echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
+    count: 0,
+    special: '',
+    specialId: '',
+    productType: ProductTypes.prepaidCredit,
+  }
+
+];
+
+const bundles = [
+  {
+    id: GUID.uuidv4(),
+    title: "Basic Bundle",
+    imgHero: "img/products/nodalview-unlimited-basic.png",
+    childIds: [],
+    imgs: [],
+    price: 59,
+    info:
+      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub. Echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
+    count: 0,
+    special: '',
+    specialId: '',
+    productType: ProductTypes.tripod,
+  },
+  {
+    id: GUID.uuidv4(),
+    title: "Pro Bundle",
+    imgHero: "img/products/nodalview-unlimited-pro.png",
+    childIds: [],
+    imgs: [],
+    price: 99,
+    info:
+      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub. Echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
+    count: 0,
+    special: '',
+    specialId: '',
+    productType: ProductTypes.tripod,
+  },
+  {
+    id: GUID.uuidv4(),
+    title: "Gold Bundle",
+    imgHero: "img/products/nodalview-unlimited-gold.png",
+    childIds: [],
+    imgs: [],
+    price: 139,
+    info:
+      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub. Echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
+    count: 0,
+    special: '',
+    specialId: '',
+    productType: ProductTypes.tripod,
+  }
+];
+
+
+const accessories = [
+  {
+    id: GUID.uuidv4(),
+    title: "Nodalview Arm",
+    imgHero: "img/products/brasnodal-nodalview.jpg",
+    childIds: [],
+    imgs: [],
+    price: 39,
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
     count: 0,
     special: '',
     specialId: '',
-    productType: ProductTypes.kit
+    productType: ProductTypes.arm
   },
+  {
+    id: GUID.uuidv4(),
+    title: "Nodalview Motor",
+    imgHero: "img/products/nodalview-motor.jpg",
+    childIds: [],
+    imgs: [],
+    price: 129,
+    info:
+      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
+    count: 0,
+    special: '',
+    specialId: '',
+    productType: ProductTypes.motor
+  },
+]
 
+
+export const products = [
+  ...kits,
+  ...cases,
+  ...tripods,
+  ...accessories,
+  ...lenses,
+  ...prepaidCredits,
+  ...bundles
 ];
 
 
 
 
 
-
-
-
-/*
-export const productDetail =
-{
-  id: 3,
-  title: "Starter Kit Duo",
-  imgHero: "img/products/kit-duo-pack.jpg",
-  childIds: [1, 2, 4, 5, 6],
-  imgs: [],
-  price: 138,
-  info:
-    "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
-  count: 0,
-  special: '',
-  productType: productTypes.KIT
-};
-*/

@@ -1,18 +1,13 @@
 import { productTypes2 } from '../data'
 import Product from '../components/product/Product'
+import produce from 'immer'
 
 export default class Action {
-  static setProductDetail = (dispatch, prd) => {
-
-    const test = {...prd};
-    
-    console.log('TESTESTESTEST',test)
-    const product = Product.construct(test);
-    console.log('product here from action.Check children222', product)
+  static setProductDetail = (dispatch, product) => {
 
     return dispatch({
       type: 'SET_PRODUCT_DETAIL',
-      payload: {...product}
+      payload: { ...product }
     })
   }
 
@@ -79,7 +74,7 @@ export default class Action {
     }
   }
   */
-  
+
 }
 
 

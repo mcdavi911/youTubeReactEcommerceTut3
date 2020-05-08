@@ -3,23 +3,23 @@ import { productTypes } from '../../data';
 import produce from 'immer'
 
 export default class Product {
-  static prds = []
+  static products = []
   //children = []
   specialId = {};
 
-  constructor(id, title, imgHero, imgs, childIds, children = [], price, info, count, productType, special = {}, specialId = '') {
-    this.id = id;
-    this.title = title;
-    this.imgHero = imgHero;
-    this.imgs = imgs;
-    this.childIds = childIds;
-    this.children = children;
-    this.price = price;
-    this.info = info;
-    this.count = count;
-    this.productType = productType;
-    this.special = special;
-    this.specialId = specialId;
+  constructor(product) {
+    this.id = product.id;
+    this.title = product.title;
+    this.imgHero = product.imgHero;
+    this.imgs = product.imgs;
+    this.childIds = product.childIds;
+    this.children = product.children ? product.children : [];
+    this.price = product.price;
+    this.info = product.info;
+    this.count = product.count;
+    this.productType = product.productType;
+    this.special = product.special;
+    this.specialId = product.specialId;
 
     if (this.children.length === 0) {
       this._populateChildren();
@@ -30,29 +30,20 @@ export default class Product {
     if (this.childIds.length === 0) return;
 
     this.childIds.forEach(title => {
-      const product = Product.prds.find(p => p.title === title);
+      const product = Product.products.find(p => p.title === title);
       this.children.push({ ...product });
     })
   }
 
-
-
-  static construct(product) {
-    const { id, title, imgHero, imgs, childIds, children, price, info, count, productType, special, specialId } = product;
-
-    return new Product(id, title, imgHero, imgs, childIds, children, price, info, count, productType, special, specialId);
+  static setProducts(products) {
+    Product.products = products;
   }
-
-  static setPrds(products) {
-    Product.prds = products;
-  }
-
 
 
   getImgs() {
-    if (this.childIds.length === 0) return [{ src: this.imgHero, alt: this.imgs }];
+    if (this.childIds.length === 0) return [{ src: this.imgHero, alt: this.title }];
 
-    if (Product.prds.length === 0) return;
+    if (Product.products.length === 0) return;
 
     const childImgs = this.children.map(p => ({ src: p.imgHero, alt: p.title }))
 
@@ -77,13 +68,19 @@ export default class Product {
 
 
   _setChildSpecial(value, childProductType) {
-    this.children.map(child => {
-      if (child.productType === childProductType) {
-        produce(child, draft => {
-          draft.special = value;
-        })
+  
+    const newChildren = [];
+
+    this.children.forEach(child => {
+      const newChild = { ...child };
+      if (newChild.productType === childProductType) {
+        newChild.special = value;
       }
+
+      newChildren.push(newChild);
     })
+
+    this.children = [...newChildren];
   }
 
 
@@ -95,6 +92,8 @@ export default class Product {
 
     // check if children exist => set children special
     if (this.children.length !== 0) this._setChildSpecial(value, childProductType);
+
+    console.log('children HERE', this.children);
 
     this._setSpecial(value, childProductType);
 

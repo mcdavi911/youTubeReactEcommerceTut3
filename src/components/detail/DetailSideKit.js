@@ -9,16 +9,14 @@ import { Store } from '../../Store';
 import Product from '../product/Product';
 import produce from 'immer'
 
-export default function DetailSideKit({ childProducts }) {
+export default function DetailSideKit() {
   const { state, dispatch } = React.useContext(Store);
 
-  const product = Product.construct(state.productDetail);
-  
+  const product = new Product(state.productDetail);
 
   const handleSelectCase = (value, productType) => {
-  product.buildSpecialId(value, productType);
-  console.log('ÜÜÜÜÜÜ',product);
-  Action.setProductDetail(dispatch, product);
+    product.buildSpecialId(value, productType);
+    Action.setProductDetail(dispatch, product);
   }
 
   return (

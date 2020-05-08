@@ -12,6 +12,21 @@ export default class ProductTypes {
     ACCESSORY: 'accessories'
   }
 
+  static types2 = {
+    KIT: 'kits',
+    LENSE: {
+      PANORAMA: 'lense360',
+      PHOTO: 'lensePhoto'
+    },
+    CASE: 'cases',
+    TRIPOD: 'tripods',
+    PREPAID_CREDIT: 'prepaid credits',
+    ACCESSORY: {
+      ARM: 'arm',
+      MOTOR: 'motor'
+    }
+  }
+
 
   static display(type) {
     switch (type) {

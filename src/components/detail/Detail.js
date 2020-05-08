@@ -18,27 +18,27 @@ import ProductTypes from '../../utilities/ProductTypes';
 
 export default function Detail() {
   const { state, dispatch } = React.useContext(Store);
-  const product = Product.construct(state.productDetail);
+  const product = new Product(state.productDetail);
 
 
-  let detail;
+  let right;
 
   switch (product.productType) {
     case ProductTypes.kit:
-      detail = { right: <DetailSideKit childProducts={product.getChildren} product={product} /> };
+      right =  <DetailSideKit /> ;
       break;
     case ProductTypes.case:
-      detail = { right: <DetailSideCase /> };
+      right = <DetailSideCase />;
       break;
     default:
-      detail = { right: <DetailSide /> };
+      right = <DetailSide /> ;
   }
 
   return (
     <>
       <Container>
         <Breadcrumbs />
-        <RightRail left={<DetailImgList imgs={product.getImgs()} />} right={detail.right} />
+        <RightRail left={<DetailImgList imgs={product.getImgs()} />} right={right} />
       </Container >
     </>
   )

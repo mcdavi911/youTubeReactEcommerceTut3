@@ -1,11 +1,11 @@
 import React from 'react'
-import { products, productDetail } from './data'
+import { products } from './data'
 import produce from 'immer'
-
+import Product from './components/product/Product'
 
 const initialState = {
-  products,
-  productDetail: products[0],
+  products: products,
+  productDetail: products[6],
   cart: [],
   productType: 'all products',
   searchTerm: '',

@@ -26,7 +26,7 @@ function App() {
   const classes = useStyles();
 
   React.useEffect(() => { 
-    Product.setPrds(products);
+    Product.setProducts(products);
   }, [])
 
 
