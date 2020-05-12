@@ -1,4 +1,8 @@
 
+html {
+  overflow: -moz-scrollbars-vertical; 
+  overflow-y: scroll;
+}
 
 .MuiAppBar-root {
   /*z-index: auto !important; */

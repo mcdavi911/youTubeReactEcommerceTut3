@@ -32,12 +32,11 @@ export default function DetailSideKitDemo() {
 
             {productChild.productType === ProductTypes.case && <SelectList list={listDevices} label={'devices'} handleValue={(value) => handleSelect(value , productChild.title)} />}
 
-            {productChild.productType === ProductTypes.arm && <SelectList list={listArms} label={'arms types'} handleValue={(value) => handleSelect(value, productChild.title)} />}
+            {productChild.title === 'Nodalview Arm' && <SelectList list={listArms} label={'arms types'} handleValue={(value) => handleSelect(value, productChild.title)} />}
 
             {productChild.title === 'Nodalview 360°' && <SelectList list={listLense360} label={'lenses 360'} handleValue={(value) => handleSelect(value, productChild.title)} />}
 
             {productChild.title === 'Nodalview Pro Photo Lens' && <SelectList list={listLensePhoto} label={'lenses photo'} handleValue={(value) => handleSelect(value, productChild.title)} />}
-
           </li>
         ))}
       </ul>

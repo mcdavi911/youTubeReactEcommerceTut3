@@ -28,7 +28,6 @@ export default class ProductTypes {
     }
   }
 
-
   static display(type) {
     switch (type) {
       case ProductTypes.types.ARM:

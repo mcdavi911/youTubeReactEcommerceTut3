@@ -13,13 +13,12 @@ import ProductTypes from './utilities/ProductTypes';
 //import Product from './components/product/Product';
 
 
-
 export const itemCategories = [
   { id: GUID.uuidv4(), label: ProductTypes.kit, icon: WorkOutline },
   { id: GUID.uuidv4(), label: ProductTypes.lense, icon: Camera },
   { id: GUID.uuidv4(), label: ProductTypes.case, icon: Smartphone },
   { id: GUID.uuidv4(), label: ProductTypes.tripod, icon: PhotoCamera },
-  { id: GUID.uuidv4(), label: ProductTypes.accessory, icon: ThreeSixty },
+  { id: GUID.uuidv4(), label: ProductTypes.motor, icon: ThreeSixty },
   { id: GUID.uuidv4(), label: ProductTypes.prepaidCredit, icon: CreditCard }
 ]
 
@@ -414,7 +413,7 @@ const accessories = [
     count: 0,
     productNew: false,
     special: '',
-    productType: ProductTypes.arm
+    productType: ProductTypes.kit
   },
   {
     id: GUID.uuidv4(),

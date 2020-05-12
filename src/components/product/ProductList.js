@@ -46,7 +46,39 @@ export default function ProductList() {
   return (
     <React.Fragment>
       <Container>
-        <Grid container spacing={3}>
+        <header>
+          <h1 className={classes.productTypeHeading}>{state.productType}</h1>
+        </header>
+
+        <Grid
+          container
+          direction="row"
+          alignItems="center"
+          spacing={2}
+        >
+          {state.searchResults.length !== 0 ?
+            (
+              state.searchResults.map(product => (
+                <Grid key={product.id} item className={classes.gridItemProduct}>
+                  <ProductCard product={product} />
+                </Grid>
+              ))
+            ) : (
+              <Grid item>
+                <p>Sorry no search results for <strong>{state.searchTerm}</strong></p>
+              </Grid>
+            )
+          }
+        </Grid>
+
+      </Container>
+    </React.Fragment>
+  )
+}
+
+
+/*
+<Grid container spacing={3}>
           <Grid item sm={'auto'} md={2} lg={2}>
 
             <Hidden smDown>
@@ -80,8 +112,5 @@ export default function ProductList() {
             </Grid>
           </Grid>
         </Grid>
-      </Container>
-    </React.Fragment>
-  )
-}
 
+*/

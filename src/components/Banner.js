@@ -1,6 +1,14 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
+import { itemCategories } from '../data'
 
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import Action from '../actions/Action'
+
+import { Store } from '../Store'
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import { Typography } from '@material-ui/core';
@@ -18,11 +26,40 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Banner() {
   const classes = useStyles();
+  const { state, dispatch } = React.useContext(Store);
 
   return (
     <div className={classes.root}>
-      <Container>
-        <Box display="flex" alignItems="center" justifyContent="center"  style={{textAlign: 'center'}}>
+      
+    </div>
+  )
+}
+
+
+
+/*
+
+<List className={classes.listNav} component="nav" aria-label="product categories" disablePadding>
+          {itemCategories.map(({ label, icon: Icon }, idx) =>
+            <ListItem
+              key={idx}
+              selected={state.productType === label}
+              button
+              onClick={() => { Action.setProductType(dispatch, label); Action.setSearchResults(dispatch, state.products, label) }}
+            >
+              <ListItemIcon>
+                <Icon />
+              </ListItemIcon>
+              <ListItemText primary={label} />
+            </ListItem>
+          )}
+        </List>
+
+
+
+
+
+<Box display="flex" alignItems="center" justifyContent="center" style={{ textAlign: 'center' }}>
           <Box display="flex" flexDirection="column" m={1} >
             <img src="img/customIcons/Kits.png" alt="kits" />
             <Typography>Kits</Typography>
@@ -48,8 +85,5 @@ export default function Banner() {
             <Typography>Tripods</Typography>
           </Box>
         </Box>
-      </Container>
-    </div>
-  )
-}
 
+*/

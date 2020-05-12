@@ -16,11 +16,7 @@ import Hidden from '@material-ui/core/Hidden';
 
 import ShoppingBasket from '@material-ui/icons/ShoppingBasket'
 import MenuIcon from '@material-ui/icons/Menu';
-
-
 import IconButton from '@material-ui/core/IconButton';
-
-
 
 
 
@@ -108,8 +104,6 @@ const useStyles = makeStyles((theme) => ({
       marginRight: theme.spacing(1),
     }
   },
-
-
   hidden: {
     visibility: 'hidden'
   },
@@ -127,6 +121,13 @@ const useStyles = makeStyles((theme) => ({
       flexBasis: (100 / 3) + '%',
     }
   },
+  navSides: { // keep searchbar centered with tabs below
+    [theme.breakpoints.up('md')]: {
+      width: 200
+    },
+    
+    
+  }
 
 }));
 
@@ -140,7 +141,7 @@ export default function Topbar() {
   const cartAmount = () => {
     if (state.cart.length === 0) return;
     let count = 0;
-    
+
     state.cart.forEach(p => {
       count += p.count;
     })
@@ -160,6 +161,7 @@ export default function Topbar() {
 
   }, [state.searchTerm, dispatch]);
 
+
   return (
     <>
       <AppBar className={classes.appBar} color="inherit">
@@ -174,10 +176,11 @@ export default function Topbar() {
               <div className={classes.grow} />
             </Hidden>
 
-
-            <Link to='/' onClick={() => { Action.setProductType(dispatch); Action.setSearchResults(dispatch, state.products) }}>
-              <img className={classes.brand} src="img/nodalview-shop-logo.png" alt="nodalview logo" />
-            </Link>
+            <div className={classes.navSides}>
+              <Link to='/' onClick={() => { Action.setProductType(dispatch); Action.setSearchResults(dispatch, state.products) }}>
+                <img className={classes.brand} src="img/nodalview-shop-logo.png" alt="nodalview logo" />
+              </Link>
+            </div>
 
             <div className={classes.grow} />
 
@@ -187,20 +190,15 @@ export default function Topbar() {
             </Hidden>
 
 
-
-
-
-            <Link to="/cart" style={{ marginRight: 12 }}>
-              <IconButton>
-                <Badge badgeContent={cartAmount()} color="primary">
-                  <ShoppingBasket />
-                </Badge>
-              </IconButton>
-            </Link>
-
-
-
-
+            <div className={classes.navSides}>
+              <Link to="/cart" style={{ marginRight: 12, float: 'right'}}>
+                <IconButton>
+                  <Badge badgeContent={cartAmount()} color="primary">
+                    <ShoppingBasket />
+                  </Badge>
+                </IconButton>
+              </Link>
+            </div>
           </Toolbar>
         </Container>
       </AppBar >

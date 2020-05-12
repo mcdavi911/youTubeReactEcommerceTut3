@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
+import NavTabs from './components/NavTabs';
 
 import Product from './components/product/Product';
 import { products } from './data';
@@ -13,7 +14,7 @@ import PrdList from './components/product/ProductList';
 import Detail from './components/detail/Detail';
 import Cart from './components/cart/Cart';
 import Default from './components/Default';
-import Banner from './components/Banner';
+//import Banner from './components/Banner';
 import MobileDrawer from './components/MobileDrawer';
 
 import ProductTypes from './utilities/ProductTypes';
@@ -31,15 +32,13 @@ function App() {
     Product.setProducts(products);
   }, []);
 
-
   
-
-
   return (
     <React.Fragment>
       <Navbar />
-      <div className={classes.toolbar}></div>
-      <Banner />
+        <div className={classes.toolbar}></div>
+        <NavTabs />
+      
       <Box style={{ height: 30 }}></Box>
       <MobileDrawer></MobileDrawer>
       <Switch>
@@ -56,4 +55,8 @@ function App() {
 }
 
 export default App;
+
+/*
+<Banner />
+*/
 
