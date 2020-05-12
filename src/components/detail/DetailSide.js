@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 
 import Select from '@material-ui/core/Select';
-import ActionCart from '../../actions/ActionCart';
+import Action from '../../actions/Action';
 import { ActionCart2 } from '../../actions/ActionCart';
 import Product from '../product/Product'
 
@@ -69,6 +69,10 @@ export default function DetailSide({ children }) {
 
     actionCart.add2(state.productDetail, productQuantity);
   }
+
+  React.useEffect(() => {
+    //Action.clearProductDetailSpecial(dispatch);
+  },[handleAdd])
   
 
   return (

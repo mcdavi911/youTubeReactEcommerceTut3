@@ -1,7 +1,7 @@
 import React from 'react'
 import DetailSide from './DetailSide'
 import SelectList from '../form/SelectList'
-import { devices } from '../../data';
+import { listDevices } from '../../data';
 import Action from '../../actions/Action';
 import ProductTypes from '../../utilities/ProductTypes'
 import { Store } from '../../Store';
@@ -14,9 +14,9 @@ export default function DetailSideCase() {
   const { state, dispatch } = React.useContext(Store);
 
   const handleSelectCase = (value) => {
-    const product = Product.construct(state.productDetail);
+    const product = new Product(state.productDetail);
 
-    product.buildSpecialId(value, product.productType, ProductTypes.case);
+    product.buildId(value, product.title);
 
     Action.setProductDetail(dispatch, product);
   }
@@ -24,7 +24,7 @@ export default function DetailSideCase() {
   return (
     <div>
       <DetailSide>
-        <SelectList devices={devices} handleValue={handleSelectCase} />
+        <SelectList list={listDevices} label={'devices'} handleValue={(value) => handleSelectCase(value)} />
       </DetailSide>
     </div>
   )

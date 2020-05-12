@@ -5,7 +5,6 @@ import produce from 'immer'
 export default class Product {
   static products = []
   //children = []
-  specialId = {};
 
   constructor(product) {
     this.id = product.id;
@@ -19,7 +18,6 @@ export default class Product {
     this.count = product.count;
     this.productType = product.productType;
     this.special = product.special;
-    this.specialId = product.specialId;
 
     if (this.children.length === 0) {
       this._populateChildren();
@@ -58,22 +56,24 @@ export default class Product {
     return this.children;
   }
 
+  
 
-  _setSpecial(value, productType) {
+  _setSpecial(value, title) {
+
     this.special = {
       ...this.special,
-      [productType]: value
+      [title]: value
     };
   }
 
 
-  _setChildSpecial(value, childProductType) {
-  
+  _setChildSpecial(value, childTitle) {
+
     const newChildren = [];
 
     this.children.forEach(child => {
       const newChild = { ...child };
-      if (newChild.productType === childProductType) {
+      if (newChild.title === childTitle) {
         newChild.special = value;
       }
 
@@ -83,23 +83,36 @@ export default class Product {
     this.children = [...newChildren];
   }
 
+  _sortObjKeys(obj) {
+    const unordered = { ...obj };
 
-  buildSpecialId(value, childProductType) {
+    const ordered = {};
+    Object.keys(unordered).sort().forEach(function (key) {
+      ordered[key] = unordered[key];
+    });
 
-    if (value === null || childProductType === null) {
-      throw new Error('Product.buildSpecialId missing arguments');
+    obj = { ...ordered };
+    return obj;
+  }
+
+
+  buildId(value, title) {
+
+    if (value == null || title == null) {
+      throw new Error('Product.buildId missing arguments');
     }
 
-    // check if children exist => set children special
-    if (this.children.length !== 0) this._setChildSpecial(value, childProductType);
+    // if children exist => set children special
+    if (this.children.length !== 0) this._setChildSpecial(value, title);
 
-    console.log('children HERE', this.children);
-
-    this._setSpecial(value, childProductType);
+    // set product special
+    this._setSpecial(value, title);
 
     // check if special obj is empty
     if (Validate.isEmpty(this.special)) return;
 
-    this.specialId = `${this.productType}_${JSON.stringify(this.special)}`;
+    this.special = this._sortObjKeys(this.special);
+
+    this.id = `${this.title}_${JSON.stringify(this.special)}`;
   }
 }

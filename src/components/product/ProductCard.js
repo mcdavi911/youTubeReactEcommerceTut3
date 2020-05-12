@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
   },
   productInfoWrapper: {
+    minHeight: theme.spacing(9),
     '&:hover > div > p:first-child': {
       color: theme.palette.primary.dark
     }
@@ -58,10 +59,9 @@ export default function ProductCard({product}) {
           </div>
         </div>
 
-
         <div className={classes.productInfoWrapper}>
           <div className={classes.productInfo}>
-            <p>{title}</p>
+            <p>{product.productNew && <><span style={{color:"#e35656"}}>New</span><br/></>}{title}</p>
             <p>{price} €</p>
           </div>
 

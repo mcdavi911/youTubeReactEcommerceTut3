@@ -6,6 +6,7 @@ import Container from '@material-ui/core/Container';
 import DetailSide from './DetailSide'
 import DetailSideCase from './DetailSideCase'
 import DetailSideKit from './DetailSideKit'
+import DetailSideKitDemo from './DetailSideKitDemo'
 import DetailImgList from './DetailImgList'
 
 import RightRail from '../../layouts/RightRail'
@@ -25,7 +26,11 @@ export default function Detail() {
 
   switch (product.productType) {
     case ProductTypes.kit:
-      right =  <DetailSideKit /> ;
+      if (product.title === 'Kit Demo') {
+        right =  <DetailSideKitDemo />;
+      } else {
+        right = <DetailSideKit />
+      }
       break;
     case ProductTypes.case:
       right = <DetailSideCase />;

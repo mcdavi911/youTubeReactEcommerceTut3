@@ -10,9 +10,10 @@ export default class ProductTypes {
     TRIPOD: 'tripods',
     PREPAID_CREDIT: 'prepaid credits',
     ACCESSORY: 'accessories'
-  }
+  };
 
-  static types2 = {
+  
+  static typesModel = {
     KIT: 'kits',
     LENSE: {
       PANORAMA: 'lense360',
@@ -38,7 +39,6 @@ export default class ProductTypes {
         return type;
     }
   }
-
 
   static kit = ProductTypes.types.KIT;
 

@@ -20,8 +20,10 @@ const reducer = produce((draft, action) => {
 
   switch (action.type) {
     case 'SET_PRODUCT_DETAIL':
-      console.log('set product detial here');
       draft.productDetail = action.payload;
+      break;
+    case 'CLEAR_PRODUCT_DETAIL_SPECIAL':
+      draft.productDetail.special = [];
       break;
     case 'SET_SEARCH_TERM':
       draft.searchTerm = action.payload;

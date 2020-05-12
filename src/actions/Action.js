@@ -11,6 +11,15 @@ export default class Action {
     })
   }
 
+  /*
+  static clearProductDetailSpecial = (dispatch) => {
+    return dispatch({
+      type: 'CLEAR_PRODUCT_DETAIL_SPECIAL',
+      payload: null
+    })
+  }
+*/
+
 
   static setSearchTerm = (dispatch, searchTerm) => {
     return dispatch({

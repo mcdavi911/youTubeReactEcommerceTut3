@@ -66,9 +66,9 @@ export default function ProductList() {
             >
               {state.searchResults.length !== 0 ?
                 (
-                  state.searchResults.map(p => (
-                    <Grid key={p.id} item className={classes.gridItemProduct}>
-                      <ProductCard product={p} />
+                  state.searchResults.map(product => (
+                    <Grid key={product.id} item className={classes.gridItemProduct}>
+                      <ProductCard product={product} />
                     </Grid>
                   ))
                 ) : (

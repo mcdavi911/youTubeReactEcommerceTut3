@@ -1,4 +1,7 @@
 import React from 'react'
+import ProductTypes from '../../utilities/ProductTypes';
+
+
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import SelectNum2 from '../form/SelectNum2';
@@ -38,12 +41,12 @@ export default function CartProduct(props) {
           </Box>
 
           <div style={{ color: 'rgb(141, 141, 141)', textTransform: 'capitalize' }}>
-            <div>{productType}</div>
-            <div>{special[productType]}</div>
+            <div>{ProductTypes.display(productType)}</div>
+            <div>{special[title]}</div>
             
             <ul>
-              {children && children.map(product => (
-                <li key={product.id}>{product.title} {product.special !== '' && (<>- <span style={{color: '#111'}}>{product.special}</span></>)}</li>
+              {children && children.map(productChild => (
+                <li key={productChild.id}>{productChild.title} {productChild.special !== '' && (<>- <span style={{color: '#111'}}>{productChild.special}</span></>)}</li>
               ))}
             </ul>
           </div>
@@ -64,55 +67,14 @@ export default function CartProduct(props) {
 }
 
 
-/*
-      <Grid container>
-        <Grid item md={2}>
-          <img
-            src={img}
-            style={{ width: "5rem", heigth: "5rem" }}
-            className="img-fluid"
-            alt=""
-          />
-        </Grid>
-        <Grid item md={2}>
-          <span className="d-lg-none">product :</span> {title}
-        </Grid>
-        <Grid item md={2}>
-          <strong>
-            <span className="d-lg-none">price :</span> ${price}
-          </strong>
-        </Grid>
-        <Grid item md={2}>
-          <Box display="flex" justifyContent="center" >
-            <div>
-              <span
-                className="btn btn-black mx-1"
-                onClick={() => {
-                  return ActionCart.changeCount(props.dispatch, props.product, -1);
-                }}
-              >
-                -
-              </span>
-              <span className="btn btn-black mx-1">{count}</span>
-              <span
-                className="btn btn-black mx-1"
-                onClick={() => {
-                  return ActionCart.changeCount(props.dispatch, props.product);
-                }}
-              >
-                +
-              </span>
-            </div>
-          </Box>
-        </Grid>
-        <Grid item md={2}>
-          <div className=" cart-icon" onClick={() => ActionCart.remove(props.dispatch, id)}> {/*removeItem(id)}>}
-     //     <i className="fas fa-trash" />
-      //    </div>
-      //  </Grid>
-      //  <Grid item md={2}>
-      //    <strong>item total : ${count * price} </strong>
-      //  </Grid>
-     // </Grid>
-     */
 
+/*
+
+{
+
+  {productChild.special}
+                  /*
+                  <li key={productChild.id}>{productChild.title} {Object.keys(productChild.special).length !== 0 && (<>- <span style={{color: '#111'}}>{productChild.special}</span></>)}</li>
+                  
+                }
+*/

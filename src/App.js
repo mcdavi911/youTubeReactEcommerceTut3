@@ -16,6 +16,8 @@ import Default from './components/Default';
 import Banner from './components/Banner';
 import MobileDrawer from './components/MobileDrawer';
 
+import ProductTypes from './utilities/ProductTypes';
+
 
 const useStyles = makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
@@ -25,10 +27,12 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const classes = useStyles();
 
-  React.useEffect(() => { 
+  React.useEffect(() => {
     Product.setProducts(products);
-  }, [])
+  }, []);
 
+
+  
 
 
   return (
@@ -52,3 +56,4 @@ function App() {
 }
 
 export default App;
+

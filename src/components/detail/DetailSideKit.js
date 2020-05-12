@@ -1,6 +1,6 @@
 import React from 'react'
 import DetailSide from './DetailSide'
-import { devices } from '../../data';
+import { listDevices, listArms } from '../../data';
 import ProductTypes from '../../utilities/ProductTypes';
 import Typography from '@material-ui/core/Typography';
 import SelectList from '../form/SelectList'
@@ -14,8 +14,8 @@ export default function DetailSideKit() {
 
   const product = new Product(state.productDetail);
 
-  const handleSelectCase = (value, productType) => {
-    product.buildSpecialId(value, productType);
+  const handleSelect = (value, title) => {
+    product.buildId(value, title);
     Action.setProductDetail(dispatch, product);
   }
 
@@ -28,13 +28,8 @@ export default function DetailSideKit() {
               {product.title}
             </Typography>
 
-            {product.productType === ProductTypes.case && <SelectList devices={devices} handleValue={(value) => handleSelectCase(value, ProductTypes.case)} />}
+            {product.productType === ProductTypes.case && <SelectList list={listDevices} label={'devices'} handleValue={(value) => handleSelect(value, product.title)} />}
 
-            {product.productType === ProductTypes.arm && <SelectList devices={devices} handleValue={(value) => handleSelectCase(value, ProductTypes.arm)} />}
-
-            {product.productType === ProductTypes.motor && <SelectList devices={devices} handleValue={(value) => handleSelectCase(value, ProductTypes.motor)} />}
-
-            {product.productType === ProductTypes.lense && <SelectList devices={devices} handleValue={(value) => handleSelectCase(value, ProductTypes.lense)} />}
           </li>
         ))}
       </ul>
