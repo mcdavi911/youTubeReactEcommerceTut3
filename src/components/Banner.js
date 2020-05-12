@@ -24,23 +24,23 @@ export default function Banner() {
       <Container>
         <Box display="flex" alignItems="center" justifyContent="center"  style={{textAlign: 'center'}}>
           <Box display="flex" flexDirection="column" m={1} >
-            <img src="img/customIcons/kits.png" alt="kits" />
+            <img src="img/customIcons/Kits.png" alt="kits" />
             <Typography>Kits</Typography>
           </Box>
           <Box display="flex" flexDirection="column">
-            <img src="img/customIcons/lenses.png" alt="lenses" />
+            <img src="img/customIcons/Lenses.png" alt="lenses" />
             <Typography>Lenses</Typography>
           </Box>
           <Box display="flex" flexDirection="column">
-            <img src="img/customIcons/cases.png" alt="cases" />
+            <img src="img/customIcons/Cases.png" alt="cases" />
             <Typography>Cases</Typography>
           </Box>
           <Box display="flex" flexDirection="column">
-            <img src="img/customIcons/tripods.png" alt="tripods" />
+            <img src="img/customIcons/Tripods.png" alt="tripods" />
             <Typography>Tripods</Typography>
           </Box>
           <Box display="flex" flexDirection="column">
-            <img src="img/customIcons/accessories.png" alt="accessories" />
+            <img src="img/customIcons/Accessories.png" alt="accessories" />
             <Typography>Tripods</Typography>
           </Box>
           <Box display="flex" flexDirection="column">
