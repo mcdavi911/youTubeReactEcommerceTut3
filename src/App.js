@@ -37,7 +37,7 @@ function App() {
     <React.Fragment>
       <Navbar />
         <div className={classes.toolbar}></div>
-        <NavTabs />
+        
       
       <Box style={{ height: 30 }}></Box>
       <MobileDrawer></MobileDrawer>
@@ -57,6 +57,7 @@ function App() {
 export default App;
 
 /*
+<NavTabs />
 <Banner />
 */
 

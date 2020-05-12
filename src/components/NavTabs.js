@@ -52,7 +52,7 @@ export default function NavTabs() {
 
   return (
     <div className={classes.root2}>
-      <Container>
+      
 
         <Box display="flex" justifyContent="center">
           <Tabs
@@ -60,8 +60,8 @@ export default function NavTabs() {
             value={value}
             onChange={handleChange}
             variant="fullWidth"
-            indicatorColor="secondary"
-            textColor="secondary"
+            indicatorColor="primary"
+            textColor="primary"
             variant="scrollable"
             scrollButtons="auto"
             aria-label="scrollable auto tabs example"
@@ -77,7 +77,7 @@ export default function NavTabs() {
           </Tabs>
         </Box>
 
-      </Container>
+      
     </div>
   )
 }

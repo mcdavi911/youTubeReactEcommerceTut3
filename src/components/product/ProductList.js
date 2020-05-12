@@ -46,30 +46,43 @@ export default function ProductList() {
   return (
     <React.Fragment>
       <Container>
-        <header>
-          <h1 className={classes.productTypeHeading}>{state.productType}</h1>
-        </header>
 
-        <Grid
-          container
-          direction="row"
-          alignItems="center"
-          spacing={2}
-        >
-          {state.searchResults.length !== 0 ?
-            (
-              state.searchResults.map(product => (
-                <Grid key={product.id} item className={classes.gridItemProduct}>
-                  <ProductCard product={product} />
-                </Grid>
-              ))
-            ) : (
-              <Grid item>
-                <p>Sorry no search results for <strong>{state.searchTerm}</strong></p>
-              </Grid>
-            )
-          }
+        <Grid container spacing={3}>
+          <Grid item sm={'auto'} md={2} lg={2}>
+
+            <Hidden smDown>
+              <VerticalNav />
+            </Hidden>
+          </Grid>
+          <Grid item sm={12} md={10} lg={10}>
+            <header>
+              <h1 className={classes.productTypeHeading}>{state.productType}</h1>
+            </header>
+
+            <Grid
+              container
+              direction="row"
+              alignItems="center"
+              spacing={2}
+            >
+              {state.searchResults.length !== 0 ?
+                (
+                  state.searchResults.map(product => (
+                    <Grid key={product.id} item className={classes.gridItemProduct}>
+                      <ProductCard product={product} />
+                    </Grid>
+                  ))
+                ) : (
+                  <Grid item>
+                    <p>Sorry no search results for <strong>{state.searchTerm}</strong></p>
+                  </Grid>
+                )
+              }
+            </Grid>
+          </Grid>
         </Grid>
+
+
 
       </Container>
     </React.Fragment>
@@ -112,5 +125,38 @@ export default function ProductList() {
             </Grid>
           </Grid>
         </Grid>
+
+*/
+
+/*
+
+<Container>
+         <header style={{textAlign: 'center'}}>
+          <h1 className={classes.productTypeHeading}>{state.productType}</h1>
+        </header>
+
+        <Grid
+          container
+          direction="row"
+          alignItems="center"
+          spacing={2}
+        >
+          {state.searchResults.length !== 0 ?
+            (
+              state.searchResults.map(product => (
+                <Grid key={product.id} item className={classes.gridItemProduct}>
+                  <ProductCard product={product} />
+                </Grid>
+              ))
+            ) : (
+              <Grid item>
+                <p>Sorry no search results for <strong>{state.searchTerm}</strong></p>
+              </Grid>
+            )
+          }
+        </Grid>
+
+      </Container>
+
 
 */

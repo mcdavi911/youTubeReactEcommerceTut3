@@ -10,13 +10,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 
 const useStyles = makeStyles((theme) => ({
-  
-  gridItemProduct: {
-    flexBasis: (100 / 2) + '%',
-    [theme.breakpoints.up('lg')]: {
-      flexBasis: (100 / 3) + '%',
-    }
-  },
   listNav: {
     textTransform: 'capitalize',
   }
