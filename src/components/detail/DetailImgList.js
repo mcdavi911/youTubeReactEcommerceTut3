@@ -33,19 +33,6 @@ export default function DetailImgList({imgs}) {
           </Grid>
         ))}
       </Grid>
-
-      <Carousel>
-        <img
-          src={`http://placehold.it/1000x400/7732bb/ffffff/&text=slide1`}
-          alt={`Slide ${1}`}
-          key="1"
-
-          style={{
-            height: 400
-          }}
-        />
-      </Carousel>
-
     </div>
   )
 }

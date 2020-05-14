@@ -4,6 +4,10 @@ html {
   overflow-y: scroll;
 }
 
+.makeStyles-imgTest-111 {
+  mix-blend-mode: multiply !important;
+}
+
 .MuiAppBar-root {
   /*z-index: auto !important; */
 }

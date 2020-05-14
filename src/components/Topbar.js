@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import { Store } from '../Store'
 
 import Action from '../actions/Action';
-
-
 import Search from './Search'
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -23,7 +21,7 @@ import IconButton from '@material-ui/core/IconButton';
 const useStyles = makeStyles((theme) => ({
   appBar: {
     //boxShadow: 'none',
-    boxShadow: 'inset 0 -1px 0 0 #e5e5e5',
+    boxShadow: `inset 0 -1px 0 0 ${theme.palette.divider}`,
     //marginBottom: theme.spacing(2)
     zIndex: theme.zIndex.drawer + 1,
   },
@@ -169,7 +167,7 @@ export default function Topbar() {
           <Toolbar disableGutters className={classes.toolbar}>
 
             <Hidden mdUp>
-              <IconButton onClick={() => Action.toggleMobileDrawer(dispatch)} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+              <IconButton onClick={() => Action.toggle(dispatch, 'mobileDrawer')} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                 <MenuIcon />
               </IconButton>
 
@@ -177,7 +175,7 @@ export default function Topbar() {
             </Hidden>
 
             <div className={classes.navSides}>
-              <Link to='/' onClick={() => { Action.setProductType(dispatch); Action.setSearchResults(dispatch, state.products) }}>
+              <Link to='/' onClick={() => { Action.setProductType(dispatch); Action.setSearchResults(dispatch, state.products); Action.setTabValues(dispatch, {sideNav: false}) }}>
                 <img className={classes.brand} src="img/nodalview-shop-logo.png" alt="nodalview logo" />
               </Link>
             </div>

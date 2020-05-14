@@ -7,6 +7,7 @@ import SelectList from '../form/SelectList'
 import Action from '../../actions/Action';
 import { Store } from '../../Store';
 import Product from '../product/Product';
+import Hidden from '@material-ui/core/Hidden';
 import produce from 'immer'
 
 export default function DetailSideKitDemo() {
@@ -19,18 +20,20 @@ export default function DetailSideKitDemo() {
     Action.setProductDetail(dispatch, product);
   }
 
-  
 
   return (
     <DetailSide>
-      <ul>
+      
+
+
+      <ul style={{ marginTop: 8 }}>
         {product.children.length > 0 && product.children.map((productChild, idx) => (
           <li key={idx}>
             <Typography>
               {productChild.title}
             </Typography>
 
-            {productChild.productType === ProductTypes.case && <SelectList list={listDevices} label={'devices'} handleValue={(value) => handleSelect(value , productChild.title)} />}
+            {productChild.productType === ProductTypes.case && <SelectList list={listDevices} label={'devices'} handleValue={(value) => handleSelect(value, productChild.title)} />}
 
             {productChild.title === 'Nodalview Arm' && <SelectList list={listArms} label={'arms types'} handleValue={(value) => handleSelect(value, productChild.title)} />}
 

@@ -7,7 +7,7 @@ import SelectList from '../form/SelectList'
 import Action from '../../actions/Action';
 import { Store } from '../../Store';
 import Product from '../product/Product';
-import produce from 'immer'
+import Hidden from '@material-ui/core/Hidden';
 
 export default function DetailSideKit() {
   const { state, dispatch } = React.useContext(Store);
@@ -21,6 +21,9 @@ export default function DetailSideKit() {
 
   return (
     <DetailSide>
+      
+
+
       <ul>
         {product.children.length > 0 && product.children.map(product => (
           <li key={product.id}>

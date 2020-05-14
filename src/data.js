@@ -1,23 +1,40 @@
 
+import React from 'react';
+import SvgIcon from '@material-ui/core/SvgIcon';
 //import ShoppingCart from '@material-ui/icons/ShoppingCart'
-import Smartphone from '@material-ui/icons/Smartphone'
 import Camera from '@material-ui/icons/Camera'
 import WorkOutline from '@material-ui/icons/WorkOutline'
-import PhotoCamera from '@material-ui/icons/PhotoCamera'
 import ThreeSixty from '@material-ui/icons/ThreeSixty'
 import CreditCard from '@material-ui/icons/CreditCard'
 import GUID from './utilities/GUID'
 
 import ProductTypes from './utilities/ProductTypes';
 
-//import Product from './components/product/Product';
+
+const TripodIcon = (props) => {
+  return (
+    <SvgIcon {...props}>
+      <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>tripod</title><polygon points="21 20 13 12 13 4 15 4 15 2 9 2 9 4 11 4 11 12 3 20 4.41 21.41 11 14.83 11 22 13 22 13 14.83 19.59 21.41 21 20" /></svg>
+    </SvgIcon>
+  )
+}
+
+
+const CasesIcon = (props) => {
+  return (
+    <SvgIcon {...props}>
+      <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>cases</title><path d="M17,1H7A2,2,0,0,0,5,3V21a2,2,0,0,0,2,2H17a2,2,0,0,0,2-2V3A2,2,0,0,0,17,1ZM10,9a3,3,0,1,1,3-3A3,3,0,0,1,10,9Z"/></svg>
+    </SvgIcon>
+  )
+}
+
 
 
 export const itemCategories = [
   { id: GUID.uuidv4(), label: ProductTypes.kit, icon: WorkOutline },
   { id: GUID.uuidv4(), label: ProductTypes.lense, icon: Camera },
-  { id: GUID.uuidv4(), label: ProductTypes.case, icon: Smartphone },
-  { id: GUID.uuidv4(), label: ProductTypes.tripod, icon: PhotoCamera },
+  { id: GUID.uuidv4(), label: ProductTypes.case, icon: CasesIcon },
+  { id: GUID.uuidv4(), label: ProductTypes.tripod, icon: TripodIcon },
   { id: GUID.uuidv4(), label: ProductTypes.motor, icon: ThreeSixty },
   { id: GUID.uuidv4(), label: ProductTypes.prepaidCredit, icon: CreditCard }
 ]
@@ -63,7 +80,7 @@ const kits = [
   {
     id: GUID.uuidv4(),
     title: "Starter Kit 360°",
-    imgHero: "img/products/nodalview-starter-kit-360.jpg",
+    imgHero: "img/products/nodalview-starter-kit-360.png",
     childIds: [
       "Nodalview Cases",
       "Nodalview Arm",
@@ -81,7 +98,7 @@ const kits = [
   {
     id: GUID.uuidv4(),
     title: "Starter Kit Photo",
-    imgHero: "img/products/nodalview-starter-kit-photo.jpg",
+    imgHero: "img/products/nodalview-starter-kit-photo.png",
     childIds: [
       "Nodalview Cases",
       "Nodalview Arm",
@@ -99,7 +116,7 @@ const kits = [
   {
     id: GUID.uuidv4(),
     title: "Starter Kit Duo",
-    imgHero: "img/products/starter-kit-duo.jpg",
+    imgHero: "img/products/starter-kit-duo.png",
     childIds: [
       "Nodalview Cases",
       "Nodalview Arm",
@@ -119,7 +136,7 @@ const kits = [
   {
     id: GUID.uuidv4(),
     title: "Kit Duo",
-    imgHero: "img/products/kit-duo-pack.jpg",
+    imgHero: "img/products/kit-duo-pack.png",
     childIds: [
       "Nodalview Cases",
       "Nodalview Arm",
@@ -141,7 +158,7 @@ const kits = [
   {
     id: GUID.uuidv4(),
     title: "Pro Kit 125",
-    imgHero: "img/products/Nodalview-pro-kit-125.jpg",
+    imgHero: "img/products/Nodalview-pro-kit-125.png",
     childIds: [
       "Nodalview Cases",
       "Nodalview Arm",
@@ -161,7 +178,7 @@ const kits = [
   {
     id: GUID.uuidv4(),
     title: "Pro Kit 300",
-    imgHero: "img/products/Nodalview-pro-kit-300.jpg",
+    imgHero: "img/products/Nodalview-pro-kit-300.png",
     childIds: [
       "Nodalview Cases",
       "Nodalview Arm",
@@ -198,6 +215,20 @@ const kits = [
     special: '',
     productType: ProductTypes.kit
   },
+  {
+    id: GUID.uuidv4(),
+    title: "Nodalview Arm",
+    imgHero: "img/products/brasnodal-nodalview.png",
+    childIds: [],
+    imgs: [],
+    price: 39,
+    info:
+      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
+    count: 0,
+    productNew: false,
+    special: '',
+    productType: ProductTypes.kit
+  },
 ];
 
 const lenses = [
@@ -218,7 +249,7 @@ const lenses = [
   {
     id: GUID.uuidv4(),
     title: "Nodalview Pro Photo Lens",
-    imgHero: "img/products/nodalview-pro-photo-lens.jpg",
+    imgHero: "img/products/nodalview-pro-photo-lens.png",
     childIds: [],
     imgs: [],
     price: 24,
@@ -235,7 +266,7 @@ const cases = [
   {
     id: GUID.uuidv4(),
     title: "Nodalview Cases",
-    imgHero: "img/products/cases.jpg",
+    imgHero: "img/products/cases.png",
     childIds: [],
     imgs: [],
     price: 19,
@@ -269,7 +300,7 @@ const prepaidCredits = [
   {
     id: GUID.uuidv4(),
     title: "100 HDR Photos",
-    imgHero: "img/products/nodalivew-100Hdr-prepaid.jpg",
+    imgHero: "img/products/nodalivew-100Hdr-prepaid.png",
     childIds: [],
     imgs: [],
     price: 129,
@@ -284,7 +315,7 @@ const prepaidCredits = [
   {
     id: GUID.uuidv4(),
     title: "500 HDR Photos",
-    imgHero: "img/products/nodalview-prepaid-500-hdr.jpg",
+    imgHero: "img/products/nodalview-prepaid-500-hdr.png",
     childIds: [],
     imgs: [],
     price: 299,
@@ -298,7 +329,7 @@ const prepaidCredits = [
   {
     id: GUID.uuidv4(),
     title: "1000 HDR Photos",
-    imgHero: "img/products/nodalview-prepaid-1000-hdr.jpg",
+    imgHero: "img/products/nodalview-prepaid-1000-hdr.png",
     childIds: [],
     imgs: [],
     price: 399,
@@ -312,7 +343,7 @@ const prepaidCredits = [
   {
     id: GUID.uuidv4(),
     title: "100 360° Panoramas",
-    imgHero: "img/products/nodalview-prepaid-100-360.jpg",
+    imgHero: "img/products/nodalview-prepaid-100-360.png",
     childIds: [],
     imgs: [],
     price: 349,
@@ -326,7 +357,7 @@ const prepaidCredits = [
   {
     id: GUID.uuidv4(),
     title: "250 360° Panoramas",
-    imgHero: "img/products/nodalview-prepaid-250-360.jpg",
+    imgHero: "img/products/nodalview-prepaid-250-360.png",
     childIds: [],
     imgs: [],
     price: 749,
@@ -340,7 +371,7 @@ const prepaidCredits = [
   {
     id: GUID.uuidv4(),
     title: "250 360° Panoramas",
-    imgHero: "img/products/nodalview-prepaid-1000-360.jpg",
+    imgHero: "img/products/nodalview-prepaid-1000-360.png",
     childIds: [],
     imgs: [],
     price: 2399,
@@ -401,24 +432,11 @@ const bundles = [
 
 
 const accessories = [
-  {
-    id: GUID.uuidv4(),
-    title: "Nodalview Arm",
-    imgHero: "img/products/brasnodal-nodalview.jpg",
-    childIds: [],
-    imgs: [],
-    price: 39,
-    info:
-      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle.",
-    count: 0,
-    productNew: false,
-    special: '',
-    productType: ProductTypes.kit
-  },
+  
   {
     id: GUID.uuidv4(),
     title: "Nodalview Motor",
-    imgHero: "img/products/nodalview-motor.jpg",
+    imgHero: "img/products/nodalview-motor.png",
     childIds: [],
     imgs: [],
     price: 129,

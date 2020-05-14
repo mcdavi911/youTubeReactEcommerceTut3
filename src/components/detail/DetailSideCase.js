@@ -3,10 +3,11 @@ import DetailSide from './DetailSide'
 import SelectList from '../form/SelectList'
 import { listDevices } from '../../data';
 import Action from '../../actions/Action';
-import ProductTypes from '../../utilities/ProductTypes'
+
 import { Store } from '../../Store';
 import Product from '../product/Product';
-
+import { Typography } from '@material-ui/core';
+import Hidden from '@material-ui/core/Hidden';
 
 
 
@@ -24,6 +25,8 @@ export default function DetailSideCase() {
   return (
     <div>
       <DetailSide>
+        
+
         <SelectList list={listDevices} label={'devices'} handleValue={(value) => handleSelectCase(value)} />
       </DetailSide>
     </div>

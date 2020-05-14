@@ -10,7 +10,12 @@ const initialState = {
   productType: 'all products',
   searchTerm: '',
   searchResults: [],
-  toggleMobileDrawer: false
+  toggle: {
+    mobileDrawer: false
+  },
+  tabValues: {
+    sideNav: false
+  }
 }
 
 const reducer = produce((draft, action) => {
@@ -22,8 +27,8 @@ const reducer = produce((draft, action) => {
     case 'SET_PRODUCT_DETAIL':
       draft.productDetail = action.payload;
       break;
-    case 'CLEAR_PRODUCT_DETAIL_SPECIAL':
-      draft.productDetail.special = [];
+    case 'SET_TAB_VALUES':
+      draft.tabValues = action.payload;
       break;
     case 'SET_SEARCH_TERM':
       draft.searchTerm = action.payload;
@@ -34,8 +39,15 @@ const reducer = produce((draft, action) => {
     case 'SET_PRODUCT_TYPE':
       draft.productType = action.payload;
       break;
-    case 'TOGGLE_MOBILE_DRAWER':
+    /*
+      case 'TOGGLE_MOBILE_DRAWER':
       draft.toggleMobileDrawer = !draft.toggleMobileDrawer;
+      break;
+      */
+    case 'TOGGLE':
+      console.log('actionPayload here',action.payload);
+      console.log('actionPayload here2',draft.toggle[action.payload]);
+      draft.toggle[action.payload] = !draft.toggle[action.payload];
       break;
     case 'SET_CASE_SPECIAL':
       draft.productDetail.special = action.payload;

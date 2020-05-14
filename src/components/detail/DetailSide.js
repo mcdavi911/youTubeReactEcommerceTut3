@@ -1,17 +1,17 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Store } from '../../Store';
-import SelectNum from '../form/SelectNum'
+import SelectNum from '../form/SelectNum';
+import DetailSideHeader from './DetailSideHeader';
+import Hidden from '@material-ui/core/Hidden';
+
 
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
 
-import Select from '@material-ui/core/Select';
-import Action from '../../actions/Action';
 import { ActionCart2 } from '../../actions/ActionCart';
-import Product from '../product/Product'
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -59,7 +59,7 @@ export default function DetailSide({ children }) {
   const classes = useStyles();
   let productQuantity = 1;
 
-  const { productType, info, price, title } = state.productDetail;
+  const { info } = state.productDetail;
 
   const handleQuantity = (quantity) => productQuantity = quantity;
 
@@ -72,23 +72,17 @@ export default function DetailSide({ children }) {
 
   React.useEffect(() => {
     //Action.clearProductDetailSpecial(dispatch);
-  },[handleAdd])
-  
+  }, [handleAdd])
+
 
   return (
     <div style={{ padding: '0px 56px 0px 64px' }}>
-      <div className={classes.productInfo} style={{ marginBottom: 4 }}>
-        <Typography variant="body1" component="h2" style={{ textTransform: 'capitalize' }}>{productType}</Typography>
-        <Typography component="div">{price} €</Typography>
-      </div>
 
-      <Typography variant="h5" component="h1" style={{
-        fontSize: 28, fontWeight: 600, lineHeight: 1.2, letterSpacing: '0.007em'
-      }}> {title}</Typography>
-
+      <Hidden smDown>
+        <DetailSideHeader />
+      </Hidden>
 
       {children}
-      
 
       <Box display="flex" alignItems="center" style={{ marginTop: 16, marginBottom: 16, marginLeft: 8 }}>
         <p style={{ marginRight: 8 }}>Quantity</p>

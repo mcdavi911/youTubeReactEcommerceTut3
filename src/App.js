@@ -32,13 +32,13 @@ function App() {
     Product.setProducts(products);
   }, []);
 
-  
+
   return (
     <React.Fragment>
       <Navbar />
-        <div className={classes.toolbar}></div>
-        
-      
+      <div className={classes.toolbar}></div>
+
+
       <Box style={{ height: 30 }}></Box>
       <MobileDrawer></MobileDrawer>
       <Switch>

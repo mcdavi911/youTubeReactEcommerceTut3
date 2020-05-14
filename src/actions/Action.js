@@ -11,14 +11,14 @@ export default class Action {
     })
   }
 
-  /*
-  static clearProductDetailSpecial = (dispatch) => {
+  static setTabValues = (dispatch, obj) => {
+
     return dispatch({
-      type: 'CLEAR_PRODUCT_DETAIL_SPECIAL',
-      payload: null
+      type: 'SET_TAB_VALUES',
+      payload: obj
     })
   }
-*/
+
 
 
   static setSearchTerm = (dispatch, searchTerm) => {
@@ -54,15 +54,18 @@ export default class Action {
     })
   }
 
-  static toggleMobileDrawer = (dispatch) => {
+  static toggle = (dispatch, objKey) => {
 
     return dispatch({
-      type: 'TOGGLE_MOBILE_DRAWER',
-      payload: null
+      type: 'TOGGLE',
+      payload: objKey
     })
   }
 
   /*
+toggleMobileDrawer
+
+
   static setProductDetailSpecial = (dispatch, productType, caseModel) => {
 
     /*

@@ -32,7 +32,7 @@ export default function MobileDrawer() {
 
   return (
     <Hidden mdUp>
-      <Drawer anchor={"top"} open={state.toggleMobileDrawer} onClose={() => Action.toggleMobileDrawer(dispatch, false)}>
+      <Drawer anchor={"top"} open={state.toggle.mobileDrawer} onClose={() => Action.toggle(dispatch, 'mobileDrawer')}>
         <div className={classes.toolbar}></div>
 
         <div className={classes.drawerInner}>

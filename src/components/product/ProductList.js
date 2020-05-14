@@ -3,7 +3,8 @@ import { makeStyles } from '@material-ui/core/styles'
 
 import { Store } from '../../Store'
 import ProductCard from './ProductCard'
-import VerticalNav from '../VerticalNav'
+import SideNav from '../SideNav'
+import Heading from './ProductHeading'
 
 // MUI
 import Container from '@material-ui/core/Container'
@@ -29,12 +30,7 @@ const useStyles = makeStyles((theme) => ({
     '& span': {
 
     }
-  },
-  productTypeHeading: {
-    textTransform: 'capitalize',
-    marginTop: 0,
-    fontWeight: 500
-  },
+  }
 }));
 
 
@@ -51,14 +47,12 @@ export default function ProductList() {
           <Grid item sm={'auto'} md={2} lg={2}>
 
             <Hidden smDown>
-              <VerticalNav />
+              <SideNav />
             </Hidden>
           </Grid>
           <Grid item sm={12} md={10} lg={10}>
-            <header>
-              <h1 className={classes.productTypeHeading}>{state.productType}</h1>
-            </header>
-
+            <Heading />
+            
             <Grid
               container
               direction="row"
