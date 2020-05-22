@@ -19,7 +19,7 @@ export default function DetailImgList({imgs}) {
   const classes = useStyles();
 
   return (
-    <div>
+    <div style={{marginLeft: 24}}>
       <Grid
         container
         direction="row"

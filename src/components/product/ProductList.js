@@ -43,15 +43,14 @@ export default function ProductList() {
     <React.Fragment>
       <Container>
         <Grid container spacing={4}>
-          <Grid item sm={'auto'} md={2} lg={2}>
-
-            <Hidden smDown>
+          <Hidden smDown>
+            <Grid item sm={'auto'} md={2} lg={2}>
               <SideNav />
-            </Hidden>
-          </Grid>
+            </Grid>
+          </Hidden>
           <Grid item sm={12} md={10} lg={10}>
             <Heading />
-            
+
             <Grid
               container
               direction="row"
@@ -78,7 +77,7 @@ export default function ProductList() {
 
 
       </Container>
-    </React.Fragment>
+    </React.Fragment >
   )
 }
 

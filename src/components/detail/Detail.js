@@ -56,7 +56,7 @@ export default function Detail() {
   const left = (
     <>
       <Hidden smDown>
-        <DetailImgList imgs={imgs} />
+        <DetailImgList imgs={imgs}  />
       </Hidden>
 
 

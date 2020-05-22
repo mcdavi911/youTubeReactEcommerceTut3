@@ -25,13 +25,12 @@ function App() {
   const { state, dispatch } = React.useContext(Store);
   const classes = useStyles();
 
-
   return (
     <React.Fragment>
       <Navbar />
       <div className={classes.toolbar}></div>
 
-      <Box style={{ height: 30 }}></Box>
+      <div style={{ height: 30 }}></div>
       <MobileDrawer></MobileDrawer>
       <Switch>
         <Route exact path="/" component={PrdList} />
@@ -50,8 +49,5 @@ function App() {
 
 export default App;
 
-/*
-<NavTabs />
-<Banner />
-*/
+
 
