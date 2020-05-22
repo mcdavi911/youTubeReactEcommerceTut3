@@ -1,9 +1,8 @@
 import Validate from '../../utilities/Validate';
-import { productTypes } from '../../data';
-import produce from 'immer'
+import { productList } from '../../data';
 
 export default class Product {
-  static products = []
+  static products = [];
   //children = []
 
   constructor(product) {
@@ -19,9 +18,15 @@ export default class Product {
     this.productType = product.productType;
     this.special = product.special;
 
+    if (Product.products.length === 0) {
+      Product.products = productList;
+    }
+
     if (this.children.length === 0) {
       this._populateChildren();
     }
+
+    this._populateImgs();
   }
 
   _populateChildren() {
@@ -33,17 +38,30 @@ export default class Product {
     })
   }
 
+  _populateImgs() {
+    if (this.childIds.length === 0) {
+      this.imgs = [{ src: this.imgHero, alt: this.title }];
+      return;
+    }
+
+    const childImgs = this.children.map(p => ({ src: p.imgHero, alt: p.title }));
+
+    this.imgs = [{ src: this.imgHero, alt: this.title }, ...childImgs];
+  }
+
+  /*
   static setProducts(products) {
     Product.products = products;
   }
+  */
 
 
   getImgs() {
-    if (this.childIds.length === 0) return [{ src: this.imgHero, alt: this.title }];
+    //if (this.childIds.length === 0) return [{ src: this.imgHero, alt: this.title }];
 
     if (Product.products.length === 0) return;
 
-    const childImgs = this.children.map(p => ({ src: p.imgHero, alt: p.title }))
+    const childImgs = this.children.map(p => ({ src: p.imgHero, alt: p.title }));
 
     return [{ src: this.imgHero, alt: this.title }, ...this.imgs, ...childImgs];
   }

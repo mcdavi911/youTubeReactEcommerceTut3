@@ -1,11 +1,11 @@
 import React from 'react'
-import { products } from './data'
+import { productList } from './data'
 import produce from 'immer'
 import Product from './components/product/Product'
 
 const initialState = {
-  products: products,
-  productDetail: products[6],
+  products: productList,
+  productDetail: productList[0],
   cart: [],
   productType: 'all products',
   searchTerm: '',
@@ -45,8 +45,6 @@ const reducer = produce((draft, action) => {
       break;
       */
     case 'TOGGLE':
-      console.log('actionPayload here',action.payload);
-      console.log('actionPayload here2',draft.toggle[action.payload]);
       draft.toggle[action.payload] = !draft.toggle[action.payload];
       break;
     case 'SET_CASE_SPECIAL':
@@ -121,6 +119,8 @@ export const Store = React.createContext(initialState);
 
 export function StoreProvider(props) {
   const [state, dispatch] = React.useReducer(reducer, initialState);
+
+
 
   console.log('state from store is ', state);
 

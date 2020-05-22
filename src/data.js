@@ -9,6 +9,7 @@ import CreditCard from '@material-ui/icons/CreditCard'
 import GUID from './utilities/GUID'
 
 import ProductTypes from './utilities/ProductTypes';
+import Product from './components/product/Product';
 
 
 const TripodIcon = (props) => {
@@ -80,7 +81,7 @@ const kits = [
   {
     id: GUID.uuidv4(),
     title: "Starter Kit 360°",
-    imgHero: "img/products/nodalview-starter-kit-360.png",
+    imgHero: "img/products/nodalview-starter-kit-360.jpg",
     childIds: [
       "Nodalview Cases",
       "Nodalview Arm",
@@ -98,7 +99,7 @@ const kits = [
   {
     id: GUID.uuidv4(),
     title: "Starter Kit Photo",
-    imgHero: "img/products/nodalview-starter-kit-photo.png",
+    imgHero: "img/products/nodalview-starter-kit-photo.jpg",
     childIds: [
       "Nodalview Cases",
       "Nodalview Arm",
@@ -116,7 +117,7 @@ const kits = [
   {
     id: GUID.uuidv4(),
     title: "Starter Kit Duo",
-    imgHero: "img/products/starter-kit-duo.png",
+    imgHero: "img/products/starter-kit-duo.jpg",
     childIds: [
       "Nodalview Cases",
       "Nodalview Arm",
@@ -136,7 +137,7 @@ const kits = [
   {
     id: GUID.uuidv4(),
     title: "Kit Duo",
-    imgHero: "img/products/kit-duo-pack.png",
+    imgHero: "img/products/kit-duo-pack.jpg",
     childIds: [
       "Nodalview Cases",
       "Nodalview Arm",
@@ -158,7 +159,7 @@ const kits = [
   {
     id: GUID.uuidv4(),
     title: "Pro Kit 125",
-    imgHero: "img/products/Nodalview-pro-kit-125.png",
+    imgHero: "img/products/Nodalview-pro-kit-125.jpg",
     childIds: [
       "Nodalview Cases",
       "Nodalview Arm",
@@ -178,7 +179,7 @@ const kits = [
   {
     id: GUID.uuidv4(),
     title: "Pro Kit 300",
-    imgHero: "img/products/Nodalview-pro-kit-300.png",
+    imgHero: "img/products/Nodalview-pro-kit-300.jpg",
     childIds: [
       "Nodalview Cases",
       "Nodalview Arm",
@@ -218,7 +219,7 @@ const kits = [
   {
     id: GUID.uuidv4(),
     title: "Nodalview Arm",
-    imgHero: "img/products/brasnodal-nodalview.png",
+    imgHero: "img/products/brasnodal-nodalview.jpg",
     childIds: [],
     imgs: [],
     price: 39,
@@ -235,7 +236,7 @@ const lenses = [
   {
     id: GUID.uuidv4(),
     title: "Nodalview 360°",
-    imgHero: "img/products/lens360.png",
+    imgHero: "img/products/lens360.jpg",
     childIds: [],
     imgs: [],
     price: 18,
@@ -249,7 +250,7 @@ const lenses = [
   {
     id: GUID.uuidv4(),
     title: "Nodalview Pro Photo Lens",
-    imgHero: "img/products/nodalview-pro-photo-lens.png",
+    imgHero: "img/products/nodalview-pro-photo-lens.jpg",
     childIds: [],
     imgs: [],
     price: 24,
@@ -266,7 +267,7 @@ const cases = [
   {
     id: GUID.uuidv4(),
     title: "Nodalview Cases",
-    imgHero: "img/products/cases.png",
+    imgHero: "img/products/cases.jpg",
     childIds: [],
     imgs: [],
     price: 19,
@@ -283,7 +284,7 @@ const tripods = [
   {
     id: GUID.uuidv4(),
     title: "Nodalview Tripod",
-    imgHero: "img/products/tripod.jpeg",
+    imgHero: "img/products/tripod.jpg",
     childIds: [],
     imgs: [],
     price: 59,
@@ -300,7 +301,7 @@ const prepaidCredits = [
   {
     id: GUID.uuidv4(),
     title: "100 HDR Photos",
-    imgHero: "img/products/nodalivew-100Hdr-prepaid.png",
+    imgHero: "img/products/nodalivew-100Hdr-prepaid.jpg",
     childIds: [],
     imgs: [],
     price: 129,
@@ -315,7 +316,7 @@ const prepaidCredits = [
   {
     id: GUID.uuidv4(),
     title: "500 HDR Photos",
-    imgHero: "img/products/nodalview-prepaid-500-hdr.png",
+    imgHero: "img/products/nodalview-prepaid-500-hdr.jpg",
     childIds: [],
     imgs: [],
     price: 299,
@@ -329,7 +330,7 @@ const prepaidCredits = [
   {
     id: GUID.uuidv4(),
     title: "1000 HDR Photos",
-    imgHero: "img/products/nodalview-prepaid-1000-hdr.png",
+    imgHero: "img/products/nodalview-prepaid-1000-hdr.jpg",
     childIds: [],
     imgs: [],
     price: 399,
@@ -343,7 +344,7 @@ const prepaidCredits = [
   {
     id: GUID.uuidv4(),
     title: "100 360° Panoramas",
-    imgHero: "img/products/nodalview-prepaid-100-360.png",
+    imgHero: "img/products/nodalview-prepaid-100-360.jpg",
     childIds: [],
     imgs: [],
     price: 349,
@@ -357,7 +358,7 @@ const prepaidCredits = [
   {
     id: GUID.uuidv4(),
     title: "250 360° Panoramas",
-    imgHero: "img/products/nodalview-prepaid-250-360.png",
+    imgHero: "img/products/nodalview-prepaid-250-360.jpg",
     childIds: [],
     imgs: [],
     price: 749,
@@ -371,7 +372,7 @@ const prepaidCredits = [
   {
     id: GUID.uuidv4(),
     title: "250 360° Panoramas",
-    imgHero: "img/products/nodalview-prepaid-1000-360.png",
+    imgHero: "img/products/nodalview-prepaid-1000-360.jpg",
     childIds: [],
     imgs: [],
     price: 2399,
@@ -432,11 +433,10 @@ const bundles = [
 
 
 const accessories = [
-  
   {
     id: GUID.uuidv4(),
     title: "Nodalview Motor",
-    imgHero: "img/products/nodalview-motor.png",
+    imgHero: "img/products/nodalview-motor.jpg",
     childIds: [],
     imgs: [],
     price: 129,
@@ -450,7 +450,8 @@ const accessories = [
 ];
 
 
-export const products = [
+
+export const productList = [
   ...kits,
   ...cases,
   ...tripods,
@@ -461,6 +462,4 @@ export const products = [
 ];
 
 
-
-
-
+//export const productDetail = 

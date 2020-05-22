@@ -50,6 +50,13 @@ const useStyles = makeStyles((theme) => ({
   selectTest: {
     padding: 8
   },
+  wrapper: {
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    [theme.breakpoints.up('md')]: {
+      padding: '0px 56px 0px 64px',
+    },
+  }
 }));
 
 
@@ -76,7 +83,7 @@ export default function DetailSide({ children }) {
 
 
   return (
-    <div style={{ padding: '0px 56px 0px 64px' }}>
+    <div className={classes.wrapper}>
 
       <Hidden smDown>
         <DetailSideHeader />

@@ -21,9 +21,7 @@ export default function DetailSideKit() {
 
   return (
     <DetailSide>
-      
-
-
+    
       <ul>
         {product.children.length > 0 && product.children.map(product => (
           <li key={product.id}>

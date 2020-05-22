@@ -5,9 +5,13 @@ import produce from 'immer'
 export default class Action {
   static setProductDetail = (dispatch, product) => {
 
+    console.log('Product here',product);
+
+    const prd = new Product(product);
+
     return dispatch({
       type: 'SET_PRODUCT_DETAIL',
-      payload: { ...product }
+      payload: { ...prd }
     })
   }
 
@@ -18,7 +22,6 @@ export default class Action {
       payload: obj
     })
   }
-
 
 
   static setSearchTerm = (dispatch, searchTerm) => {

@@ -2,10 +2,6 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-import NavTabs from './components/NavTabs';
-
-import Product from './components/product/Product';
-import { products } from './data';
 
 import './App.css';
 //import 'bootstrap/dist/css/bootstrap.min.css'
@@ -16,8 +12,8 @@ import Cart from './components/cart/Cart';
 import Default from './components/Default';
 //import Banner from './components/Banner';
 import MobileDrawer from './components/MobileDrawer';
-
-import ProductTypes from './utilities/ProductTypes';
+//import ProductTypes from './utilities/ProductTypes';
+import { Store } from './Store';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,18 +22,14 @@ const useStyles = makeStyles((theme) => ({
 
 
 function App() {
+  const { state, dispatch } = React.useContext(Store);
   const classes = useStyles();
-
-  React.useEffect(() => {
-    Product.setProducts(products);
-  }, []);
 
 
   return (
     <React.Fragment>
       <Navbar />
       <div className={classes.toolbar}></div>
-
 
       <Box style={{ height: 30 }}></Box>
       <MobileDrawer></MobileDrawer>
@@ -48,7 +40,9 @@ function App() {
         <Route component={Default} />
       </Switch>
       <footer>
-        asdsadasdsad
+        <Box m={2}>
+          Footer
+        </Box>
       </footer>
     </React.Fragment>
   );

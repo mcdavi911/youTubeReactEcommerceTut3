@@ -2,7 +2,6 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 
 import DetailImg from './DetailImg'
-import Carousel from 'nuka-carousel';
 import Grid from '@material-ui/core/Grid';
 
 
